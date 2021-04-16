@@ -1,0 +1,74 @@
+<section class="component">
+	<div class="container page">
+		<div class="page-history">
+			<div class="row">
+				<div class="col-md-3 col-lg-3">
+					<aside class="wg-left-aside">
+						<aside class="aside"><?php //$tmp->loadModule('ads4') ;?></aside>
+					</aside>
+				</div>
+				<div class="col-md-9 col-lg-9">
+					<div class="wg-breadcrumb clearfix">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item" aria-current="page">Trang chủ</li>
+								<li class="breadcrumb-item" aria-current="page">Giới thiệu</li>
+								<li class="breadcrumb-item" aria-current="page">Lịch sử</li>
+							</ol>
+						</nav>
+					</div>
+
+					<div class="main-content">
+						<ul id="tab-history" class="nav nav-pills nav-justified">
+							<li><a data-toggle="tab" href="#history1">Thứ tự ban giám đốc</a></li>
+							<li class="active"><a data-toggle="tab" href="#history2">Lịch sử</a></li>
+							<li><a data-toggle="tab" href="#history3">Bài viết về viện</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div id="history1" class="tab-pane fade">
+								<h3>HOME</h3>
+								<p>Some content.</p>
+							</div>
+							<div id="history2" class="tab-pane active">
+								<?php
+								$res_content_lichsucuavien = SysGetList('tbl_content', [], "AND alias='lich-su-vien-nghien-cuu-cao-cap-ve-toan' AND isactive=1");
+								if(count($res_content_lichsucuavien)>0){
+									$row_lichsucuavien = $res_content_lichsucuavien[0];
+									echo '<h1 class="page-title">'.$row_lichsucuavien['title'].'</h1>';
+									echo '<div>'.$row_lichsucuavien['fulltext'].'</div>';
+								}
+								?>
+							</div>
+							<div id="history3" class="tab-pane fade">
+								<h1 class="page-title">Bài viết về Viện</h1>
+								<div class="list-articles">
+									<?php
+									$res_cates = SysGetList('tbl_categories', [], "AND isactive=1 AND `alias`='gioi-thieu'");
+
+									if(isset($res_cates[0]['id']) && $res_cates[0]['id']!==''){
+										$res_contents = SysGetList('tbl_content', [], 'AND isactive=1 AND cat_id='.$res_cates[0]['id']);
+
+										if(count($res_contents)>0){
+											$cate_alias = $res_cates[0]['alias'];
+											foreach ($res_contents as $key => $value) {
+												$sapo = $value['sapo'];
+												$link = ROOTHOST.$cate_alias.'/'.$value['alias'].'-'.$value['id'].'.html';
+												echo '<div class="wr-article">
+												<h3 class="article-title"><a href="'.$link.'" title="'.$value['title'].'">'.$value['title'].'</a></h3>
+												<div class="article-intro">'.$sapo.'</div>
+												</div>';
+											}
+										}
+									}
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</section>
