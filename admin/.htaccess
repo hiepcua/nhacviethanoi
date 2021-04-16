@@ -1,0 +1,151 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^/?$ 						index.php [QSA]
+RewriteRule ^about_us/?$ 				index.php?com=user&viewtype=contact [QSA]
+RewriteRule ^setting/?$ 				index.php?com=setting [QSA]
+RewriteRule ^forgot-password/?$ 		forgot-password.php
+
+
+RewriteRule ^contact/?$ 					index.php?com=contact [QSA]
+RewriteRule ^contact/add/?$ 				index.php?com=contact&viewtype=add 
+RewriteRule ^contact/edit/([0-9]+)?$ 		index.php?com=contact&viewtype=edit&id=$1 [QSA]
+RewriteRule ^contact/active/([0-9]+)?$ 		index.php?com=contact&viewtype=active&id=$1 [QSA]
+RewriteRule ^contact/delete/([0-9]+)?$ 		index.php?com=contact&viewtype=delete&id=$1 [QSA]
+
+
+# Menu
+RewriteRule ^menu/?$ 					index.php?com=menu&mnuid=$1 	[QSA]
+RewriteRule ^menu/active/([0-9]+)?$ 	index.php?com=menu&viewtype=active&id=$1 [QSA]
+RewriteRule ^menu/delete/([0-9]+)?$ 	index.php?com=menu&viewtype=delete&id=$1 [QSA]
+
+# Menuitem
+RewriteRule ^mnuitem/([0-9]+)?$ 					index.php?com=mnuitem&mnuid=$1 	[QSA]
+RewriteRule ^mnuitem/([0-9]+)/add?$ 				index.php?com=mnuitem&viewtype=add&mnuid=$1 [QSA]
+RewriteRule ^mnuitem/([0-9]+)/edit/([0-9]+)?$ 		index.php?com=mnuitem&viewtype=edit&mnuid=$1&id=$2 [QSA]
+RewriteRule ^mnuitem/([0-9]+)/active/([0-9]+)?$ 	index.php?com=mnuitem&viewtype=active&mnuid=$1&id=$2 [QSA]
+RewriteRule ^mnuitem/([0-9]+)/delete/([0-9]+)?$ 	index.php?com=mnuitem&viewtype=delete&mnuid=$1&id=$2 [QSA]
+
+RewriteRule ^content/?$ 					index.php?com=content [QSA]
+RewriteRule ^content/view?$ 				index.php?com=content&viewtype=view [QSA]
+RewriteRule ^content/add?$ 					index.php?com=content&viewtype=add [QSA]
+RewriteRule ^content/edit/([0-9]+)?$ 		index.php?com=content&viewtype=edit&id=$1 [QSA]
+RewriteRule ^content/write/?$ 				index.php?com=content&viewtype=write [QSA]
+RewriteRule ^content/pending/?$ 			index.php?com=content&viewtype=pending [QSA]
+RewriteRule ^content/waiting_public/?$ 		index.php?com=content&viewtype=waiting_public [QSA]
+RewriteRule ^content/public/?$ 				index.php?com=content&viewtype=public [QSA]
+RewriteRule ^content/deleted/?$ 			index.php?com=content&viewtype=deleted [QSA]
+RewriteRule ^content/takedown/?$ 			index.php?com=content&viewtype=takedown [QSA]
+RewriteRule ^content/return/?$ 				index.php?com=content&viewtype=return [QSA]
+RewriteRule ^content/delete/([0-9]+)?$ 		index.php?com=content&viewtype=delete&id=$1 [QSA]
+RewriteRule ^content/active/([0-9]+)?$ 		index.php?com=content&viewtype=active&id=$1 [QSA]
+RewriteRule ^content/ishot/([0-9]+)?$ 		index.php?com=content&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^content/chu-nhat-vang/?$ 		index.php?com=content&viewtype=chu_nhat_vang [QSA]
+
+RewriteRule ^user/?$ 							index.php?com=user [QSA]
+RewriteRule ^profile/?$ 						index.php?com=user&viewtype=profile
+RewriteRule ^changepass/?$ 						index.php?com=user&viewtype=changepass
+RewriteRule ^user/getlist_user/([0-9]+)?$ 		index.php?com=user&viewtype=getlist_user&id=$1 [QSA]
+RewriteRule ^user/add/?$ 						index.php?com=user&viewtype=add
+RewriteRule ^user/edit/?$ 						index.php?com=user&viewtype=edit [QSA]
+RewriteRule ^user/active/?$ 					index.php?com=user&viewtype=active [QSA]
+RewriteRule ^user/delete/?$ 					index.php?com=user&viewtype=delete [QSA]
+RewriteRule ^logout/?$ 							index.php?com=user&viewtype=logout [QSA]
+
+RewriteRule ^groupuser/?$ 				index.php?com=groupuser [QSA]
+RewriteRule ^groupuser/add/?$ 			index.php?com=groupuser&viewtype=add 
+RewriteRule ^groupuser/edit/([0-9]+)?$ 	index.php?com=groupuser&viewtype=edit&id=$1 [QSA]
+
+RewriteRule ^categories/?$ 					index.php?com=categories [QSA]
+RewriteRule ^categories/add/?$ 				index.php?com=categories&viewtype=add 
+RewriteRule ^categories/edit/([0-9]+)?$ 	index.php?com=categories&viewtype=edit&id=$1 [QSA]
+RewriteRule ^categories/active/([0-9]+)?$ 	index.php?com=categories&viewtype=active&id=$1 [QSA]
+RewriteRule ^categories/delete/([0-9]+)?$ 	index.php?com=categories&viewtype=delete&id=$1 [QSA]
+
+
+RewriteRule ^product_group/?$ 					index.php?com=product_group [QSA]
+RewriteRule ^product_group/add/?$ 				index.php?com=product_group&viewtype=add 
+RewriteRule ^product_group/edit/([0-9]+)?$ 		index.php?com=product_group&viewtype=edit&id=$1 [QSA]
+RewriteRule ^product_group/active/([0-9]+)?$ 	index.php?com=product_group&viewtype=active&id=$1 [QSA]
+RewriteRule ^product_group/delete/([0-9]+)?$ 	index.php?com=product_group&viewtype=delete&id=$1 [QSA]
+
+
+RewriteRule ^product/?$ 						index.php?com=product [QSA]
+RewriteRule ^product/add/?$ 					index.php?com=product&viewtype=add 
+RewriteRule ^product/edit/([0-9]+)?$ 			index.php?com=product&viewtype=edit&id=$1 [QSA]
+RewriteRule ^product/active/([0-9]+)?$ 			index.php?com=product&viewtype=active&id=$1 [QSA]
+RewriteRule ^product/ishot/([0-9]+)?$ 			index.php?com=product&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^product/delete/([0-9]+)?$ 			index.php?com=product&viewtype=delete&id=$1 [QSA]
+RewriteRule ^product/draft/?$ 					index.php?com=product&viewtype=draft&id=$1 [QSA]
+
+
+RewriteRule ^album/?$ 								index.php?com=album [QSA]
+RewriteRule ^album/add/?$ 							index.php?com=album&viewtype=add
+RewriteRule ^album/edit/([0-9]+)?$ 					index.php?com=album&viewtype=edit&id=$1 [QSA]
+RewriteRule ^album/active/([0-9]+)?$ 				index.php?com=album&viewtype=active&id=$1 [QSA]
+RewriteRule ^album/ishot/([0-9]+)?$ 				index.php?com=album&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^album/delete/([0-9]+)?$ 				index.php?com=album&viewtype=delete&id=$1 [QSA]
+RewriteRule ^album/([0-9a-zA-Z\-]+)-([0-9]+)?$ 		index.php?com=album&viewtype=list_images&id=$2 [QSA]
+
+
+#Seo
+RewriteRule ^seo/?$ 								index.php?com=seo 	[QSA]
+RewriteRule ^seo/add?$ 								index.php?com=seo&task=add
+RewriteRule ^seo/edit/([0-9]+)?$ 					index.php?com=seo&task=edit&id=$1
+RewriteRule ^seo/delete/([0-9]+)?$ 					index.php?com=seo&task=delete&id=$1
+RewriteRule ^seo/active/([0-9]+)?$ 					index.php?com=seo&task=active&id=$1
+
+# Slider
+RewriteRule ^slider/?$ 								index.php?com=slider 	[QSA]
+RewriteRule ^slider/add?$ 							index.php?com=slider&task=add
+RewriteRule ^slider/edit/([0-9]+)?$ 				index.php?com=slider&task=edit&id=$1
+RewriteRule ^slider/delete/([0-9]+)?$ 				index.php?com=slider&task=delete&id=$1
+RewriteRule ^slider/active/([0-9]+)?$ 				index.php?com=slider&task=active&id=$1
+
+RewriteRule ^feedback/?$ 					index.php?com=feedback [QSA]
+RewriteRule ^feedback/add/?$ 				index.php?com=feedback&viewtype=add [QSA]
+RewriteRule ^feedback/edit/([0-9]+)?$ 		index.php?com=feedback&viewtype=edit&id=$1 [QSA]
+RewriteRule ^feedback/active/([0-9]+)?$ 	index.php?com=feedback&viewtype=active&id=$1 [QSA]
+RewriteRule ^feedback/delete/([0-9]+)?$ 	index.php?com=feedback&viewtype=delete&id=$1 [QSA]
+
+# Tag
+RewriteRule ^tag/?$ 					index.php?com=tag [QSA]
+RewriteRule ^tag/add/?$ 				index.php?com=tag&viewtype=add 
+RewriteRule ^tag/edit/([0-9]+)?$ 		index.php?com=tag&viewtype=edit&id=$1 [QSA]
+RewriteRule ^tag/active/([0-9]+)?$ 		index.php?com=tag&viewtype=active&id=$1 [QSA]
+RewriteRule ^tag/delete/([0-9]+)?$ 		index.php?com=tag&viewtype=delete&id=$1 [QSA]
+
+# Registered
+RewriteRule ^registration/?$ 						index.php?com=registration [QSA]
+RewriteRule ^registration/add/?$ 					index.php?com=registration&viewtype=add 
+RewriteRule ^registration/edit/([0-9]+)?$ 			index.php?com=registration&viewtype=edit&id=$1 [QSA]
+RewriteRule ^registration/active/([0-9]+)?$ 		index.php?com=registration&viewtype=active&id=$1 [QSA]
+RewriteRule ^registration/delete/([0-9]+)?$ 		index.php?com=registration&viewtype=delete&id=$1 [QSA]
+
+# html block
+RewriteRule ^html_block/?$ 						index.php?com=html_block [QSA]
+RewriteRule ^html_block/add/?$ 					index.php?com=html_block&viewtype=add 
+RewriteRule ^html_block/edit/([0-9]+)?$ 		index.php?com=html_block&viewtype=edit&id=$1 [QSA]
+RewriteRule ^html_block/active/([0-9]+)?$ 		index.php?com=html_block&viewtype=active&id=$1 [QSA]
+RewriteRule ^html_block/delete/([0-9]+)?$ 		index.php?com=html_block&viewtype=delete&id=$1 [QSA]
+
+# Gallery
+RewriteRule ^gallery/?$ 							index.php?com=gallery 	[QSA]
+RewriteRule ^gallery/add?$ 							index.php?com=gallery&task=add
+RewriteRule ^gallery/edit/([0-9]+)?$ 				index.php?com=gallery&task=edit&id=$1
+RewriteRule ^gallery/delete/([0-9]+)?$ 				index.php?com=gallery&task=delete&id=$1
+RewriteRule ^gallery/active/([0-9]+)?$ 				index.php?com=gallery&task=active&id=$1
+RewriteRule ^gallery/add_gallery/([0-9]+)?$ 		index.php?com=gallery&task=add_gallery&id=$1
+
+php_flag display_errors  on
+php_value upload_max_filesize 1024M
+php_value post_max_size 1024M
+php_value max_input_time 300
+php_value max_execution_time 300
+
+#Bảo vệ file
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
