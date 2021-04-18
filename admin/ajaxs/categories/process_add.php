@@ -10,16 +10,6 @@ require_once(libs_path.'cls.mysql.php');
 require_once(libs_path.'cls.upload.php');
 $obj_upload = new CLS_UPLOAD();
 $file='';
-/*Check user permission*/
-$isAdmin = getInfo('isadmin');
-$userLogin = getInfo('username');
-$res_Users = SysGetList('tbl_users', ['permission'], "AND username='".$userLogin."'");
-$res_user = $res_Users[0];
-$arr_permission = ($res_user['permission']!==null && $res_user['permission']!='[]' && $res_user['permission']!=='') ? json_decode($res_user['permission']) : [];
-if($isAdmin!=1 && !in_array(2001, $arr_permission)){
-	die('3');
-}
-/*End check user permission*/
 if(isset($_POST['txt_name']) && $_POST['txt_name']!='') {
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
 		$save_path = MEDIA_HOST."/categories/";

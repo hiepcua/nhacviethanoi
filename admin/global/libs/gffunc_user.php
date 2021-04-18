@@ -70,3 +70,20 @@ function LogOut($user){
 		$obj->Exec($sql);
 	}
 }
+function Permission($com='') {
+	if(isset($_SESSION[MD5($_SERVER['HTTP_HOST']).'_USERLOGIN'])){
+		$gid=$_SESSION[MD5($_SERVER['HTTP_HOST']).'_USERLOGIN']['gid'];
+		$sql="SELECT `permission` FROM tbl_user_group WHERE id=$gid"; 
+		$obj=new CLS_MYSQL;
+		$obj->Query($sql);
+		if($obj->Num_rows()==0) return false;
+		$row=$obj->Fetch_Assoc();
+		$permission=$row['permission'];
+		$flag=false; 
+		if($permission & $GLOBALS['ARR_COM']["$com"]) {
+			$flag=true; 
+		}
+		return $flag;
+	}
+	return false;
+}

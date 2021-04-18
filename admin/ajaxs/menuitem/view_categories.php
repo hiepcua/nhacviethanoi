@@ -24,7 +24,7 @@ function getListComboboxCategory($parid=0, $level=0, $childs=array(), $selected_
 		$id=$rows['id'];
 		$parid=$rows['par_id'];
 		$title=$rows['title'];
-		$link = ROOTHOST_WEB.'tin-tuc/'.$rows['alias'];
+		$link = ROOTHOST_WEB.'chuyen-muc/'.$rows['alias'];
 		$selected = ($rows['id'] == $selected_id) ? 'selected' : '';
 		if(in_array($id, $childs)){
 			echo "<option value='$id' disabled='true' class='disabled' data-link='".$link."' ".$selected.">$char $title</option>";

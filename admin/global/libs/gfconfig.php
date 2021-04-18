@@ -57,8 +57,8 @@ define('SMTP_USER','hoangtucoc321@gmail.com');
 define('SMTP_PASS','nsn2651984');
 define('SMTP_MAIL','hoangtucoc321@gmail.com');
 
-define('SITE_NAME','VIASM');
-define('SITE_TITLE','VIASM');
+define('SITE_NAME','CÔNG TY TNHH THƯƠNG MẠI VÀ TỔ CHỨC SỰ KIỆN THIÊN THANH');
+define('SITE_TITLE','CÔNG TY TNHH THƯƠNG MẠI VÀ TỔ CHỨC SỰ KIỆN THIÊN THANH');
 define('SITE_DESC','');
 define('SITE_KEY','');
 define('SITE_IMAGE','');
@@ -68,150 +68,6 @@ define('COM_CONTACT','');
 $_FILE_TYPE=array('docx','excel','pdf');
 $_MEDIA_TYPE=array('mp4','mp3');
 $_IMAGE_TYPE=array('jpeg','jpg','gif','png');
-// 1 	:	Thêm mới bài viết
-// 2 	:	Cập nhật bài viết (Sửa bài viết)
-// 3 	:	Xóa bài viết
-// 4 	:	Phê duyệt
-// 5 	:	Xuất bản
-// 6 	:	Gỡ bài
-// 7 	:	Trả bài cho phóng viên
-// 8 	:	Trả bài cho biên tập viên
-
-const PERMISSION_CONTENT = array(
-	"1001" 	=> 'Thêm mới bài viết',
-	"1002" 	=> 'Cập nhật bài viết',
-	"1003"	=> 'Xóa bài viết',
-	"1004" 	=> 'Nổi bật bài viết',
-	"1005" 	=> 'Hiển thị bài viết',
-);
-
-const PERMISSION_CATEGORY = array(
-	"2001" 	=> 'Thêm mới chuyên mục',
-	"2002" 	=> 'Cập nhật chuyên mục',
-	"2003"	=> 'Xóa chuyên mục',
-	"2004" 	=> 'Nổi bật chuyên mục',
-	"2005" 	=> 'Hiển thị chuyên mục',
-);
-
-const PERMISSION_EVENT = array(
-	"3001" 	=> 'Thêm mới HĐKH',
-	"3002" 	=> 'Cập nhật HĐKH',
-	"3003"	=> 'Xóa HĐKH',
-	"3004" 	=> 'Nổi bật HĐKH',
-	"3005" 	=> 'Hiển thị HĐKH',
-);
-
-const PERMISSION_EVENT_GROUP = array(
-	"4001" 	=> 'Thêm mới chức vụ',
-	"4002" 	=> 'Cập nhật chức vụ',
-	"4003"	=> 'Xóa chức vụ',
-	"4004" 	=> 'Nổi bật chức vụ',
-	"4005" 	=> 'Hiển thị chức vụ',
-);
-
-const PERMISSION_EVENT_DETAIL = array(
-	"5001" 	=> 'Thêm mới chi tiết HĐKH',
-	"5002" 	=> 'Cập nhật chi tiết HĐKH',
-	"5003"	=> 'Xóa chi tiết HĐKH',
-	"5004" 	=> 'Nổi bật chi tiết HĐKH',
-	"5005" 	=> 'Hiển thị chi tiết HĐKH',
-);
-
-const PERMISSION_PERSONNEL = array(
-	"6001" 	=> 'Thêm mới nhân sự',
-	"6002" 	=> 'Cập nhật nhân sự',
-	"6003"	=> 'Xóa nhân sự',
-	"6004" 	=> 'Nổi bật nhân sự',
-	"6005" 	=> 'Hiển thị nhân sự',
-	"6006" 	=> 'Import nhân sự',
-);
-
-const PERMISSION_PERSONNEL_GROUP = array(
-	"7001" 	=> 'Thêm mới chức vụ',
-	"7002" 	=> 'Cập nhật chức vụ',
-	"7003"	=> 'Xóa chức vụ',
-	"7004" 	=> 'Nổi bật chức vụ',
-	"7005" 	=> 'Hiển thị chức vụ',
-);
-
-const PERMISSION_TEAM = array(
-	"8001" 	=> 'Thêm mới nhóm NCV',
-	"8002" 	=> 'Cập nhật nhóm NCV',
-	"8003"	=> 'Xóa nhóm NCV',
-	"8004" 	=> 'Nổi bật nhóm NCV',
-	"8005" 	=> 'Hiển thị nhóm NCV',
-);
-
-const PERMISSION_PUBLISH_GROUP = array(
-	"9001" 	=> 'Thêm mới loại xuất bản',
-	"9002" 	=> 'Cập nhật loại xuất bản',
-	"9003"	=> 'Xóa loại xuất bản',
-	"9004" 	=> 'Nổi bật loại xuất bản',
-	"9005" 	=> 'Hiển thị loại xuất bản',
-);
-
-const PERMISSION_PUBLISH = array(
-	"10001" 	=> 'Thêm mới xuất bản',
-	"10002" 	=> 'Cập nhật xuất bản',
-	"10003"		=> 'Xóa xuất bản',
-	"10004" 	=> 'Nổi bật xuất bản',
-	"10005" 	=> 'Hiển thị xuất bản',
-);
-
-const PERMISSION_BOOKCASE = array(
-	"11001" 	=> 'Thêm mới xuất bản',
-	"11002" 	=> 'Cập nhật xuất bản',
-	"11003"		=> 'Xóa xuất bản',
-	"11004" 	=> 'Nổi bật xuất bản',
-	"11005" 	=> 'Hiển thị xuất bản',
-);
-
-const GROUP_USER = array(
-	"1" 	=> 'Cộng tác viên',
-	"2" 	=> 'Phóng viên',
-	"3"		=> 'Biên tập viên',
-	"4" 	=> 'Thư ký',
-	"5" 	=> 'Phó biên tập',
-	"6" 	=> 'Tổng biên tập',
-	"7" 	=> 'Admin',
-);
-
-
-const CONTENT_TYPE = array(
-	"3" 	=> 'Tin thường',
-	"2" 	=> 'Video',
-	"1"		=> 'Audio',
-);
-
-const CONTENT_PERMISSION = array(
-	"1" 	=> 'Quyền viết bài',
-	"2" 	=> 'Quyền biên tập',
-	"3"		=> 'Quyền xuất bản',
-	"4"		=> 'Quyền gỡ bài',
-);
-
-const MENU_VIEW_TYPES = array(
-	'link'		=> 'Link',
-	'block'		=> 'Nhóm tin',
-	'article'	=> 'Bài viết',
-	'personnel_group'	=> 'Nhóm nhân sự',
-	'event_group'	=> 'Nhóm hoạt động khoa học',
-	'event'		=> 'Hoạt động khoa học',
-	'publish_group'	=> 'Nhóm ấn phẩm',
-	'page'		=> 'Trang tĩnh'
-);
-
-const MODULE_TYPES = array(
-	'mainmenu'		=> 'Main menu',
-	'html'			=> 'HTMl',
-	'category'		=> 'Nhóm bài viết',
-	'news'			=> 'Bài viết',
-	'personnel_group'	=> 'Nhóm nhân sự',
-	'event_group'	=> 'Nhóm hoạt động khoa học',
-	'event'			=> 'Hoạt động khoa học',
-	'publish_group'	=> 'Nhóm ấn phẩm',
-	'more'			=> 'Mở rộng'
-);
 
 const POSITIONS = array(
 	'1'	=> 'header',
@@ -282,5 +138,70 @@ const POSITIONS = array(
 	'66' => 'ads18',
 	'67' => 'ads19',
 	'68' => 'ads20',
-)
+);
+
+//PHAN  QUYEN
+$GLOBALS['ARR_ACTION'] = array(
+	'view'		=>1,
+	'add'		=>2,
+	'edit'		=>4,
+	'delete'	=>8,
+	'accept'	=>16
+	);
+$GLOBALS['ARR_ACTION_NAME'] = array(
+	'view'		=>'Xem',
+	'add'		=>'Thêm',
+	'edit'		=>'Sửa',
+	'delete'	=>'Xóa',
+	'accept'	=>'Duyệt'
+	);
+$GLOBALS['ARR_COM'] = array(
+	'setting'	=>1,
+	'gusers'	=>2,
+	'user'		=>4,
+	'order'		=>8,
+	'product'	=>16,
+	'product_group'	=>32,
+	'content'	=>64,
+	'categories'=>128,
+	'seo' 		=>256,
+	'feedback'	=>512,
+	'slider'	=>1024,
+	'tag'		=>2048,
+	'menu'		=>4096,
+	'mnuitem'	=>8192,
+	);
+$GLOBALS['ARR_COM_ACT'] = array(
+	'setting'	=>4, // edit
+	'gusers'	=>15, 
+	'user'		=>15, 
+	'order'		=>15, 
+	'product'	=>15,
+	'product_group'	=>15,
+	'content'	=>15,
+	'categories'=>15,
+	'seo'		=>15,
+	'feedback'	=>15,
+	'slider'	=>15,
+	'tag'		=>15,
+	'menu'		=>15,
+	'mnuitem'	=>15,
+	);
+$GLOBALS['ARR_COM_NAME'] = array(
+	'setting'	=>'Cấu hình chung',
+	'gusers'	=>'Nhóm quản trị',
+	'user'		=>'Thành viên quản trị',
+	'order'		=>'Đơn đặt hàng', 
+	'product'	=>'Quản lý sản phẩm',
+	'product_group'	=>'Quản lý nhóm sản phẩm',
+	'content'	=>'Quản lý bài viết',
+	'categories'=>'Quản lý chuyên mục',
+	'seo'		=>'Quản lý SEO',
+	'feedback'	=>'Quản lý feedback',
+	'slider'	=>'Quản lý banner',
+	'tag'		=>'Quản lý Tags',
+	'menu'		=>'Quản lý menu',
+	'mnuitem'	=>'Quản lý menuitem',
+	);
+$GLOBALS['MSG_PERMIS']='<div id="action" style="background-color:#fff; margin:10px 15px;padding:10px 0"><h3 align="center">Bạn không có quyền truy cập.</h3></div>';
 ?>

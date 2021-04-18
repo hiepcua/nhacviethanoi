@@ -76,6 +76,7 @@ RewriteRule ^product/add/?$ 					index.php?com=product&viewtype=add
 RewriteRule ^product/edit/([0-9]+)?$ 			index.php?com=product&viewtype=edit&id=$1 [QSA]
 RewriteRule ^product/active/([0-9]+)?$ 			index.php?com=product&viewtype=active&id=$1 [QSA]
 RewriteRule ^product/ishot/([0-9]+)?$ 			index.php?com=product&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^product/issale/([0-9]+)?$ 			index.php?com=product&viewtype=issale&id=$1 [QSA]
 RewriteRule ^product/delete/([0-9]+)?$ 			index.php?com=product&viewtype=delete&id=$1 [QSA]
 RewriteRule ^product/draft/?$ 					index.php?com=product&viewtype=draft&id=$1 [QSA]
 

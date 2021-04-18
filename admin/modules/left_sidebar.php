@@ -8,14 +8,14 @@ $isAdmin=getInfo('isadmin');
 </style>
 <nav class="mt-2 pb-5">
 	<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-		<?php if($isAdmin==1){ ?>
+		<?php if(Permission('order')==true || $isAdmin==1) { ?>
 			<li class="nav-item <?php menuOpen(array('order'), 'com'); ?>">
 				<a href="<?php echo ROOTHOST;?>order" class="nav-link <?php activeMenu('order', '', 'com');?> ">
 					<i class="nav-icon fa fa-book" aria-hidden="true"></i>
 					<p>Quản lý đặt hàng</p>
 				</a>
 			</li>
-
+		<?php } if(Permission('product')==true || $isAdmin==1) { ?>
 			<li class="nav-item <?php menuOpen(array('product'), 'com'); ?> menu-open">
 				<a href="<?php echo ROOTHOST;?>product" class="nav-link <?php activeMenus(array('product'), 'com'); ?>">
 					<i class="nav-icon fa fa-server" aria-hidden="true"></i>
@@ -36,7 +36,7 @@ $isAdmin=getInfo('isadmin');
 					</li>
 				</ul>
 			</li>
-
+		<?php } if(Permission('content')==true || $isAdmin==1) { ?>
 			<li class="nav-item <?php menuOpen(array('content'), 'com'); ?> menu-open">
 				<a href="<?php echo ROOTHOST;?>content" class="nav-link <?php activeMenus(array('content'), 'com'); ?>">
 					<i class="nav-icon far fa-calendar-alt"></i>
@@ -57,45 +57,48 @@ $isAdmin=getInfo('isadmin');
 					</li>
 				</ul>
 			</li>
+		<?php } ?>
+		<li class="nav-item <?php menuOpen(array('categories', 'product_group'), 'com'); ?>">
+			<a href="#" class="nav-link <?php activeMenus(array('categories', 'product_group'), 'com');?> ">
+				<i class="nav-icon fa fa-server" aria-hidden="true"></i>
+				<p>Chuyên mục/ Nhóm <i class="right fas fa-angle-left"></i></p>
+			</a>
 
-			<li class="nav-item <?php menuOpen(array('categories', 'product_group'), 'com'); ?>">
-				<a href="#" class="nav-link <?php activeMenus(array('categories', 'product_group'), 'com');?> ">
-					<i class="nav-icon fa fa-server" aria-hidden="true"></i>
-					<p>Chuyên mục/ Nhóm <i class="right fas fa-angle-left"></i></p>
-				</a>
-
-				<ul class="nav nav-treeview">
+			<ul class="nav nav-treeview">
+				<?php if(Permission('product_group')==true || $isAdmin==1) { ?>
 					<li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>product_group" class="nav-link <?php activeMenu('product_group', '', 'com');?> ">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Nhóm sản phẩm</p>
 						</a>
 					</li>
+				<?php } if(Permission('categories')==true || $isAdmin==1) { ?>
 					<li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>categories" class="nav-link <?php activeMenu('categories', '', 'com');?> ">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Chuyên mục bài viết</p>
 						</a>
 					</li>
-				</ul>
-			</li>
+				<?php } ?>
+			</ul>
+		</li>
 
-			<li class="nav-item <?php menuOpen(array('contact'), 'com'); ?>">
-				<a href="<?php echo ROOTHOST;?>contact" class="nav-link <?php activeMenu('contact', '', 'com');?> ">
-					<i class="nav-icon fa fa-book" aria-hidden="true"></i>
-					<p>Quản lý liên hệ</p>
-				</a>
-			</li>
-
+		<li class="nav-item <?php menuOpen(array('contact'), 'com'); ?>">
+			<a href="<?php echo ROOTHOST;?>contact" class="nav-link <?php activeMenu('contact', '', 'com');?> ">
+				<i class="nav-icon fa fa-book" aria-hidden="true"></i>
+				<p>Quản lý liên hệ</p>
+			</a>
+		</li>
+		<?php if(Permission('seo')==true || $isAdmin==1) { ?>
 			<li class="nav-item <?php menuOpen(array('seo'), 'com'); ?>">
 				<a href="<?php echo ROOTHOST;?>seo" class="nav-link <?php activeMenu('seo', '', 'com');?> ">
 					<i class="nav-icon fa fa-server" aria-hidden="true"></i>
 					<p>Quản lý SEO</p>
 				</a>
 			</li>
-
-			<li class="nav-item <?php menuOpen(array('setting', 'user', 'html_block', 'tag', 'menu', 'mnuitem', 'slider', 'module', 'partner'), 'com'); ?>">
-				<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenus(array('setting', 'user', 'html_block', 'tag', 'menu', 'mnuitem', 'slider', 'module', 'partner'), 'com'); ?>">
+		<?php } if($isAdmin==1) { ?>
+			<li class="nav-item <?php menuOpen(array('setting', 'groupuser', 'user', 'html_block', 'tag', 'menu', 'mnuitem', 'slider', 'module', 'partner'), 'com'); ?>">
+				<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenus(array('setting', 'groupuser', 'user', 'html_block', 'tag', 'menu', 'mnuitem', 'slider', 'module', 'partner'), 'com'); ?>">
 					<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
 					<p>Cấu hình<i class="right fas fa-angle-left"></i></p>
 				</a>
@@ -140,12 +143,19 @@ $isAdmin=getInfo('isadmin');
 					</li>
 
 					<li class="nav-item">
+						<a href="<?php echo ROOTHOST;?>groupuser" class="nav-link <?php activeMenu('groupuser', '', 'com');?>">
+							<i class="nav-icon fas fa-user"></i>
+							<p>Nhóm người dùng</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>user" class="nav-link <?php activeMenu('user', '', 'com');?>">
 							<i class="nav-icon fas fa-user"></i>
 							<p>Người dùng</p>
 						</a>
 					</li>
-					
+
 					<li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenu('setting', '', 'com');?>">
 							<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
@@ -153,49 +163,6 @@ $isAdmin=getInfo('isadmin');
 						</a>
 					</li>
 				</ul>
-			</li>
-
-		<?php }else{ ?>
-			<li class="nav-item <?php menuOpen(array('order'), 'com'); ?>">
-				<a href="<?php echo ROOTHOST;?>order" class="nav-link <?php activeMenu('order', '', 'com');?> ">
-					<i class="nav-icon fa fa-book" aria-hidden="true"></i>
-					<p>Quản lý đặt hàng</p>
-				</a>
-			</li>
-
-			<li class="nav-item <?php menuOpen(array('content'), 'com'); ?> menu-open">
-				<a href="<?php echo ROOTHOST;?>content" class="nav-link <?php activeMenus(array('content'), 'com'); ?>">
-					<i class="nav-icon far fa-calendar-alt"></i>
-					<p>Tin tức <i class="right fas fa-angle-left"></i></p>
-				</a>
-				<ul class="nav nav-treeview">
-					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>content/add" class="nav-link <?php activeMenu('content','add','viewtype');?>">
-							<i class="far fa-circle nav-icon"></i>
-							<p>Thêm mới</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>content?viewtype=list" class="nav-link <?php activeMenu('content','list','viewtype');?>">
-							<i class="far fa-circle nav-icon"></i>
-							<p>Danh sách</p>
-						</a>
-					</li>
-				</ul>
-			</li>
-
-			<li class="nav-item <?php menuOpen(array('contact'), 'com'); ?>">
-				<a href="<?php echo ROOTHOST;?>contact" class="nav-link <?php activeMenu('contact', '', 'com');?> ">
-					<i class="nav-icon fa fa-book" aria-hidden="true"></i>
-					<p>Quản lý liên hệ</p>
-				</a>
-			</li>
-
-			<li class="nav-item <?php menuOpen(array('seo'), 'com'); ?>">
-				<a href="<?php echo ROOTHOST;?>seo" class="nav-link <?php activeMenu('seo', '', 'com');?> ">
-					<i class="nav-icon fa fa-server" aria-hidden="true"></i>
-					<p>Quản lý SEO</p>
-				</a>
 			</li>
 		<?php } ?>
 	</ul>
@@ -207,14 +174,4 @@ $isAdmin=getInfo('isadmin');
 			window.location.reload();
 		})
 	});
-
-	function event_addnew(){
-		var _url="<?php echo ROOTHOST;?>ajaxs/event/form_add.php";
-		$.get(_url, function(req){
-			$('#popup_modal .modal-dialog').addClass('modal-xl');
-			$('#popup_modal .modal-title').html('Thêm mới hoạt động khoa học');
-			$('#popup_modal .modal-body').html(req);
-			$('#popup_modal').modal('show');
-		});
-	}
 </script>

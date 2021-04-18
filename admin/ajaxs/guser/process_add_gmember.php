@@ -8,10 +8,17 @@ require_once(incl_path.'gffunc.php');
 require_once(incl_path.'gffunc_user.php');
 require_once(libs_path.'cls.mysql.php');
 if(isLogin()){
+	$total=0;
+	if(isset($_POST['permission'])){
+		foreach($_POST['permission'] as $item)
+			$total+=$item;
+	}
+
 	$arr=array();
-	$arr['par_id']=(int)antiData($_POST['par_id']);
-	$arr['name']=antiData($_POST['name']);
-	$arr['intro']=antiData($_POST['intro']);
+	$arr['par_id'] = isset($_POST['cbo_par']) ? antiData($_POST['cbo_par'], 'int') : 0;
+	$arr['name'] = isset($_POST['txt_name']) ? antiData($_POST['txt_name']) : '';
+	$arr['intro'] = isset($_POST['txt_desc']) ? antiData($_POST['txt_desc']) : '';
+	$arr['permission'] = $total;
 
 	if($arr['name']!=''){
 		$lastID = SysAdd('tbl_user_group',$arr);
@@ -24,11 +31,14 @@ if(isLogin()){
 			$path = $lastID;
 		}
 
-		SysEdit('tbl_user_group', array('path' => $path), " id=".$lastID);
-		die('success');
-	}else{ die("System don't see data");}
-
+		$result = SysEdit('tbl_user_group', array('path' => $path), " id=".$lastID);
+		if($result){
+			die('1');
+		}else{
+			die('0');
+		}
+	}
 }else{
-	die("<h4>Please <a href='".ROOTHOST."'>login</a> to continue!</h4>");
+	die("3");
 }
 ?>

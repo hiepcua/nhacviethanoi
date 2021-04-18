@@ -79,19 +79,11 @@ $res_menu = $res_menus[0];
 					<div class="form-group">
 						<label>Loại menu item</label>
 						<select name="cbo_viewtype" id="cbo_viewtype" onchange="select_type(this)" class="form-control" style="width: 100%;">
-							<option value="0">-- Tùy chọn --</option>
 							<option value="link">Link</option>
-							<option value="event_group">Danh mục HĐKH</option>
+							<option value="product_group">Nhóm sản phẩm</option>
 							<option value="categories">Chuyên mục tin tức</option>
-							<option value="personnel_group">Chức vụ nhà khoa học</option>
-							<option value="publish_group">Danh mục loại xuất bản</option>
-							<option value="event">Hoạt động khoa học</option>
 							<option value="content">Tin tức</option>
-							<option value="publish">Xuất bản</option>
-							<option value="personnel">Nhà khoa học</option>
-							<option value="bookcase">Tủ sách</option>
 							<option value="htmlblock">Html block</option>
-							<option value="album">Album</option>
 						</select>
 						<script type="text/javascript">
 							$(document).ready(function() {

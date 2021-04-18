@@ -72,11 +72,11 @@ if($isAdmin==1){
 			var name = $('#txt_name').val();
 			if(name == '') {
 				flag = false;
-				$('.mess').html('Tên danh mục không được để trống.');
+				$('.mess').html('Tên nhóm không được để trống.');
 			}
 			if(par_id == 0){
 				flag = false;
-				$('.mess').html('Nhóm danh mục không được bỏ trống');
+				$('.mess').html('Nhóm cha không được bỏ trống');
 			}
 			return flag;
 		};

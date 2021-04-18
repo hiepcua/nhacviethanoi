@@ -594,6 +594,15 @@ p.paging {
 .tree .active {
     display: block;
 }
+.item_tree.active {
+    display: inline-block;
+    background: #28a745;
+    color: #fff;
+    border-color: #28a745 !important;
+}
+.item_tree.active>a {
+    color: #fff;
+}
 .tree li {
     list-style-type: none;
     margin: 0;
@@ -1461,13 +1470,13 @@ select.list-dt:focus {
     border-top: 3px solid #ccc;
     margin-top: 10px;
 }
-#btn_auto_related {
+#btn_auto_related, .btn_auto_related {
     float: right;
     background-color: #ccc;
     color: #333;
     padding: 0 10px;
 }
-#btn_auto_related:hover{
+#btn_auto_related:hover,.btn_auto_related:hover{
     color: #007bff;
 }
 #wg-related_articles .list-response{
@@ -1504,12 +1513,12 @@ select.list-dt:focus {
     display: inline-block;
     border: 1px solid #4b8df8;
 }
-#ip_search_related_article, #btn_search_related_article{
+#ip_search_related_product, #btn_search_related_product{
     font-size: 13px;
     height: 34px;
     color: #333;
 }
-#btn_search_related_article{
+#btn_search_related_product{
     background-color: #ccc;
 }
 #wg-related_product .header {
@@ -1531,7 +1540,7 @@ select.list-dt:focus {
     height: 125px;
 }
 #wg-related_product .wrap-thumb{
-    background-size: cover;
+    background-size: contain;
     background-color: #efefef;
     background-repeat: no-repeat;
     background-position: center;
@@ -1553,15 +1562,6 @@ select.list-dt:focus {
     border-top: 3px solid #ccc;
     margin-top: 10px;
 }
-#btn_auto_related {
-    float: right;
-    background-color: #ccc;
-    color: #333;
-    padding: 0 10px;
-}
-#btn_auto_related:hover{
-    color: #007bff;
-}
 #wg-related_product .list-response{
     max-height: 180px;
     overflow: auto;
@@ -1580,10 +1580,10 @@ select.list-dt:focus {
     overflow: hidden;
     line-height: 20px;
 }
-#list_related_product .article_item .remove_article>i {
+#list_related_product .article_item .remove_product>i {
     color: red;
 }
-#list_related_product .article_item .remove_article {
+#list_related_product .article_item .remove_product {
     background: #ccc;
     padding: 0px 4px;
     position: absolute;
@@ -1596,4 +1596,131 @@ select.list-dt:focus {
 }
 #btn_search_related_product{
     background-color: #ccc;
+}
+
+/* List images */
+#response_img .info-item{
+    padding: 5px;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    margin-bottom: 8px;
+}
+#response_img .info-item .name{
+    padding: 8px;
+    text-align: center;
+}
+#response_img .info-item img{
+    width: 160px;
+    height: 90px;
+}
+#response_img .info-item .wrap-item-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#response_img .info-item:hover .wrap-item-info {
+    display: block;
+}
+#response_img .info-item .del-item{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: auto;
+    background: url(../img/cancel_f2.png);
+    background-size: 20px auto;
+}
+#response_img .info-item .edit-item{
+    position: absolute;
+    left: 90px;
+    top: 30%;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url(../img/icon-32-edit.png);
+    background-size: 20px auto;
+}
+#response_img .info-item .image_order {
+    width: 30px;
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    text-align: center;
+}
+#response_img .info-item span{
+    height: 60px;
+    overflow: hidden;
+    display: inline-block;
+    float: right;
+    width: 118px;
+    margin-right: 10px;
+}
+#response_img .wrap-thumb {
+    height: 110px;
+    width: 160px;
+    border: 1px solid #ccc;
+    background-size: contain;
+}
+img.thumb-default {
+    background-color: #eee;
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+    cursor: pointer;
+}
+.df_thumb {
+    width: 60px;
+}
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

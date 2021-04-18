@@ -20,26 +20,20 @@ if(isset($_POST["txtaction"]) && $_POST["txtaction"]!=""){
 	echo "<script language=\"javascript\">window.location='".ROOTHOST.COMS."'</script>";
 }
 
-if($isAdmin==1){
-	$strWhere.="";
-}else{
-	$strWhere.=" AND `author`='".$user."'";
-}
-
-$get_s = isset($_GET['s']) ? antiData($_GET['s']) : '';
+$get_pcode = isset($_GET['pcode']) ? antiData($_GET['pcode']) : '';
 $get_q = isset($_GET['q']) ? antiData($_GET['q']) : '';
 $get_cate = isset($_GET['cate']) ? (int)antiData($_GET['cate']) : 0;
 $action = isset($_GET['cbo_action']) ? addslashes(trim($_GET['cbo_action'])) : '';
 
 /*Gán strWhere*/
-if($get_s!=''){
-	$strWhere.=" AND isactive =".$get_s;
+if($get_pcode!=''){
+	$strWhere.=" AND pro_code='".$get_pcode."'";
 }
 if($get_q!=''){
-	$strWhere.=" AND title LIKE '%".$get_q."%'";
+	$strWhere.=" AND name LIKE '%".$get_q."%'";
 }
 if($get_cate!=0){
-	$strWhere.=" AND cat_id=".$get_cate;
+	$strWhere.=" AND group_id=".$get_cate;
 }
 if($action !== '' && $action !== 'all' ){
 	$strWhere.=" AND `isactive` = '$action'";
@@ -91,6 +85,8 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 					<div class="frm-search-box form-inline pull-left">
 						<input type='text' id='txt_title' name='q' value="<?php echo $get_q;?>" class='form-control' placeholder="Tiêu đề..." />
 						&nbsp&nbsp&nbsp
+						<input type="text" name="pcode" value="<?php echo $get_pcode;?>" class="form-control" placeholder="Mã sản phẩm" />
+						&nbsp&nbsp&nbsp
 						<div class='form-group'>
 							<select class="form-control" name="cate" id="cbo_cate" style="width: 250px; ">
 								<option value="">-- Nhóm sản phẩm --</option>
@@ -116,7 +112,9 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 						<tr>
 							<th width="30" class="text-center"><input type="checkbox" name="chkall" id="chkall" value="" onclick="docheckall('chk',this.checked);"/></th>
 							<th class="text-center">Xóa</th>
-							<th>Tiêu đề</th>
+							<th>Tên sản phẩm</th>
+							<th class="text-center" width="100px">Mã sản phẩm</th>
+							<th class="text-center" width="50px">Sale</th>
 							<th class="text-center" width="50px">Hot</th>
 							<th class="text-center" width="80px">Hiển thị</th>
 							<th class="text-center" width="100">Xem trước</th>
@@ -130,12 +128,12 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 							while($r=$obj->Fetch_Assoc()){
 								$stt++;
 								$ids = $r['id'];
-								$cates = SysGetList('tbl_product_group', array('title','alias'), ' AND id='.$r['cat_id']);
+								$cates = SysGetList('tbl_product_group', array('title','alias'), ' AND id='.$r['group_id']);
 								$cate = count($cates)>0 ? $cates[0] : [];
 								$cate_title = isset($cate['title']) ? $cate['title'] : '<i>N/A</i>';
 
 								if(count($cates)){
-									$link = ROOTHOST_WEB.$cate['alias'].'/'.$r['alias'].'-'.$r['id'].'.html';
+									$link = ROOTHOST_WEB.$cate['alias'].'/'.$r['alias'].'-'.$r['pro_code'];
 								}else{
 									$link = '';
 								}
@@ -148,7 +146,11 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 									$icon_ishot    = "<i class='fas fa-toggle-on cgreen'></i>";
 								else $icon_ishot   = '<i class="fa fa-toggle-off cgray" aria-hidden="true"></i>';
 
-								$thumbnail = getThumb($r['images'], 'thumbnail', '');
+								if($r['sale'] == 1) 
+									$icon_sale    = "<i class='fas fa-toggle-on cgreen'></i>";
+								else $icon_sale   = '<i class="fa fa-toggle-off cgray" aria-hidden="true"></i>';
+
+								$thumbnail = getThumb($r['thumb'], 'thumbnail', '');
 								?>
 								<tr>
 									<td width='30' align='center' class="td-actions">
@@ -161,10 +163,9 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 										<div class="widget-td-title">
 											<div class="widget-thumbnail"><a class="action mt-3" href="<?php echo ROOTHOST.COMS.'/edit/'.$r['id'];?>"><?php echo $thumbnail;?></a></div>
 											<div class="widget-title">
-												<a class="action mt-3" href="<?php echo ROOTHOST.COMS.'/edit/'.$r['id'];?>"><?php echo Substring($r['title'], 0, 20);?></a>
+												<a class="action mt-3" href="<?php echo ROOTHOST.COMS.'/edit/'.$r['id'];?>"><?php echo Substring($r['name'], 0, 20);?></a>
 												<div class="widget-list-info">
 													<ul class="list-unstyle">
-														<li><a href="#"><?php echo $r['author'];?></a></li>
 														<li><a href="" target="_blank"><?php echo $cate_title;?></a></li>
 														<span class="td-public-time"><?php echo date('H:i | d-m-Y', $r['cdate']);?></span>
 													</ul>
@@ -172,10 +173,12 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 											</div>
 										</div>
 									</td>
-									<td class="text-center td-actions"><a class="action mt-3" style="border:0px" href="<?php echo ROOTHOST.COMS.'/ishot/'.$r['id'];?>"><?php echo $icon_ishot;?></a></td>
-									<td class="text-center td-actions"><a class="action mt-3" style="border:0px" href="<?php echo ROOTHOST.COMS.'/active/'.$r['id'];?>"><?php echo $icon_active;?></a></td>
+									<td align="center" width="120"><?php echo $r['pro_code'];?></td>
+									<td class="text-center td-actions"><a class="action" style="border:0px" href="<?php echo ROOTHOST.COMS.'/issale/'.$r['id'];?>"><?php echo $icon_sale;?></a></td>
+									<td class="text-center td-actions"><a class="action" style="border:0px" href="<?php echo ROOTHOST.COMS.'/ishot/'.$r['id'];?>"><?php echo $icon_ishot;?></a></td>
+									<td class="text-center td-actions"><a class="action" style="border:0px" href="<?php echo ROOTHOST.COMS.'/active/'.$r['id'];?>"><?php echo $icon_active;?></a></td>
 									<td class="text-center">
-										<a class="action" href="<?php echo $link;?>" target="_blank"><i class="fa fa-eye mt-3" aria-hidden="true"></i></a>
+										<a class="action" href="<?php echo $link;?>" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a>
 									</td>
 								</tr>
 							<?php }
@@ -190,9 +193,7 @@ if (isset($_SESSION['flash'.'com_'.COMS.'add']) && $_SESSION['flash'.'com_'.COMS
 			</div>
 		</div>
 		<nav class="d-flex justify-content-center">
-			<?php 
-			paging($total_rows,$max_rows,$cur_page);
-			?>
+			<?php paging2($total_rows,$max_rows,$cur_page);?>
 		</nav>
 	</div>
 </section>

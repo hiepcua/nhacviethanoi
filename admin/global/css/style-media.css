@@ -1,0 +1,231 @@
+/* -------------------- Modal pupup media -------------------- */
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+#modalPopupMedia {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.3);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+#modalPopupMedia .overlay{
+    position: absolute;
+    background-color: #FFFFFF;
+    width: calc(100% - 50px);
+    height: calc(100% - 100px);
+    left: 25px;
+    top: 50px;
+}
+
+#modalPopupMedia .overlay-content {
+    position: relative;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #e4ebf1;
+}
+
+#modalPopupMedia .overlay a:hover, .overlay a:focus {
+    color: #000000;
+}
+
+#modalPopupMedia .overlay .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    font-size: 50px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    line-height: 50px;
+    z-index: 10;
+    color: #a0a0a0;
+}
+
+@media screen and (max-height: 450px) {
+    #modalPopupMedia .overlay a {font-size: 20px}
+    #modalPopupMedia .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+#mainMedia{
+    position: relative;
+    z-index: 1;
+}
+#mainMedia .sec-header {
+    z-index: 3;
+    right: 0;
+    left: 0;
+    min-height: 50px;
+    padding: 10px 15px;
+    background: #fff;
+}
+.main-content-wrapper {
+    height: calc(100% - 65px);
+    position: relative;
+}
+.breadcrumbs-wrapper {
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+.breadcrumbs-wrapper .breadcrumbs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.breadcrumbs-wrapper .item{
+    padding: 0px 5px;
+}
+.breadcrumbs-wrapper .box-md {
+    display: flex;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    color: #90a0b3;
+    line-height: 18px;
+    align-items: center;
+    justify-content: center;
+}
+button#btn_new_folder {
+    padding: 0;
+}
+
+#mainMedia .folders-sidebar{
+    background: #ffffff;
+    max-width: 235px;
+}
+#mainMedia .folders-sidebar .header {
+    padding: 10px;
+    font-weight: 600;
+    border-top: 1px solid rgb(228, 235, 241);
+    border-bottom: 1px solid rgb(228, 235, 241);
+}
+
+.folders-tree {
+    padding: 0 10px 50px;
+}
+
+.folders-tree ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.folders-tree .arrow {
+    margin-right: 5px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.folders-tree .arrow.down>i {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.folders-tree li {
+    display: inline-block;
+    width: 100%;
+}
+.folders-tree .wr-lifolder {
+    display: flex;
+    padding: 6px 0;
+    cursor: pointer;
+}
+.folders-tree .wr-lifolder:hover {
+    background: #e4ebf1;
+}
+.folders-tree .wr-lifolder.active {
+    color: #fff;
+    background: #007bff;
+}
+.folders-tree .sub_folder{
+    /*display: none;*/
+    padding-left: 15px;
+}
+
+
+.folder-contents {
+    display: block;
+    width: 100%;
+}
+.grid-media {
+    width: calc(100% - 300px);
+    padding: 10px 1.25em;
+    float: left;
+}
+#detail_sidebar {
+    width: 300px;
+    height: 100%;
+    float: left;
+}
+.grid-media .col{
+    position: relative;
+    width: 16.5%;
+    display: block;
+    float: left;
+    margin-bottom: 12px;
+}
+.grid-media svg{
+    display: none;
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    fill: #FFF;
+    cursor: pointer;
+}
+.grid-media .col:hover svg.orgUxc{
+    display: inline-block;
+}
+.grid-media .col.active svg.eoYPIb {
+    display: inline-block;
+}
+.grid-media .col.active svg.orgUxc{
+    display: inline-block;
+    fill: #4285f4;
+}
+.grid-media .wrap-thumb {
+    height: 120px;
+}
+.grid-media .wrap-thumb, .grid-media .asset-info {
+    cursor: pointer;
+}
+.grid-media .asset-info {
+    background: #fff;
+}
+.grid-media .asset-info .wrap-name {
+    padding: 8px 10px;
+}
+.grid-media .asset-info .assets {
+    font-size: 10px;
+    padding: 8px 10px;
+    border-top: 1px solid #e4ebf1;
+}
+.grid-media .file-type, .grid-media .file-size, .grid-media .file-dimensions {
+    flex: 1 1 0px;
+}
+.grid-media .file-size {
+    text-align: center;
+}
+.grid-media .file-dimensions{
+    text-align: right;
+}
+/* -------------------- /. Modal pupup media -------------------- */

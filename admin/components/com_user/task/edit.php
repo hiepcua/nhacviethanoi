@@ -8,14 +8,13 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
     $Pass           = isset($_POST['txt_pass']) ? $_POST['txt_pass'] : '';
     $Phone          = isset($_POST['txt_phone']) ? addslashes($_POST['txt_phone']) : '';
     $Butdanh        = isset($_POST['txt_pseudonym']) ? addslashes($_POST['txt_pseudonym']) : $Username;
-    $Permission        = isset($_POST['permiss-item']) ? json_encode($_POST['permiss-item']) : null;
+
     $arr=array();
     $arr['group']       = $Group;
     $arr['email']       = $Email;
     $arr['phone']       = $Phone;
     $arr['fullname']    = $Fullname;
     $arr['pseudonym']   = $Butdanh;
-    $arr['permission']  = $Permission;
 
     if(strlen($Pass) >= 6){
         $pass = $Pass;
@@ -36,7 +35,6 @@ if(count($res_Users) <= 0){
     return;
 }
 $row = $res_Users[0];
-$arr_permission = ($row['permission']!==null && $row['permission']!='[]' && $row['permission']!=='') ? json_decode($row['permission']) : [];
 ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -59,18 +57,6 @@ $arr_permission = ($row['permission']!==null && $row['permission']!='[]' && $row
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <?php
-        if (isset($_SESSION['flash'.'com_'.COMS])) {
-            if($_SESSION['flash'.'com_'.COMS] == 1){
-                $msg->success('Cập nhật thành công.');
-                echo $msg->display();
-            }else if($_SESSION['flash'.'com_'.COMS] == 0){
-                $msg->error('Có lỗi trong quá trình cập nhật.');
-                echo $msg->display();
-            }
-            unset($_SESSION['flash'.'com_'.COMS]);
-        }
-        ?>
         <form id="frm_action" class="form-horizontal" name="frm_action" method="post" action="">
             <div class="row">
                 <div class="col-md-8 col-lg-9">
@@ -99,16 +85,13 @@ $arr_permission = ($row['permission']!==null && $row['permission']!='[]' && $row
                     <div class="form-group">
                         <label>Nhóm người dùng</label>
                         <select class='form-control' id='cbo_group' name="cbo_group">
-                            <?php
-                            foreach (GROUP_USER as $key => $value) {
-                                if($key == (int)$row['group']){
-                                    echo '<option value="'.$key.'" selected>'.$value.'</option>';
-                                }else{
-                                    echo '<option value="'.$key.'">'.$value.'</option>';
-                                }
-                            }
-                            ?>
+                            <?php getListComboboxGuser(0, 0); ?>
                         </select>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                cbo_Selected('cbo_group', <?php echo $row['par_id']; ?>);
+                            });
+                        </script>
                     </div>
 
                     <div class="form-group">
@@ -119,187 +102,6 @@ $arr_permission = ($row['permission']!==null && $row['permission']!='[]' && $row
                     <div class="form-group">
                         <label>Bút danh</label>
                         <input type="text" id="txt_pseudonym" name="txt_pseudonym" class="form-control" value="<?php echo $row['pseudonym'];?>">
-                    </div>
-                </div>
-
-                <div id="list-permissions">
-                    <h4>Quyền người dùng <small><label><input type="checkbox" id="check-permission-all">&nbspTất cả</label></small></h4>
-                    <div class="wg-permission grid">
-                        <div class="item w-25">
-                            <div class="header">Quyền bài viết</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_CONTENT as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Chuyên mục bài viết</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_CATEGORY as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Hoạt động khoa học</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_EVENT as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Danh mục HĐKH</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_EVENT_GROUP as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Chi tiết HĐKH</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_EVENT_DETAIL as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Nhân sự</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_PERSONNEL as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Chức vụ của nhân sự</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_PERSONNEL_GROUP as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Nhóm NCV</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_TEAM as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Loại xuất bản</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_PUBLISH_GROUP as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Xuất bản</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_PUBLISH as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
-
-                        <div class="item w-25">
-                            <div class="header">Tủ sách</div>
-                            <label class="check-all"><input type="checkbox" class="ip-check-all" value="" >All</label>
-                            <ul class="list-unstyle ul-permission">
-                                <?php
-                                foreach (PERMISSION_BOOKCASE as $key => $value) {
-                                    if(in_array($key, $arr_permission)){
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'" checked>'.$value.'</label></li></li>';
-                                    }else{
-                                        echo '<li><label><input type="checkbox" name="permiss-item[]" value="'.$key.'">'.$value.'</label></li></li>';
-                                    }
-                                }
-                                ?>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -313,31 +115,6 @@ $arr_permission = ($row['permission']!==null && $row['permission']!='[]' && $row
     $(document).ready(function(){
         $('#frm_action').submit(function(){
             return validForm();
-        });
-
-        $('.ip-check-all').on('click', function(){
-            var parent = $(this).parent().parent();
-            var ul = parent.find('.ul-permission');
-
-            if($(this).is(':checked') == true){
-                ul.find('input').attr('checked', 'checked');
-            }else{
-                ul.find('input').removeAttr('checked');
-            }
-        });
-
-        $('#check-permission-all').on('click', function(){
-            var chked = document.getElementById("check-permission-all").checked;
-            var arrMarkMail = document.getElementsByName("permiss-item[]");
-            if(chked){
-                for (var i = 0; i < arrMarkMail.length; i++) {
-                    arrMarkMail[i].checked = true;
-                }
-            }else{
-                for (var i = 0; i < arrMarkMail.length; i++) {
-                    arrMarkMail[i].checked = false;
-                }
-            }
         });
     });
 

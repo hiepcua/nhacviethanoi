@@ -19,9 +19,7 @@ if($user_id != ''){
 	$row = $res_Users[0];
 	?>
 	<br>
-	<h3 class='text-center'>Đổi mật khẩu</h3>
 	<div class='jaxs_mess' style='color:#f00;'></div>
-
 	<div class='form-group'>
 		<label><i class="fa fa-user-circle" aria-hidden="true"></i> Tên đăng nhập</label>
 		<input type='text' id='ajax_txt_username' class='form-control' value="<?php echo $row['username'];?>" readonly placeholder='Tên đăng nhập'/>

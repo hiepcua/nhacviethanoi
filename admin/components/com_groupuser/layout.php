@@ -4,11 +4,10 @@ $COM='groupuser';
 
 require_once libs_path."cls.upload.php";
 $obj_upload = new CLS_UPLOAD();
-$msg = new \Plasticbrain\FlashMessages\FlashMessages();
-if(!isset($_SESSION['flash'.'com_'.$COM])) $_SESSION['flash'.'com_'.$COM] = 2;
 
 $viewtype=isset($_GET['viewtype'])?addslashes($_GET['viewtype']):'list';
-if(is_file(COM_PATH.'com_'.$COM.'/tem/'.$viewtype.'.php')){ ?>
+if(is_file(COM_PATH.'com_'.$COM.'/tem/'.$viewtype.'.php')){
+	?>
 	<div class="row">
 		<div class="col-sm-12 col-md-3 col-lg-3 sortable-grid ui-sortable">
 			<div class="widget-tree">
@@ -33,15 +32,22 @@ if(is_file(COM_PATH.'com_'.$COM.'/tem/'.$viewtype.'.php')){ ?>
 
 						function printChilds($array, $id){
 							$str_childs='';
+							$gid = isset($_GET['id']) && $_GET['id']!='' ? antiData($_GET['id'], 'int') : 0;
 							foreach ($array as $key => $value) {
 								if($value['par_id'] == $id){
+									if($value['id'] == $gid){
+										$act = 'active';
+									}else{
+										$act = '';
+									}
+									
 									if(findChild($array, $value['id']) == 1){
-										$str_childs.='<li class="item_tree parent_li"><span class="item_tree"><a href="'.ROOTHOST.'groupuser/edit/'.$value['id'].'">'.$value['name'].'</a></span>';
+										$str_childs.='<li class="item_tree parent_li"><span class="item_tree '.$act.'"><a href="'.ROOTHOST.'groupuser/edit/'.$value['id'].'">'.$value['name'].'</a></span>';
 										$str_childs.='<ul class="active">';
 										$str_childs.= printChilds($array, $value['id']);
 										$str_childs.='</ul>';
 									}else{
-										$str_childs.='<li class="item_tree"><span class="item_tree"><a href="'.ROOTHOST.'groupuser/edit/'.$value['id'].'">'.$value['name'].'</a></span>';
+										$str_childs.='<li class="item_tree"><span class="item_tree '.$act.'"><a href="'.ROOTHOST.'groupuser/edit/'.$value['id'].'">'.$value['name'].'</a></span>';
 									}
 
 									$str_childs.='</li>';
@@ -65,8 +71,6 @@ if(is_file(COM_PATH.'com_'.$COM.'/tem/'.$viewtype.'.php')){ ?>
 									echo printChilds($arr_gmems, $tmp_id);
 									echo '</ul>';
 								}
-
-
 								echo '</li>';
 							}
 						}

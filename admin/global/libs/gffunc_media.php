@@ -37,8 +37,9 @@ function uploadMedia($filePath,$fileSource,$chunk,$chunks){
 	rename("{$filePath}.part", $filePath);
 }
 function uploadFile($_file, $allowed=null, $filename=null) {
+	$extension = pathinfo($_FILES[$_file]['name'],PATHINFO_EXTENSION);
 	if(!$filename) $filename = date('ymdHis');
-	$f = 'uploads/'.$filename.'.'.$extension; 
+	$f = MEDIA_HOST.$filename.'.'.$extension; /* MEDIA_HOST is set in the gfconfig.php file */
 	$file = $filename.'.'.$extension;
 	if(move_uploaded_file($_FILES[$_file]['tmp_name'], $f)){
 		$miniType = mime_content_type($f);

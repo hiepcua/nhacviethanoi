@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
 }
 
 $objmysql = new CLS_MYSQL();
-$sql="UPDATE `tbl_content` SET `ishot` = if(`ishot`=1,0,1) WHERE `id` in ('$id')";
+$sql="UPDATE `tbl_product` SET `ishot` = if(`ishot`=1,0,1) WHERE `id` in ('$id')";
 $objmysql->Exec($sql);
 echo "<script language=\"javascript\">window.location='".ROOTHOST.COMS."'</script>";
 ?>

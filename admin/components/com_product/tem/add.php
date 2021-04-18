@@ -1,25 +1,38 @@
 <?php
+require_once(incl_path.'gffunc_media.php');
 require_once('libs/cls.upload.php');
 $obj_upload = new CLS_UPLOAD();
 $file='';
 
 if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
-		$save_path 	= MEDIA_HOST."/product/";
+		$save_path 	= MEDIA_HOST."/products/";
 		$obj_upload->setPath($save_path);
-		$file = ROOTHOST_WEB.'medias/product/'.$obj_upload->UploadFile("txt_thumb", $save_path);
+		$file = ROOTHOST_WEB.'medias/products/'.$obj_upload->UploadFile("txt_thumb", $save_path);
+	}
+
+	$obj_images = array();
+	$txt_images = isset($_POST['txt_images']) ? $_POST['txt_images'] : '';
+	if($txt_images !== ''){
+		foreach ($_POST['txt_images'] as $k => $val) {
+			$n = count($obj_images);
+			$obj_images[$n] = addslashes($val);
+		}
+		$images = json_encode($obj_images, JSON_UNESCAPED_UNICODE);
 	}
 
 	$arr=array();
 	$arr['group_id'] = isset($_POST['cbo_gproduct']) ? (int)$_POST['cbo_gproduct'] : 0;
 	$arr['trademark_id'] = isset($_POST['trademark_id']) ? (int)$_POST['trademark_id'] : 0;
-	$arr['pro_code'] = isset($_POST['pro_code']) ? (int)$_POST['pro_code'] : '';
-	$arr['name'] = isset($_POST['txt_name']) ? addslashes($_POST['txt_name']) : '';
-	$arr['alias'] = $_POST['txt_url'] =='' ? un_unicode($arr['title']) : addslashes($_POST['txt_url']);
-	$arr['images'] = $file;
-	$arr['intro'] = isset($_POST['txt_intro']) ? addslashes($_POST['txt_intro']) : '';
-	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
+	$arr['pro_code'] = isset($_POST['pro_code']) ? antiData($_POST['pro_code']) : '';
+	$arr['name'] = isset($_POST['txt_name']) ? antiData($_POST['txt_name']) : '';
+	$arr['alias'] = un_unicode($arr['name']);
+	$arr['thumb'] = $file;
+	$arr['images'] = $images;
+	$arr['intro'] = isset($_POST['txt_intro']) ? antiData($_POST['txt_intro']) : '';
+	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? antiData($_POST['txt_fulltext']) : '';
 	$arr['price'] = isset($_POST['price']) ? floatval($_POST['price']) : '';
+	$arr['price1'] = isset($_POST['price1']) ? floatval($_POST['price1']) : '';
 	$arr['related_product'] = isset($_POST['related_product']) ? json_encode($_POST['related_product']) : null;
 	$arr['related_articles'] = isset($_POST['related_articles']) ? json_encode($_POST['related_articles']) : null;
 	$arr['author'] = isset($_POST['author']) && $_POST['author'] != '' ? addslashes($_POST['author']) : getInfo('username');
@@ -83,7 +96,23 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 										<input type="text" id="price" name="price" class="form-control" value="" placeholder="Giá sản phẩm">
 									</div>
 								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Giá khuyến mại</label><small> (vnđ)</small>
+										<input type="text" id="price1" name="price1" class="form-control" value="" placeholder="Giá khuyến mại">
+									</div>
+								</div>
 							</div>
+
+							<div class='form-group'>
+								<label>Chọn thêm ảnh<span id="err_images" class="mes-error"></span></label>
+								<div id="response_img">
+									<div class="default">
+										<img src="<?php echo ROOTHOST;?>global/img/add_image.png" class="thumb-default" onclick="OpenPopup('<?php echo ROOTHOST;?>extensions/upload_images.php');">
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
 
 							<div class="form-group">
 								<label>Mô tả</label>
@@ -108,7 +137,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 									<div id="wr-related_product">
 										<div>
 											<strong class="wg-title">Sản phẩm liên quan</strong>
-											<a href="javascript:void(0)" id="btn_auto_related">Auto</a>
+											<a href="javascript:void(0)" id="btn_auto_related" onclick="btn_auto_related_product()">Auto</a>
 										</div>
 										<div id="list_related_product" class="grid"></div>
 									</div>
@@ -128,7 +157,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 									<div id="wr-related_articles">
 										<div>
 											<strong class="wg-title">Tin tức liên quan</strong>
-											<a href="javascript:void(0)" id="btn_auto_related">Auto</a>
+											<a href="javascript:void(0)" id="btn_auto_related" onclick="btn_auto_related_article()">Auto</a>
 										</div>
 										<div id="list_related_articles" class="grid"></div>
 									</div>
@@ -236,24 +265,24 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 
             	formData = new FormData();
             	formData.append('file', blobInfo.blob(), blobInfo.filename());
-            	formData.append('folder', 'contents/');
+            	formData.append('folder', 'products/');
             	xhr.send(formData);
             },
         });
-
-		$('#btn_auto_related').on('click', function(){
-			var cate_id = $('#cbo_gproduct').val();
-			if(parseInt(cate_id)!= '0'){
-				var _url="<?php echo ROOTHOST;?>ajaxs/content/auto_related_article.php";
-
-				$.post(_url, {'cate_id': cate_id}, function(res){
-					$('#list_related_articles').html(res);
-				});
-			}else{
-				alert('Bạn chưa chuyên mục nào');
-			}
-		});
 	});
+
+	function btn_auto_related_article(){
+		var cate_id = '';
+		if(parseInt(cate_id)!= '0'){
+			var _url="<?php echo ROOTHOST;?>ajaxs/content/auto_related_article.php";
+
+			$.post(_url, {'cate_id': cate_id}, function(res){
+				$('#list_related_articles').html(res);
+			});
+		}else{
+			alert('Bạn chưa chuyên mục nào');
+		}
+	}
 
 	function search_related_article(){
 		var keywork = $('#ip_search_related_article').val();
@@ -288,6 +317,55 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 	function remove_article(e){
 		e.parentElement.remove();
 	}
+
+	/* -------------------------------------- */
+	function btn_auto_related_product(){
+		var group_id = $('#cbo_gproduct').val();
+		if(parseInt(group_id)!= '0'){
+			var _url="<?php echo ROOTHOST;?>ajaxs/product/auto_related_article.php";
+
+			$.post(_url, {'group_id': group_id}, function(res){
+				$('#list_related_product').html(res);
+			});
+		}else{
+			alert('Bạn chưa chọn nhóm sản phẩm nào');
+		}
+	}
+
+	function search_related_product(){
+		var keywork = $('#ip_search_related_product').val();
+		if(keywork.length > 2){
+			var _url="<?php echo ROOTHOST;?>ajaxs/product/search_content.php";
+
+			$.post(_url, {'keywork': keywork}, function(res){
+				$('#wg-related_product .list-response').html(res);
+			});
+		}
+	}
+
+	function select_related_product(e){
+		var id = e.getAttribute('data-id'),
+		title = e.getAttribute('data-title'),
+		url_img = e.getAttribute('data-img');
+
+		var str='<div class="article_item w-25">';
+		str+='<a href="javascript:void(0)" class="remove_article" onclick="remove_article(this)"><i class="fa fa-window-close" aria-hidden="true"></i></a>';
+		str+='<input type="hidden" name="related_articles[]" value="'+id+'">';
+		str+='<a class="title" href="javascript:void(0)">';
+		str+='<div class="wrap-thumb" data-src="'+url_img+'" style="background-image: url(\''+url_img+'\');">';
+		str+='<img src="<?php echo ROOTHOST_WEB;?>global/img/no-photo.jpg" class="" style="display: none;">';
+		str+='</div>';
+		str+='<div class="name">'+title+'</div>';
+		str+='</a>';
+		str+='</div>';
+
+		$('#list_related_product').append(str);
+	}
+
+	function remove_product(e){
+		e.parentElement.remove();
+	}
+	/* -------------------------------------- */
 
 	function readURL(input) {
 		if (input.files && input.files[0]) {
@@ -334,4 +412,11 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 		});
 		return flag;
 	}
+
+	// function mediaButton(){
+	// 	$('#modalPopupMedia .modal-dialog').addClass('modal-xl');
+	// 	$('#modalPopupMedia .modal-title').html('Thêm mới loại xe');
+	// 	$('#modalPopupMedia .modal-body').html();
+	// 	$('#modalPopupMedia').modal('show');
+	// }
 </script>

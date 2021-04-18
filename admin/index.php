@@ -41,6 +41,7 @@ $bodyClass=isLogin()?'sidebar-mini layout-fixed':'login-page';
     <link rel="stylesheet" href="<?php echo ROOTHOST;?>global/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/select2/css/select2.min.css">
+    <!-- <link rel="stylesheet" href="<?php echo ROOTHOST;?>global/css/style-media.css"> -->
     <link rel="stylesheet" href="<?php echo ROOTHOST;?>global/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -132,10 +133,12 @@ $bodyClass=isLogin()?'sidebar-mini layout-fixed':'login-page';
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+
+            <?php //include_once('modules/media.php');?>
         </div>
         <script>
             $(document).ready(function(){
-                //prevent form resubmission when page is refreshed (F5 / CTRL+R)
+                // prevent form resubmission when page is refreshed (F5 / CTRL+R)
                 if ( window.history.replaceState ) {
                     window.history.replaceState( null, null, window.location.href );
                 }
@@ -178,6 +181,7 @@ $bodyClass=isLogin()?'sidebar-mini layout-fixed':'login-page';
     <script src="<?php echo ROOTHOST;?>global/js/notify.js"></script>
     <script src="<?php echo ROOTHOST;?>global/js/script.min.js"></script>
     <script src="<?php echo ROOTHOST;?>global/js/custom.js"></script>
+    <!-- <script src="<?php echo ROOTHOST;?>global/js/func-media.js"></script> -->
     <script src="<?php echo ROOTHOST;?>global/js/func.js"></script>
 </body>
 </html>

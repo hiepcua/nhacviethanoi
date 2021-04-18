@@ -142,6 +142,7 @@ if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM
 				'user_id': id,
 			}
 			$.post(_url, _data, function(req){
+				$('#popup_modal .modal-title').html('Đổi mật khẩu');
 				$('#popup_modal .modal-body').html(req);
 				$('#popup_modal').modal('show');
 			});
