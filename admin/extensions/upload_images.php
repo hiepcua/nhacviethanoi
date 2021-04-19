@@ -1,8 +1,6 @@
-<?php ob_start();
+<?php 
+ob_start();
 session_start();
-if(!isset($_SESSION[MD5($_SERVER['HTTP_HOST']).'_USERLOGIN']) || $_SESSION[MD5($_SERVER['HTTP_HOST']).'_USERLOGIN']==false){
-	die('');
-}
 ini_set('upload_max_filesize', '10M'); 
 include_once('../../global/libs/gfconfig.php');
 if(isset($_SESSION["MMEM_ID"]))

@@ -97,7 +97,7 @@ if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM
 						<?php
 						if($total_rows>0){
 							$obj=SysGetList('tbl_contact',array(), $strWhere, false);
-							$stt=0;
+							$stt=$start;
 							while($r=$obj->Fetch_Assoc()){ 
 								$stt++;
 								if($r['isactive'] == 1) 

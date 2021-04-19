@@ -54,7 +54,6 @@ $bodyClass=isLogin()?'sidebar-mini layout-fixed':'login-page';
     if(!isLogin()){
         include_once('modules/login.php');
     }else{
-        include_once('modules/get-permission-user.php');
         ?>
         <div class="wrapper">
             <!-- Navbar -->
@@ -65,7 +64,7 @@ $bodyClass=isLogin()?'sidebar-mini layout-fixed':'login-page';
                 <!-- Brand Logo -->
                 <a href="<?php echo ROOTHOST;?>" class="brand-link">
                     <img src="<?php echo ROOTHOST;?>global/img/5g-icon.png" alt="<?php echo SITE_NAME;?>" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light"><?php echo SITE_NAME;?></span>
+                    <span class="brand-text font-weight-light">THIÊN THANH</span>
                 </a>
                 <!-- Sidebar -->
                 <div class="sidebar">

@@ -67,7 +67,6 @@ option.disabled {
     margin-bottom: 5px;
 }
 span.label {
-    background: #3cc051;
     color: #fff;
     padding: 2px 10px;
     font-size: .85em;
@@ -1662,8 +1661,8 @@ select.list-dt:focus {
     margin-right: 10px;
 }
 #response_img .wrap-thumb {
-    height: 110px;
-    width: 160px;
+    height: 95px;
+    width: 110px;
     border: 1px solid #ccc;
     background-size: contain;
 }
@@ -1724,3 +1723,14 @@ img.thumb-default {
     visibility: visible;
     opacity: 1;
 }
+
+.label {
+  color: white;
+  padding: 8px;
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.info {background-color: #2196F3;} /* Blue */
+.warning {background-color: #ff9800;} /* Orange */
+.danger {background-color: #f44336;} /* Red */
+.other {background-color: #e7e7e7; color: black;} /* Gray */

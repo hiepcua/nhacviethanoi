@@ -81,6 +81,16 @@ RewriteRule ^product/delete/([0-9]+)?$ 			index.php?com=product&viewtype=delete&
 RewriteRule ^product/draft/?$ 					index.php?com=product&viewtype=draft&id=$1 [QSA]
 
 
+RewriteRule ^order/?$ 							index.php?com=order [QSA]
+RewriteRule ^order/add/?$ 						index.php?com=order&viewtype=add 
+RewriteRule ^order/edit/([0-9]+)?$ 				index.php?com=order&viewtype=edit&id=$1 [QSA]
+RewriteRule ^order/active/([0-9]+)?$ 			index.php?com=order&viewtype=active&id=$1 [QSA]
+RewriteRule ^order/ishot/([0-9]+)?$ 			index.php?com=order&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^order/issale/([0-9]+)?$ 			index.php?com=order&viewtype=issale&id=$1 [QSA]
+RewriteRule ^order/delete/([0-9]+)?$ 			index.php?com=order&viewtype=delete&id=$1 [QSA]
+RewriteRule ^order/draft/?$ 					index.php?com=order&viewtype=draft&id=$1 [QSA]
+
+
 RewriteRule ^album/?$ 								index.php?com=album [QSA]
 RewriteRule ^album/add/?$ 							index.php?com=album&viewtype=add
 RewriteRule ^album/edit/([0-9]+)?$ 					index.php?com=album&viewtype=edit&id=$1 [QSA]

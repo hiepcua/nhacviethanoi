@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-04-19 03:35:25
+Date: 2021-04-19 13:52:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -427,8 +427,8 @@ CREATE TABLE `tbl_order` (
   `phone` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `totalmoney` float NOT NULL,
-  `cdate` datetime NOT NULL,
-  `mdate` datetime DEFAULT NULL,
+  `cdate` int(11) NOT NULL,
+  `mdate` int(11) DEFAULT NULL,
   `note` text COLLATE utf8_unicode_ci,
   `address_delivery` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_delivery` datetime DEFAULT NULL,
@@ -436,11 +436,13 @@ CREATE TABLE `tbl_order` (
   `type_order` tinyint(4) DEFAULT NULL,
   `isactive` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of tbl_order
 -- ----------------------------
+INSERT INTO `tbl_order` VALUES ('1', null, 'Lê Tiên Long', 'tranviethiepdz@gmail.com', '(024) 36 23 15 30', '111', '0', '0', '1618815053', null, '222', null, '2', null, null);
+INSERT INTO `tbl_order` VALUES ('2', null, 'Trần Hiệp', 'nxtuyen.pro@gmail.com', '(04) 36 23 15 40', '', '0', '0', null, null, '', null, '1', null, null);
 
 -- ----------------------------
 -- Table structure for tbl_order_detail
@@ -456,6 +458,9 @@ CREATE TABLE `tbl_order_detail` (
 -- ----------------------------
 -- Records of tbl_order_detail
 -- ----------------------------
+INSERT INTO `tbl_order_detail` VALUES ('2', '4', '1', '0');
+INSERT INTO `tbl_order_detail` VALUES ('1', '3', '1', '0');
+INSERT INTO `tbl_order_detail` VALUES ('1', '5', '1', '0');
 
 -- ----------------------------
 -- Table structure for tbl_product
@@ -739,7 +744,7 @@ CREATE TABLE `tbl_user_login` (
   `isactive` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `idx` (`isactive`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbl_user_login
@@ -810,3 +815,4 @@ INSERT INTO `tbl_user_login` VALUES ('63', 'tranviethiepdz@gmail.com', '16187262
 INSERT INTO `tbl_user_login` VALUES ('64', 'tranviethiepdz@gmail.com', '1618734532', '1618734532', '0');
 INSERT INTO `tbl_user_login` VALUES ('65', 'tranviethiepdz@gmail.com', '1618762654', '1618762654', '0');
 INSERT INTO `tbl_user_login` VALUES ('66', 'tranviethiepdz@gmail.com', '1618766978', '1618766978', '1');
+INSERT INTO `tbl_user_login` VALUES ('67', 'tranviethiepdz@gmail.com', '1618797083', '1618797083', '1');
