@@ -17,7 +17,6 @@
                 $active = $key==0 ? 'active' : '';
                 $str_slider.='<div class="carousel-item '.$active.'" data-src="'.$value['thumb'].'">';
                 $str_slider.='<img class="d-block w-100" src="'.$value['thumb'].'">';
-                $str_slider.='<div class="carousel-item-content"><div class="container caption medium20pt cwhite">'.$value['slogan'].'</div></div>';
                 $str_slider.='</div>';
             }
             $str_slider.='</div>';

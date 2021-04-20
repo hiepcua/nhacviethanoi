@@ -53,7 +53,7 @@ global $tmp;
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/icheck-bootstrap/icheck-bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo ROOTHOST;?>global/plugins/slick/slick.css"/>
-
+	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/css/header.css">
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/css/style.css">
 </head>
 <body id="body">
@@ -84,9 +84,11 @@ global $tmp;
 		if($com=='frontpage'){
 			echo '<div class="frontpage">';
 			include 'modules/footer.php';
+			include 'modules/cart_sidebar.php';
 			echo '</div>';
 		}else{
 			include 'modules/footer.php';
+			include 'modules/cart_sidebar.php';
 		}
 		?>
 		<!-- /.Footer -->

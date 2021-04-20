@@ -101,6 +101,19 @@ $(function () {
 });
 
 $(document).ready(function(){
+	$('.header-cart').on('click', function(){
+		$('.backdrop__body-backdrop___1rvky, #cart-sidebars').addClass('active');
+	});
+	$('.backdrop__body-backdrop___1rvky, .cart_btn-close').on('click', function(){
+		$('.backdrop__body-backdrop___1rvky, #cart-sidebars').removeClass('active');
+	});
+
+	$('.products-view-grid').slick({
+		infinite: true,
+		slidesToShow: 5,
+		slidesToScroll: 1
+	});
+
 	setTimeout(function(){
 		var w_mainheader = $('#main-header').width(),
 		w_mainheader_container = $('#main-header-container').width(),
