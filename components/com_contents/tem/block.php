@@ -1,5 +1,4 @@
 <?php
-define('OBJ_PAGE','BLOCK_CONTENT');
 $cur_page = isset($_GET['page']) ? antiData($_GET['page']) : 1;
 $get_alias = isset($_GET['alias']) ? antiData($_GET['alias']) : '';
 $res_cates = SysGetList('tbl_categories', [], "AND alias='".$get_alias."'");
@@ -13,24 +12,13 @@ $cate_link = ROOTHOST.$res_cate['alias'];
 $strWhere = "AND cat_id=".$res_cate['id'];
 
 /*Begin pagging*/
-if(!isset($_SESSION['CUR_PAGE_'.OBJ_PAGE])){
-	$_SESSION['CUR_PAGE_'.OBJ_PAGE] = 1;
-}
-if(isset($_POST['txtCurnpage'])){
-	$_SESSION['CUR_PAGE_'.OBJ_PAGE] = (int)$_POST['txtCurnpage'];
-}
-
-$total_rows=SysCount('tbl_content',$strWhere);
+$total_rows = SysCount('tbl_content',$strWhere);
 $max_rows = 10;
-
-if($_SESSION['CUR_PAGE_'.OBJ_PAGE] > ceil($total_rows/$max_rows)){
-	$_SESSION['CUR_PAGE_'.OBJ_PAGE] = ceil($total_rows/$max_rows);
-}
-$cur_page=(int)$_SESSION['CUR_PAGE_'.OBJ_PAGE]>0 ? $_SESSION['CUR_PAGE_'.OBJ_PAGE] : 1;
+$max_pages = ceil($total_rows/$max_rows);
+$cur_page = getCurentPage($max_pages);
+$start = ($cur_page - 1) * $max_rows;
+$limit = 'LIMIT '.$start.','. $max_rows;
 /*End pagging*/
-
-$star = ($cur_page - 1) * $max_rows;
-$res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC LIMIT ".$star.",".$max_rows);
 ?>
 <section class="component">
 	<div class="container page">
@@ -48,6 +36,7 @@ $res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC LIMIT 
 				<div class="main-content">
 					<h1 class="page-title"><?php echo $res_cate['title'];?></h1>
 					<?php
+					$res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$limit);
 					if(count($res_cons)>0){
 						$b_post = $res_cons[0];
 						$b_link = ROOTHOST.$b_post['alias'].'-'.$b_post['id'].'.html';

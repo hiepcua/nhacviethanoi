@@ -7,34 +7,16 @@ RewriteRule ^trang-chu/?$ 					index.php [QSA]
 RewriteRule ^tim-kiem/?$ 					index.php?com=search [QSA]
 
 RewriteRule ^gioi-thieu/?$ 					index.php?com=html&viewtype=gioi-thieu&code=gioi-thieu
-RewriteRule ^lich-su/?$ 					index.php?com=html&viewtype=lich-su [QSA]
-RewriteRule ^co-cau-to-chuc/?$ 				index.php?com=html&viewtype=co-cau-to-chuc [QSA]
-RewriteRule ^co-so-vat-chat/?$ 				index.php?com=html&viewtype=co-so-vat-chat [QSA]
 
-# Event
-RewriteRule ^hoat-dong-khoa-hoc/([0-9a-zA-Z\-]+)/?$    							index.php?com=event&viewtype=block&alias=$1 [QSA]
-RewriteRule ^([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)-([0-9]+)/?$     					index.php?com=event&viewtype=detail&group=$1&id=$3 [QSA]
-RewriteRule ^([0-9a-zA-Z\-]+)-([0-9]+)/chi-tiet/([0-9a-zA-Z\-]+)-([0-9]+)/?$    index.php?com=event&viewtype=event_detail&per_id=$2&detail_id=$4 [QSA]
-
-
-#Personnel
-RewriteRule ^nhan-su/([0-9a-zA-Z\-]+)/?$      							index.php?com=personnel&viewtype=block&alias=$1 [QSA]
-RewriteRule ^nhan-su/([0-9a-zA-Z\-]+).html/?$							index.php?com=personnel&viewtype=detail&alias=$1 [QSA]
-
-
-#Publish
-RewriteRule ^xuat-ban/([0-9a-zA-Z\-]+)/?$      							index.php?com=publish&viewtype=block&alias=$1 [QSA]
-RewriteRule ^xuat-ban/([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)-([0-9]+)/?$		index.php?com=publish&viewtype=detail&group=$1&alias=$2&id=$3 [QSA]
-
-
-#Bookcase
-RewriteRule ^tu-sach/([0-9a-zA-Z\-]+)-([0-9]+)/?$		index.php?com=bookcase&viewtype=detail&alias=$1&id=$2 [QSA]
-
+# Product
+RewriteRule ^san-pham/?$      										index.php?com=product&viewtype=list [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/?$      						index.php?com=product&viewtype=block&alias=$1 [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)-([0-9]+).html/?$   			index.php?com=product&viewtype=detail&alias=$1&id=$2 [QSA]
 
 # Contents
+RewriteRule ^tin-tuc/?$      										index.php?com=contents&viewtype=list [QSA]
 RewriteRule ^tin-tuc/([0-9a-zA-Z\-]+)/?$      						index.php?com=contents&viewtype=block&alias=$1 [QSA]
-RewriteRule ^([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)-([0-9]+).html/?$   	index.php?com=contents&viewtype=detail&cate=$1&alias=$2&id=$3 [QSA]
-
+RewriteRule ^tin-tuc/([0-9a-zA-Z\-]+)-([0-9]+).html/?$   			index.php?com=contents&viewtype=detail&alias=$1&id=$2 [QSA]
 
 
 php_flag display_errors  on

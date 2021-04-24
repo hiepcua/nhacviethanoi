@@ -1,29 +1,30 @@
 <?php
 $cur_page = isset($_GET['page']) ? antiData($_GET['page']) : 1;
-$strWhere = "";
+$strWhere = $price_asc = $price_desc = $lasted_new = "";
 
 /*Begin pagging*/
-$total_rows = SysCount('tbl_content',$strWhere);
+$total_rows = SysCount('tbl_product',$strWhere);
 $max_rows = 10;
 $max_pages = ceil($total_rows/$max_rows);
 $cur_page = getCurentPage($max_pages);
 $start = ($cur_page - 1) * $max_rows;
 $limit = 'LIMIT '.$start.','. $max_rows;
 /*End pagging*/
-$res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$limit);
+$res_products = SysGetList('tbl_product', [], $strWhere." ORDER BY cdate DESC ".$limit);
 ?>
 <section class="component">
 	<section class="bread-crumb"> 
 		<div class="container"> 
 			<ul class="breadcrumb"> 
 				<li class="home"><a href="/" title="Trang chủ"> <span>Trang chủ</span></a></li> 
-				<li><strong>Tất cả tin tức</strong></li> 
+				<li><a href="<?php echo ROOTHOST;?>san-pham" title="Sản phẩm"> <span>Sản phẩm</span></a></li> 
+				<li><strong>Loa</strong></li> 
 			</ul> 
 		</div> 
 	</section>
 	<div class="page page-block-content container">
 		<div class="page-header">
-			<h1>Tin tức</h1>
+			<h1>Loa</h1>
 		</div>
 		<div class="page-content">
 			<div class="row">

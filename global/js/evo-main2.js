@@ -224,3 +224,72 @@ jQuery(document).ready(function(){
 		});
 	}
 });
+
+/* ------------------------------------------------------ */
+$('.evo_sidebar_search .evo-search-form input[type="text"], .evo-search-desktop .evo-header-search-form input[type="text"]').bind("focusin focusout", function (e) {
+    $(this)
+        .closest(".evo-search, .evo-searchs")
+        .toggleClass("focus", e.type == "focusin");
+});
+var preLoadLoadGif = $('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+var searchTimeoutThrottle = 500;
+var searchTimeoutID = -1;
+var currReqObj = null;
+var $resultsBox = $('<div class="results-box" />').appendTo(".evo-search, .evo-searchs");
+$('.evo_sidebar_search .evo-search-form input[type="text"], .evo-search-desktop .evo-header-search-form input[type="text"]')
+    .bind("keyup change", function () {
+        if ($(this).val().length > 0 && $(this).val() != $(this).data("oldval")) {
+            $(this).data("oldval", $(this).val());
+            if (currReqObj != null) currReqObj.abort();
+            var $form = $(this).closest("form");
+            var term = "name:(*" + $form.find('input[name="query"]').val() + "*)";
+            var linkURL = $form.attr("action") + "?query=" + term + "&type=product";
+            $resultsBox.html('<div class="evo-loading"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>');
+            searchTimeoutID = setTimeout(function () {
+                currReqObj = $.ajax({
+                    url: $form.attr("action"),
+                    async: false,
+                    data: { type: "product", view: "json", q: term },
+                    dataType: "json",
+                    success: function (data) {
+                        currReqObj = null;
+                        if (data.results_total == 0) {
+                            $resultsBox.html('<div class="note">Không có kết quả tìm kiếm</div>');
+                        } else {
+                            $resultsBox.empty();
+                            $.each(data.results, function (index, item) {
+                                var xshow = "wholesale";
+                                if (!(item.title.toLowerCase().indexOf(xshow) > -1)) {
+                                    var $row = $('<a class="clearfix"></a>').attr("href", item.url).attr("title", item.title);
+                                    $row.append('<div class="img"><img src="' + item.thumb + '" /></div>');
+                                    $row.append('<div class="d-title">' + item.title + "</div>");
+                                    $row.append('<div class="d-title d-price">' + item.price + "</div>");
+                                    $resultsBox.append($row);
+                                }
+                            });
+                            $resultsBox.append('<a href="' + linkURL + '" class="note" title="Xem tất cả">Xem tất cả</a>');
+                        }
+                    },
+                });
+            }, searchTimeoutThrottle);
+        } else if ($(this).val().length <= 2) {
+            $resultsBox.empty();
+        }
+    })
+    .attr("autocomplete", "off")
+    .data("oldval", "")
+    .bind("focusin", function () {
+        $resultsBox.fadeIn(200);
+    })
+    .bind("click", function (e) {
+        e.stopPropagation();
+    });
+$("body").bind("click", function () {
+    $resultsBox.fadeOut(200);
+});
+$(".evo-search-form").on("submit", function (e) {
+    e.preventDefault();
+    var term = "*" + $(this).find('input[name="query"]').val() + "*";
+    var linkURL = $(this).attr("action") + "?query=" + term + "&type=product";
+    window.location = linkURL;
+});

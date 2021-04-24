@@ -243,3 +243,15 @@ $(document).ready(function(){
 		} ]
 	});
 });
+
+jQuery(document).ready(function(){
+	if ($('.addThis_listSharing').length > 0){
+		$(window).scroll(function(){
+			if(jQuery(window).scrollTop() > 100 ) {
+				jQuery('.addThis_listSharing').addClass('is-show');
+			} else {
+				jQuery('.addThis_listSharing').removeClass('is-show');
+			}
+		});
+	}
+});

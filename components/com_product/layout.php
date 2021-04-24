@@ -1,6 +1,6 @@
 <?php
 defined('ISHOME') or die("Can't access this page!");
-define('COMS','personnel');
+define('COMS','product');
 $viewtype='list';
 
 if(isset($_GET['viewtype'])){
