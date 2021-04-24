@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-04-19 13:52:04
+Date: 2021-04-24 14:30:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,10 +24,10 @@ CREATE TABLE `tbl_album` (
   `title` varchar(255) DEFAULT NULL,
   `event_ids` varchar(50) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `order` tinyint(4) DEFAULT NULL,
-  `isactive` tinyint(4) DEFAULT '1',
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -47,12 +47,12 @@ CREATE TABLE `tbl_categories` (
   `path` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
-  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `cdate` int(11) DEFAULT '0',
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `cdate` int(11) DEFAULT 0,
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -75,7 +75,7 @@ CREATE TABLE `tbl_configsite` (
   `tem_id` int(11) DEFAULT NULL,
   `company_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `intro` longtext COLLATE utf8_unicode_ci,
+  `intro` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tel` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
@@ -86,10 +86,10 @@ CREATE TABLE `tbl_configsite` (
   `website` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `banner` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `logo` text COLLATE utf8_unicode_ci,
-  `meta_keyword` longtext COLLATE utf8_unicode_ci,
-  `meta_descript` longtext COLLATE utf8_unicode_ci,
-  `lang_id` int(11) NOT NULL DEFAULT '0',
+  `logo` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_keyword` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_descript` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lang_id` int(11) NOT NULL DEFAULT 0,
   `contact` text COLLATE utf8_unicode_ci NOT NULL,
   `footer` text COLLATE utf8_unicode_ci NOT NULL,
   `nick_yahoo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -102,9 +102,9 @@ CREATE TABLE `tbl_configsite` (
   `youtube` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `email_notification` int(11) DEFAULT NULL,
   `sms_notification` int(11) DEFAULT NULL,
-  `gg_analytic` text COLLATE utf8_unicode_ci,
-  `script_header` text COLLATE utf8_unicode_ci,
-  `script_footer` text COLLATE utf8_unicode_ci,
+  `gg_analytic` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `script_header` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `script_footer` text COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`config_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -126,7 +126,7 @@ CREATE TABLE `tbl_contact` (
   `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
   `order` int(4) DEFAULT NULL,
-  `isactive` tinyint(2) DEFAULT '1',
+  `isactive` tinyint(2) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -149,12 +149,12 @@ CREATE TABLE `tbl_content` (
   `event_id` int(11) DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `sapo` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `sapo` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `link_youtube` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `images` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `note` longtext,
+  `note` longtext DEFAULT NULL,
   `related_articles` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `tag_ids` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `pseudonym` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
@@ -164,11 +164,11 @@ CREATE TABLE `tbl_content` (
   `pdate` int(11) DEFAULT NULL,
   `visited` int(11) DEFAULT NULL,
   `liked` int(11) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT '0',
-  `istrash` tinyint(4) DEFAULT '0',
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `status` tinyint(4) DEFAULT 0,
+  `istrash` tinyint(4) DEFAULT 0,
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
@@ -211,7 +211,7 @@ CREATE TABLE `tbl_feedback` (
   `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `career` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `order` int(4) DEFAULT NULL,
-  `isactive` tinyint(2) DEFAULT '1',
+  `isactive` tinyint(2) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -251,16 +251,16 @@ CREATE TABLE `tbl_html_block` (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
   `mdate` int(11) DEFAULT NULL,
   `visited` int(11) DEFAULT NULL,
   `liked` int(11) DEFAULT NULL,
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -271,7 +271,7 @@ INSERT INTO `tbl_html_block` VALUES ('1', 'Liên hệ', 'lien-he', '', '<div cla
 INSERT INTO `tbl_html_block` VALUES ('2', 'Phòng thí nghiệm Khoa học dữ liệu', 'phong-thi-nghiem-khoa-hoc-du-lieu', '', '<p>Chiều ng&agrave;y 13/4/2018, tại Viện Nghi&ecirc;n cứu cao cấp về To&aacute;n đ&atilde; diễn ra buổi Lễ ra mắt Ph&ograve;ng th&iacute; nghiệm Khoa học Dữ liệu.</p>\r\n<p>Tới dự buổi lễ c&oacute; sự hiện diện của GS. Hiroshi Motoda (Trường Đại học Osaka, Nhật Bản), GS.TSKH Trần Văn Nhung - Tổng thư k&yacute; Hội đồng chức danh Gi&aacute;o sư nh&agrave; Nước, GS.TSKH Hồ T&uacute; Bảo (Viện trưởng Viện John von New man - ĐHQG TP HCM), PGS.TS Huỳnh Quyết Thắng - Ph&oacute; Hiệu trưởng Trường ĐH B&aacute;ch khoa H&agrave; Nội, PGS.TS Nguyễn Đức Dũng - Ph&oacute; Viện trưởng Viện CNTT - Viện H&agrave;n l&acirc;m KH&amp;CN Việt Nam, GS. TSKH L&ecirc; Tuấn Hoa - Viện To&aacute;n học, Viện H&agrave;n l&acirc;m KH&amp;CN Việt Nam, nguy&ecirc;n Gi&aacute;m đốc điều h&agrave;nh Viện nghi&ecirc;n cứu cao cấp về To&aacute;n, b&agrave; B&ugrave;i Thị Hải Yến - Th&agrave;nh vi&ecirc;n HĐQT, Ph&oacute; Tổng gi&aacute;m đốc C&ocirc;ng ty Hanel, TS.T&ocirc; Đ&igrave;nh Dũng - Gi&aacute;m đốc Trung t&acirc;m Nghi&ecirc;n cứu ứng dụng Vietnam Airlines, PGS.TS L&ecirc; Thị L&yacute; (Trường Đại học Quốc tế, ĐHQG TPHCM), c&ugrave;ng đại diện l&atilde;nh đạo của Khoa To&aacute;n - Cơ - Tin học, Trường ĐH Khoa học Tự nhi&ecirc;n, ĐH Quốc gia HN, Viện CNTT-TT Trường ĐH B&aacute;ch khoa HN, Viện To&aacute;n Tin ứng dụng Trường ĐH B&aacute;ch khoa HN, Khoa CNTT &ndash; Trường ĐH Sư phạm HN, Khoa CNTT - Học viện KTQS, Khoa An to&agrave;n th&ocirc;ng tin Học viện kỹ thuật mật m&atilde;, Khoa CNTT Trường ĐH Thủy Lợi... Ngo&agrave;i ra c&ograve;n c&oacute; đại diện nhiều trung t&acirc;m nghi&ecirc;n cứu từ c&aacute;c doanh nghiệp, ng&acirc;n h&agrave;ng, c&aacute;c c&ocirc;ng ty startup c&ocirc;ng nghệ, c&aacute;c nh&agrave; nghi&ecirc;n cứu v&agrave; c&aacute;c bạn sinh vi&ecirc;n.</p>\r\n<p>Về ph&iacute;a L&atilde;nh đạo Viện Nghi&ecirc;n cứu cao cấp về To&aacute;n c&oacute; PGS. TS. L&ecirc; Minh H&agrave; - Gi&aacute;m đốc điều h&agrave;nh v&agrave; TS. Trịnh Thị Th&uacute;y Giang - Ph&oacute; gi&aacute;m đốc c&ugrave;ng to&agrave;n thể c&aacute;c nghi&ecirc;n cứu vi&ecirc;n hiện đang l&agrave;m việc tại Viện.</p>\r\n<p>Ph&ograve;ng Th&iacute; nghiệm Khoa học dữ liệu (KHDL) c&oacute; chức năng tổ chức đ&agrave;o tạo, tư vấn v&agrave; nghi&ecirc;n cứu, triển khai th&iacute; điểm v&agrave; ứng dụng KHDL trong một số lĩnh vực, qua đ&oacute; đẩy mạnh việc nghi&ecirc;n cứu ứng dụng To&aacute;n học, đ&aacute;p ứng c&aacute;c mục ti&ecirc;u của Chương tr&igrave;nh trọng điểm quốc gia ph&aacute;t triển To&aacute;n học giai đoạn 2010-2020 v&agrave; c&aacute;c giai đoạn tiếp theo. Thực hiện c&aacute;c hoạt động nghi&ecirc;n cứu ứng dụng to&aacute;n trong lĩnh vực KHDL cho c&aacute;c tổ chức, c&aacute; nh&acirc;n trong v&agrave; ngo&agrave;i nước c&oacute; nhu cầu.</p>', null, 'tranviethiepdz@gmail.com', '1609410312', null, null, null, '0', '0', '1');
 INSERT INTO `tbl_html_block` VALUES ('3', 'Giám đốc phòng thí nghiệm', 'giam-doc-phong-thi-nghiem', '', '<div class=\"grid\">\r\n<div class=\"w-25\"><img src=\"http://localhost/viasm.edu/medias/personnel/resizeimage.jpg\" /></div>\r\n<div class=\"w-70\">\r\n<ul class=\"list-unstyle\">\r\n<li><strong>GS.Ng&ocirc; Bảo Ch&acirc;u</strong></li>\r\n<li>Gi&aacute;m đốc ph&ograve;ng th&iacute; nghiệm</li>\r\n<li>&nbsp;</li>\r\n<li>Ph&ograve;ng l&agrave;m việc: A301</li>\r\n<li>Email: <strong>ngo AT viasm.edu.vn</strong></li>\r\n<li>Số điện thoại: <strong>(04) 36 23 15 40</strong></li>\r\n<li>Website: <strong>http://www.math.uchicago.edu/~ngo/nbc-homepage.html</strong></li>\r\n</ul>\r\n<br /><a class=\"txt-uppercase cblack\" href=\"#\">Th&ecirc;m chi tiết &gt;&gt;</a></div>\r\n</div>', null, 'tranviethiepdz@gmail.com', '1609410830', null, null, null, '0', '0', '1');
 INSERT INTO `tbl_html_block` VALUES ('4', 'Ban giám đốc', 'ban-giam-doc', '', '<p>Ban Gi&aacute;m đốc của Viện hiện nay gồm Gi&aacute;m đốc khoa học, Gi&aacute;m đốc Điều h&agrave;nh v&agrave; Ph&oacute; Gi&aacute;m đốc c&oacute; nhiệm kỳ 3 năm Gi&aacute;o sư Ng&ocirc; Bảo Ch&acirc;u của trường Đại học Chicago (Mỹ), đạt giải thường Fields năm 2010. Được bổ nhiệm l&agrave;m Gi&aacute;m đốc khoa học của Viện từ ng&agrave;y 03/03/2011. Ph&oacute; Gi&aacute;o sư L&ecirc; Minh H&agrave; l&agrave; Gi&aacute;m đốc Điều h&agrave;nh v&agrave; Tiến sĩ Trịnh Thị Thu&yacute; Giang l&agrave; Ph&oacute; Gi&aacute;m đốc của Viện.</p>', null, 'tranviethiepdz@gmail.com', '1615137156', null, null, null, '0', '0', '1');
-INSERT INTO `tbl_html_block` VALUES ('5', 'Giới thiệu', 'gioi-thieu', '', '<h1 class=\"page-title\">Lời ch&agrave;o mừng</h1>\r\n<div class=\"flex ngobaochau-intro\">\r\n<div class=\"avatar\"><img src=\"http://localhost/viasm.edu/images/ngo-bao-chau.jpg\" alt=\"\" /></div>\r\n<div class=\"metadata\">\r\n<h1 class=\"name\">GS. TSKH. NG&Ocirc; BẢO CH&Acirc;U</h1>\r\n<div class=\"job\">Gi&aacute;m đốc khoa học</div>\r\n</div>\r\n</div>\r\n<div class=\"light16pt mb-5\">Amet eget at molestie gravida dui in nulla accumsan et. Volutpat parturient lorem vestibulum senectus mattis ut pharetra. Porta enim viverra sapien eu, morbi pellentesque. Suspendisse eget convallis odio accumsan sapien risus. Egestas sem egestas eget risus. Bibendum diam, dignissim risus tellus, a at in vestibulum sollicitudin. Leo cursus accumsan, volutpat ullamcorper ut et pharetra accumsan. Sed commodo netus arcu euismod morbi malesuada ornare. Accumsan imperdiet sed enim in nullam. Adipiscing facilisis congue viverra donec vulputate mattis pellentesque. Eget id porttitor in nunc ultrices dapibus eget vulputate eu. Nullam feugiat sed quis est sapien. Pretium volutpat vestibulum ornare scelerisque sem praesent. Lacinia enim dui elit viverra risus tincidunt pellentesque. Elit sapien aliquet fames nulla eu ac malesuada mi sed. Feugiat facilisi integer eget augue risus laoreet dui, scelerisque faucibus. Euismod at proin nisl, consequat. Nunc a ut amet, in. Odio duis sed sed lectus. Eget nisi, quis amet gravida pharetra commodo id. Non viverra id aliquam vitae lobortis. Tincidunt felis, turpis dolor quis porta neque amet. Mi scelerisque donec lacus tempor erat eget. In porta sit donec praesent commodo. A vitae elementum nulla magna semper vestibulum. Senectus sagittis vitae sagittis, vulputate. Dictumst velit adipiscing integer duis. Vitae elementum amet turpis ornare quis. Donec enim interdum amet vestibulum vel quis eget cursus in. Enim feugiat vitae, gravida eu amet, consectetur placerat tortor, maecenas. Lacus, vulputate pharetra neque elit turpis consectetur eu iaculis. Amet praesent mauris eros, mollis ornare ac. Tincidunt nisi, nulla cursus arcu enim, leo ipsum. Felis quam vivamus condimentum magna est sit dignissim sed accumsan. Risus massa, nibh eget cum velit rutrum. Volutpat pellentesque quisque orci risus nec, aliquet cum ut mauris. Orci et eu amet eget. Mauris vel ipsum ipsum, at netus. Donec suspendisse arcu tortor vel potenti. A amet cursus tellus quis id maecenas amet duis. Mauris eu facilisi lacus sem amet ultrices ultrices enim. Pharetra tincidunt egestas sed pharetra aliquam.</div>\r\n<div class=\"list-work-history\">\r\n<div class=\"work-history-header medium20pt line48after\">MỘT V&Agrave;I DẤU MỐC LỊCH SỬ QUAN TRỌNG</div>\r\n<div class=\"list\">\r\n<div class=\"work-history-item\">2006, Việt Nam họp b&agrave;n đăng cai tổ chức IMO 48</div>\r\n<div class=\"work-history-item\">2007, IMO</div>\r\n<div class=\"work-history-item\">X&acirc;y dựng đề &aacute;n</div>\r\n<div class=\"work-history-item\">17/08/2010, TTCP ph&ecirc; duyệt CTT</div>\r\n<div class=\"work-history-item\">23/12/2010, TTCP quyết định th&agrave;nh lập VIASM</div>\r\n</div>\r\n</div>\r\n<div class=\"list-bookcase\">\r\n<div class=\"bookcase-header medium20pt line48after\">MỘT V&Agrave;I CUỐN S&Aacute;CH CỦA GS. TSKH. NG&Ocirc; BẢO CH&Acirc;U</div>\r\n<div class=\"list\">\r\n<div class=\"bookcase-item\">\r\n<div class=\"box\">\r\n<div class=\"wrap-thumb\" data-src=\"http://localhost/viasm.edu/medias/images/image-9.jpg\"><a title=\"\"><img src=\"http://localhost/viasm.edu/medias/images/image-9.jpg\" alt=\"\" /></a></div>\r\n</div>\r\n<div class=\"metadata\">\r\n<h3 class=\"name\">Cuộc phi&ecirc;u lưu kỳ diệu của Nils</h3>\r\n<div class=\"author\">T&aacute;c giả: Selma Lagrelof</div>\r\n<div class=\"trans\">Dịch: Ho&agrave;ng Thiếu Sơn</div>\r\n</div>\r\n</div>\r\n<div class=\"bookcase-item\">\r\n<div class=\"box\">\r\n<div class=\"wrap-thumb\" data-src=\"http://localhost/viasm.edu/medias/images/image-7.jpg\"><a title=\"\"><img src=\"http://localhost/viasm.edu/medias/images/image-7.jpg\" alt=\"\" /></a></div>\r\n</div>\r\n<div class=\"metadata\">\r\n<h3 class=\"name\">Ren&eacute; Leys - Người t&igrave;nh trẻ trong Tử Cấm Th&agrave;nh</h3>\r\n<div class=\"author\">T&aacute;c giả: Victor Segalen</div>\r\n<div class=\"trans\">Dịch: Quế Sơn</div>\r\n</div>\r\n</div>\r\n<div class=\"bookcase-item\">\r\n<div class=\"box\">\r\n<div class=\"wrap-thumb\" data-src=\"http://localhost/viasm.edu/medias/images/image-8.jpg\"><a title=\"\"><img src=\"http://localhost/viasm.edu/medias/images/image-8.jpg\" alt=\"\" /></a></div>\r\n</div>\r\n<div class=\"metadata\">\r\n<h3 class=\"name\">Phải tr&aacute;i đ&uacute;ng sai</h3>\r\n<div class=\"author\">T&aacute;c giả: Michael Sandel</div>\r\n<div class=\"trans\">Dịch: Hồ Đắc Phương</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>', null, 'tranviethiepdz@gmail.com', '1614490566', null, null, null, '0', '0', '1');
+INSERT INTO `tbl_html_block` VALUES ('5', 'Giới thiệu', 'gioi-thieu', '', '<p>Nội dung giới thiệu</p>', null, 'admin', '1619240440', null, null, null, '0', '0', '1');
 INSERT INTO `tbl_html_block` VALUES ('6', 'Địa điểm và cơ sở vật chất', 'dia-diem-va-co-so-vat-chat', '', '<p><strong>Giới thiệu về địa điểm v&agrave; cơ sở vật chất</strong></p>\r\n<div class=\"grid\">\r\n<div class=\"w-60 mb-100\">\r\n<p>Từ th&aacute;ng 4 năm 2020, Viện Nghi&ecirc;n cứu cao cấp về To&aacute;n đ&atilde; chuyển địa chỉ l&agrave;m việc về trụ sở mới tại số 157 phố Ch&ugrave;a L&aacute;ng, phường L&aacute;ng Thượng, quận Đống Đa, H&agrave; Nội.</p>\r\n<p>Trụ sở của Viện gồm 3 khối nh&agrave; A, B, C v&agrave; Hội trường 200 chỗ ở giữa. Hiện nay, trụ sở đ&atilde; ho&agrave;n th&agrave;nh giai đoạn I v&agrave; đưa v&agrave;o sử dụng 3,5 tầng với 15 ph&ograve;ng l&agrave;m việc cho Nghi&ecirc;n cứu vi&ecirc;n, học vi&ecirc;n (đ&aacute;p ứng 40 chỗ ngồi l&agrave;m việc), 02 ph&ograve;ng l&agrave;m việc nh&oacute;m/x&ecirc;-mi-na (đ&aacute;p ứng cho 35-40 người), 01 ph&ograve;ng học (đ&aacute;p ứng cho 30 người), 01 Thư viện ở tầng 4, c&aacute;c ph&ograve;ng l&agrave;m việc cho Ban Gi&aacute;m đốc v&agrave; khối văn ph&ograve;ng v&agrave; một số ph&ograve;ng chức năng kh&aacute;c.</p>\r\n<p>Cơ sở vật chất:</p>\r\n<div class=\"cblue\">https://viasm.edu.vn/gioi-thieu/dia-diem-va-co-so-vat-chat-html</div>\r\n<p>Dự kiến c&ocirc;ng tr&igrave;nh trụ sở của Viện sẽ tiếp tục cải tạo, sửa chữa giai đoạn II v&agrave;o th&aacute;ng 8/2020 v&agrave; theo kế hoạch sẽ ho&agrave;n th&agrave;nh v&agrave;o th&aacute;ng 12/2020.</p>\r\n<p>Từ năm 2011 đến th&aacute;ng 3 năm 2020, trụ sở của Viện hoạt động tạm thời tại tầng 7 Thư viện Tạ Quang Bửu, thuộc Trường Đại học B&aacute;ch khoa H&agrave; Nội, số 1 Đại Cồ Việt, Hai B&agrave; Trưng, H&agrave; Nội.</p>\r\n</div>\r\n<div class=\"w-40 mb-100 text-center\"><img src=\"http://localhost/viasm.edu/medias/contents/post-9.jpg\" /></div>\r\n</div>', null, 'tranviethiepdz@gmail.com', '1615136838', null, null, null, '0', '0', '1');
 
 -- ----------------------------
@@ -283,8 +283,8 @@ CREATE TABLE `tbl_menus` (
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `code` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `desc` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `order` tinyint(4) NOT NULL DEFAULT '1',
-  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `order` tinyint(4) NOT NULL DEFAULT 1,
+  `isactive` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -301,30 +301,30 @@ INSERT INTO `tbl_menus` VALUES ('3', 'Menu top', 'menu-top', '', '0', '1');
 DROP TABLE IF EXISTS `tbl_mnuitems`;
 CREATE TABLE `tbl_mnuitems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `par_id` int(11) NOT NULL DEFAULT '0',
+  `par_id` int(11) NOT NULL DEFAULT 0,
   `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `menu_id` int(11) NOT NULL DEFAULT '0',
+  `menu_id` int(11) NOT NULL DEFAULT 0,
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `code` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `view_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `selected_id` int(11) DEFAULT NULL,
-  `intro` text COLLATE utf8_unicode_ci,
+  `intro` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `link` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `class` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '0',
-  `isactive` int(11) NOT NULL DEFAULT '1',
+  `order` int(11) NOT NULL DEFAULT 0,
+  `isactive` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbl_mnuitems
 -- ----------------------------
-INSERT INTO `tbl_mnuitems` VALUES ('1', '0', '1', '3', 'Sơ đồ website', 'so-do-website', '0', null, '', '#', '', '', '5', '1');
-INSERT INTO `tbl_mnuitems` VALUES ('2', '0', '2', '3', 'Thông tin đăng ký', 'thong-tin-dang-ky', '', null, '', '#', '', '', '1', '1');
-INSERT INTO `tbl_mnuitems` VALUES ('3', '0', '3', '3', 'Tin tức - Xuất bản', 'tin-tuc-xuat-ban', '0', null, '', '#', '', '', '2', '1');
+INSERT INTO `tbl_mnuitems` VALUES ('1', '0', '1', '3', 'Giới thiệu', 'gioi-thieu', 'link', '0', '', 'http://localhost/nhacviethanoi/gioi-thieu-ve-chung-toi', '', '', '5', '1');
+INSERT INTO `tbl_mnuitems` VALUES ('2', '0', '2', '3', 'Trang chủ', 'trang-chu', 'link', '0', '', 'http://localhost/nhacviethanoi/', '', '', '1', '1');
+INSERT INTO `tbl_mnuitems` VALUES ('3', '0', '3', '3', 'Tin tức', 'tin-tuc', 'link', '0', '', 'http://localhost/nhacviethanoi/tin-tuc', '', '', '2', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('46', '6', '6_46', '1', 'Giải pháp âm thanh gia đình', 'giai-phap-am-thanh-gia-dinh', 'categories', '3', null, 'http://localhost/nhacviethanoi/chuyen-muc/giai-phap-am-thanh-gia-dinh', '', '', '0', '1');
-INSERT INTO `tbl_mnuitems` VALUES ('5', '0', '5', '3', 'Hỗ trợ', 'ho-tro', '', null, '', '#', '', '', '4', '1');
+INSERT INTO `tbl_mnuitems` VALUES ('5', '0', '5', '3', 'Sản phẩm', 'san-pham', 'link', '0', '', 'http://localhost/nhacviethanoi/san-pham', '', '', '4', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('6', '0', '6', '1', 'Dịch vụ', 'dich-vu', 'link', '0', '', '#', '', '', '3', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('7', '0', '7', '1', 'Sự kiện tiêu biểu', 'su-kien-tieu-bieu', 'categories', '4', '', 'http://localhost/nhacviethanoi/chuyen-muc/su-kien-tieu-bieu', '', '', '2', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('8', '0', '8', '1', 'Liên hệ', 'lien-he', 'htmlblock', '1', '', '#', '', '', '4', '1');
@@ -369,6 +369,7 @@ INSERT INTO `tbl_mnuitems` VALUES ('47', '6', '6_47', '1', 'Giải pháp âm tha
 INSERT INTO `tbl_mnuitems` VALUES ('48', '6', '6_48', '1', 'Giải pháp âm thanh nhà thờ/ chùa', 'giai-phap-am-thanh-nha-tho-chua', 'categories', '1', null, 'http://localhost/nhacviethanoi/chuyen-muc/giai-phap-am-thanh-nha-tho-chua', '', '', '0', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('49', '0', '49', '1', 'Trang chủ', 'trang-chu', 'link', '0', null, 'http://localhost/nhacviethanoi/', '', '', '1', '1');
 INSERT INTO `tbl_mnuitems` VALUES ('50', '0', '50', '1', 'Sản phẩm', 'san-pham', 'link', '0', null, 'http://localhost/nhacviethanoi/san-pham', '', '', '2', '1');
+INSERT INTO `tbl_mnuitems` VALUES ('61', '0', '61', '3', 'Liên hệ', 'lien-he', 'link', '0', null, 'http://localhost/nhacviethanoi/lien-he', '', '', '6', '1');
 
 -- ----------------------------
 -- Table structure for tbl_modules
@@ -379,8 +380,8 @@ CREATE TABLE `tbl_modules` (
   `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `intro` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8_unicode_ci,
-  `viewtitle` int(11) NOT NULL DEFAULT '0',
+  `content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `viewtitle` int(11) NOT NULL DEFAULT 0,
   `menu_id` int(11) DEFAULT NULL,
   `menu_ids` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `category_id` int(50) DEFAULT NULL,
@@ -393,8 +394,8 @@ CREATE TABLE `tbl_modules` (
   `theme` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `position` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `class` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT '0',
-  `isactive` int(11) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT 0,
+  `isactive` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -429,7 +430,7 @@ CREATE TABLE `tbl_order` (
   `totalmoney` float NOT NULL,
   `cdate` int(11) NOT NULL,
   `mdate` int(11) DEFAULT NULL,
-  `note` text COLLATE utf8_unicode_ci,
+  `note` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `address_delivery` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_delivery` datetime DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
@@ -479,13 +480,13 @@ CREATE TABLE `tbl_product` (
   `link_youtube` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `images` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fulltext` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `price1` float DEFAULT NULL,
   `price2` float DEFAULT NULL,
-  `note` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `note` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `related_articles` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `related_product` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `tag_ids` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
@@ -495,10 +496,10 @@ CREATE TABLE `tbl_product` (
   `mdate` int(11) DEFAULT NULL,
   `visited` int(11) DEFAULT NULL,
   `liked` int(11) DEFAULT NULL,
-  `sale` tinyint(1) DEFAULT '0',
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `sale` tinyint(1) DEFAULT 0,
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -519,12 +520,12 @@ CREATE TABLE `tbl_product_group` (
   `path` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
-  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `cdate` int(11) DEFAULT '0',
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `cdate` int(11) DEFAULT 0,
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
@@ -569,7 +570,7 @@ CREATE TABLE `tbl_registration` (
   `appointment` tinyint(1) DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
   `order` int(4) DEFAULT NULL,
-  `isactive` tinyint(2) DEFAULT '1',
+  `isactive` tinyint(2) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -592,7 +593,7 @@ CREATE TABLE `tbl_request` (
   `career` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
   `order` int(4) DEFAULT NULL,
-  `isactive` tinyint(2) DEFAULT '1',
+  `isactive` tinyint(2) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -616,10 +617,10 @@ CREATE TABLE `tbl_seo` (
   `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `meta_desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ishot` tinyint(4) DEFAULT '0',
+  `ishot` tinyint(4) DEFAULT 0,
   `cdate` int(11) DEFAULT NULL,
-  `order` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `order` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -635,12 +636,12 @@ DROP TABLE IF EXISTS `tbl_slider`;
 CREATE TABLE `tbl_slider` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `slogan` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `intro` text COLLATE utf8_unicode_ci,
+  `intro` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT '0',
   `thumb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `link` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
-  `isactive` int(11) NOT NULL DEFAULT '1',
+  `isactive` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -661,11 +662,11 @@ CREATE TABLE `tbl_tag` (
   `title` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `intro` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `order` tinyint(4) DEFAULT '0',
-  `ishot` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `order` tinyint(4) DEFAULT 0,
+  `ishot` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -689,20 +690,20 @@ CREATE TABLE `tbl_users` (
   `group` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `site_id` varchar(255) DEFAULT '',
   `gsecret` varchar(50) DEFAULT NULL,
-  `isfa2` tinyint(4) DEFAULT '0',
-  `isadmin` tinyint(4) DEFAULT '0',
+  `isfa2` tinyint(4) DEFAULT 0,
+  `isadmin` tinyint(4) DEFAULT 0,
   `pseudonym` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
-  `permission` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `permission` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
-  `is_trash` tinyint(4) DEFAULT '0',
-  `isactive` tinyint(4) DEFAULT '1',
+  `is_trash` tinyint(4) DEFAULT 0,
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_users
 -- ----------------------------
-INSERT INTO `tbl_users` VALUES ('1', 'admin', '2e17057bd6943260f1804ed554ce607660bb57b13bf59bcc92ddceb53ef39371|cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', '', '', '', '1', '', null, '0', '1', '', null, '1618626619', '0', '1');
+INSERT INTO `tbl_users` VALUES ('1', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918|cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', 'admin', '', 'tranviethiepdz@gmail.com', '1', '', null, '0', '1', '', null, '1618626619', '0', '1');
 INSERT INTO `tbl_users` VALUES ('2', 'tranviethiepdz@gmail.com', 'd93fc24a5f68f2d6621e2d3aff26b5600f38f1b6876ff04f0070b38a54b2d2f8|cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac', 'Trần Hiệp', '096.954.990', 'tranviethiepdz@gmail.com', '1', null, null, '0', '1', 'Trần Hiệp', '', '1591860947', '0', '1');
 
 -- ----------------------------
@@ -711,17 +712,17 @@ INSERT INTO `tbl_users` VALUES ('2', 'tranviethiepdz@gmail.com', 'd93fc24a5f68f2
 DROP TABLE IF EXISTS `tbl_user_group`;
 CREATE TABLE `tbl_user_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `par_id` int(11) DEFAULT '0',
+  `par_id` int(11) DEFAULT 0,
   `path` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `intro` text COLLATE utf8_unicode_ci,
-  `permission` int(11) NOT NULL DEFAULT '0',
-  `config` text COLLATE utf8_unicode_ci,
+  `intro` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `permission` int(11) NOT NULL DEFAULT 0,
+  `config` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `isroot` tinyint(4) DEFAULT NULL,
-  `isadmin` int(11) NOT NULL DEFAULT '0',
-  `issale` tinyint(4) DEFAULT '0',
-  `isstore` tinyint(4) DEFAULT '0',
-  `isactive` int(11) DEFAULT '1',
+  `isadmin` int(11) NOT NULL DEFAULT 0,
+  `issale` tinyint(4) DEFAULT 0,
+  `isstore` tinyint(4) DEFAULT 0,
+  `isactive` int(11) DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -741,10 +742,10 @@ CREATE TABLE `tbl_user_login` (
   `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `session` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cdate` int(11) DEFAULT NULL,
-  `isactive` tinyint(4) DEFAULT '1',
+  `isactive` tinyint(4) DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `idx` (`isactive`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tbl_user_login
@@ -814,5 +815,7 @@ INSERT INTO `tbl_user_login` VALUES ('62', 'tranviethiepdz@gmail.com', '16187188
 INSERT INTO `tbl_user_login` VALUES ('63', 'tranviethiepdz@gmail.com', '1618726296', '1618726296', '0');
 INSERT INTO `tbl_user_login` VALUES ('64', 'tranviethiepdz@gmail.com', '1618734532', '1618734532', '0');
 INSERT INTO `tbl_user_login` VALUES ('65', 'tranviethiepdz@gmail.com', '1618762654', '1618762654', '0');
-INSERT INTO `tbl_user_login` VALUES ('66', 'tranviethiepdz@gmail.com', '1618766978', '1618766978', '1');
-INSERT INTO `tbl_user_login` VALUES ('67', 'tranviethiepdz@gmail.com', '1618797083', '1618797083', '1');
+INSERT INTO `tbl_user_login` VALUES ('66', 'tranviethiepdz@gmail.com', '1618766978', '1618766978', '0');
+INSERT INTO `tbl_user_login` VALUES ('67', 'tranviethiepdz@gmail.com', '1618797083', '1618797083', '0');
+INSERT INTO `tbl_user_login` VALUES ('68', 'tranviethiepdz@gmail.com', '1619232537', '1619232537', '0');
+INSERT INTO `tbl_user_login` VALUES ('69', 'admin', '1619232565', '1619232565', '1');
