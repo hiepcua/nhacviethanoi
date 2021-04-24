@@ -111,8 +111,8 @@ $conf = $res_config;
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="" class="nav-link" title="Danh mục">Khuyến mãi HOT</a></li>
-                        <li class="nav-item"><a href="" class="nav-link" title="Danh mục">Hàng mới về</a></li>
+                        <li class="nav-item"><a href="<?php echo ROOTHOST;?>khuyen-mai" class="nav-link" title="Danh mục">Khuyến mãi HOT</a></li>
+                        <li class="nav-item"><a href="<?php echo ROOTHOST;?>san-pham-moi" class="nav-link" title="Danh mục">Hàng mới về</a></li>
                     </ul>
                 </div>
 
@@ -143,8 +143,3 @@ $conf = $res_config;
         </nav>
     </div>
 </header>
-<script type="text/javascript">
-    // $(document).ready(function(){
-    //     $('#mainmenu .nav-item.has-mega').hover
-    // })
-</script>

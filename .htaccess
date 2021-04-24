@@ -5,18 +5,21 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?$ 							index.php [QSA]
 RewriteRule ^trang-chu/?$ 					index.php [QSA]
 RewriteRule ^tim-kiem/?$ 					index.php?com=search [QSA]
-
-RewriteRule ^gioi-thieu/?$ 					index.php?com=html&viewtype=gioi-thieu&code=gioi-thieu
+RewriteRule ^lien-he/?$ 					index.php?com=contact
+RewriteRule ^gioi-thieu-ve-chung-toi/?$ 	index.php?com=html&viewtype=gioi-thieu&code=gioi-thieu
 
 # Product
-RewriteRule ^san-pham/?$      										index.php?com=product&viewtype=list [QSA]
-RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/?$      						index.php?com=product&viewtype=block&alias=$1 [QSA]
+RewriteRule ^khuyen-mai/?$ 					index.php?com=product&viewtype=list [QSA]
+RewriteRule ^san-pham-moi/?$ 				index.php?com=product&viewtype=list [QSA]
+RewriteRule ^san-pham/?$      				index.php?com=product&viewtype=list [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/?$   index.php?com=product&viewtype=block&alias=$1 [QSA]
 RewriteRule ^san-pham/([0-9a-zA-Z\-]+)-([0-9]+).html/?$   			index.php?com=product&viewtype=detail&alias=$1&id=$2 [QSA]
 
 # Contents
 RewriteRule ^tin-tuc/?$      										index.php?com=contents&viewtype=list [QSA]
 RewriteRule ^tin-tuc/([0-9a-zA-Z\-]+)/?$      						index.php?com=contents&viewtype=block&alias=$1 [QSA]
-RewriteRule ^tin-tuc/([0-9a-zA-Z\-]+)-([0-9]+).html/?$   			index.php?com=contents&viewtype=detail&alias=$1&id=$2 [QSA]
+RewriteRule ^tin-tuc/([0-9a-zA-Z\-]+)-([0-9]+).html/?$  index.php?com=contents&viewtype=detail&alias=$1&id=$2 [QSA]
+RewriteRule ^tin-tuc/chi-tiet-bai-viet-10.html/?$  		index.php?com=contents&viewtype=detail&alias=$1&id=$2 [QSA]
 
 
 php_flag display_errors  on

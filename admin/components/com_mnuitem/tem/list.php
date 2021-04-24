@@ -17,13 +17,21 @@ if($action !== '' && $action !== 'all' ){
 	$strWhere.=" AND `isactive` = '$action'";
 }
 
-function listTable($strwhere="", $search=0, $limit){
-	if($search == 0){
-		$strsql="AND par_id=0 $strwhere ORDER BY `order` ASC $limit";
-	}else{
-		$strsql="$strwhere ORDER BY `order` ASC $limit";
-	}
+$total_rows=SysCount('tbl_mnuitems',$strWhere);
+$res_menus = SysGetList('tbl_menus', array(), ' AND id='. $get_mnuid);
+if(count($res_menus) <= 0){
+	echo 'Không có dữ liệu.'; 
+	return;
+}
+$row = $res_menus[0];
 
+if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM.'add'] == 1) {
+	echo '<script>$(document).ready(function(){$.notify("Thêm mới thành công", "success");})</script>';
+	unset($_SESSION['flash'.'com_'.$COM.'add']);
+}
+
+function listTable($strwhere=""){
+	$strsql="$strwhere ORDER BY `order` ASC, `name` ASC";
 	$res=SysGetList('tbl_mnuitems', [], $strsql);
 	if(count($res)>0){
 		foreach ($res as $key => $rows) {
@@ -80,19 +88,6 @@ function listTable($strwhere="", $search=0, $limit){
 			}
 		}
 	}
-}
-
-$total_rows=SysCount('tbl_mnuitems',$strWhere);
-$res_menus = SysGetList('tbl_menus', array(), ' AND id='. $get_mnuid);
-if(count($res_menus) <= 0){
-	echo 'Không có dữ liệu.'; 
-	return;
-}
-$row = $res_menus[0];
-
-if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM.'add'] == 1) {
-	echo '<script>$(document).ready(function(){$.notify("Thêm mới thành công", "success");})</script>';
-	unset($_SESSION['flash'.'com_'.$COM.'add']);
 }
 ?>
 <!-- Content Header (Page header) -->
@@ -163,7 +158,7 @@ if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM
 					<tbody>
 						<?php
 						if($total_rows>0){
-							listTable($strWhere,$flg_search,'');
+							listTable($strWhere);
 						}else{
 							?>
 							<tr>

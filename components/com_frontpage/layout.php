@@ -2187,57 +2187,32 @@
 			</ul> 
 		</div>
 		<div class="news-content row">
-			<div class="col-lg-3 col-sm-6 col-9">
+			<?php
+			$arr_contents = array(1,2,3);
+			foreach ($arr_contents as $key => $value) {
+				$title = 'Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?';
+				$link = ROOTHOST.'tin-tuc/chi-tiet-bai-viet-10.html';
+				$thumb = getThumb('', '', '');
+				$img_src = ROOTHOST.'medias/contents/may-khoan-bosch-gsb550-1.jpg';
+				$pdate = date('d/m/Y', time());
+				$sapo = 'Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa ...';
+				echo '<div class="col-lg-3 col-sm-6 col-9">
 				<div class="evo-news-item">
-					<div class="item-img"> 
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
-							<img width="480" height="320" src="//bizweb.dktcdn.net/thumb/large/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded"> 
-						</a> 
-					</div>
-
-					<div class="item-img-content">
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a>
-						<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa ... </p>
-						<div class="evo-author">
-							<i class="fa fa-calendar" aria-hidden="true"></i> 16/02/2021
-						</div>
-					</div>
+				<div class="item-img"> 
+				<div class="wrap-thumb" data-src="'.$img_src.'">
+				<a href="'.$link.'" title="'.$title.'">'.$thumb.'</a> 
 				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6 col-9">
-				<div class="evo-news-item">
-					<div class="item-img"> 
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
-							<img width="480" height="320" src="//bizweb.dktcdn.net/thumb/large/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded"> 
-						</a> 
-					</div>
-
-					<div class="item-img-content">
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a>
-						<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa ... </p>
-						<div class="evo-author">
-							<i class="fa fa-calendar" aria-hidden="true"></i> 16/02/2021
-						</div>
-					</div>
 				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6 col-9">
-				<div class="evo-news-item">
-					<div class="item-img"> 
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
-							<img width="480" height="320" src="//bizweb.dktcdn.net/thumb/large/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded"> 
-						</a> 
-					</div>
 
-					<div class="item-img-content">
-						<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a>
-						<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa ... </p>
-						<div class="evo-author">
-							<i class="fa fa-calendar" aria-hidden="true"></i> 16/02/2021
-						</div>
-					</div>
+				<div class="item-img-content">
+				<a href="'.$link.'">'.$title.'</a>
+				<p>'.$sapo.'</p>
+				<div class="evo-author"><i class="fa fa-calendar" aria-hidden="true"></i> '.$pdate.'</div>
 				</div>
-			</div>
+				</div>
+				</div>';
+			}
+			?>
 			<div class="col-lg-3 col-sm-6 col-9">
 				<div class="evo-news-item">
 					<div class="item-img"> 

@@ -25,7 +25,7 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txtname']!='') {
 
 		SysEdit('tbl_mnuitems', array('path' => $path), " id=".$result);
 		$_SESSION['flash'.'com_'.$COM.'add'] = 1;
-		echo "<script language=\"javascript\">window.location.href='".ROOTHOST.$COM."'</script>";
+		echo "<script language=\"javascript\">window.location.href='".ROOTHOST.$COM.'/'.$get_mnuid."'</script>";
 	}else{
 		echo '<script>$(document).ready(function(){$.notify("Lỗi!", "error");})</script>';
 	}

@@ -16,18 +16,18 @@ $res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$lim
 	<section class="bread-crumb"> 
 		<div class="container"> 
 			<ul class="breadcrumb"> 
-				<li class="home"><a href="/" title="Trang chủ"> <span>Trang chủ</span></a></li> 
-				<li class="home"><a href="/" title="Tin tức"> <span>Tin tức</span></a></li> 
+				<li class="home"><a href="<?php echo ROOTHOST;?>" title="Trang chủ"> <span>Trang chủ</span></a></li> 
+				<li class="home"><a href="<?php echo ROOTHOST;?>tin-tuc" title="Tin tức"> <span>Tin tức</span></a></li> 
 				<li><strong>Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</strong></li> 
 			</ul> 
 		</div> 
 	</section>
-	<div class="page container article-wraper">
+	<div class="page container article-wraper evo-article">
 		<article class="article-main">
 			<div class="row">
 				<div class="col-md-12 col-lg-9 col-sm-12">
-					<h1 class="title-head">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</h1>
-					<div class="blog-item-author"> 
+					<h1 class="title-head text-center">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</h1>
+					<div class="blog-item-author text-center"> 
 						<span>Evo Themes</span> 
 						<span>Thứ Ba, Tháng 2, 2021</span> 
 					</div><br>

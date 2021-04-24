@@ -167,8 +167,8 @@ header .navbar{
 #main-header-container {
     display: flex;
     align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     grid-column-gap: 40px;
 }
 #mainmenu {
@@ -180,6 +180,9 @@ header .navbar{
     vertical-align: top;
     text-align: start;
     position: static;
+}
+#mainmenu .nav-item:hover .nav-link{
+    color: #ed1b24;
 }
 #mainmenu .nav-item>a:after {
 	content: '';
@@ -195,8 +198,8 @@ header .navbar{
 	transition: width 0.45s, opacity 0.1s;
 }
 #mainmenu .nav-item:hover>a:after {
-	opacity: 1;
-	width: calc(100% - 40px);
+	/*opacity: 1;
+	width: calc(100% - 40px);*/
 }
 #mainmenu .nav-item:last-child{
 	padding-right: 0px;
@@ -240,7 +243,7 @@ header .navbar{
 }
 #mainmenu .danh-muc:hover>a, #mainmenu .danh-muc:hover svg{
 	fill: #ffffff;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 #mainmenu .danh-muc.nav-item:hover>a:after{
 	content: none;
