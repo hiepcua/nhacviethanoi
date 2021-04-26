@@ -19,65 +19,234 @@ $cur_page = getCurentPage($max_pages);
 $start = ($cur_page - 1) * $max_rows;
 $limit = 'LIMIT '.$start.','. $max_rows;
 /*End pagging*/
+$res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$limit);
 ?>
 <section class="component">
-	<div class="container page">
-		<div class="page-category">
-			<div class="wg-breadcrumb clearfix">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item" aria-current="page">Trang chủ</li>
-						<li class="breadcrumb-item" aria-current="page"><?php echo $res_cate['title'];?></li>
-					</ol>
-				</nav>
-			</div>
-			
-			<div class="page-content">
-				<div class="main-content">
-					<h1 class="page-title"><?php echo $res_cate['title'];?></h1>
-					<?php
-					$res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$limit);
-					if(count($res_cons)>0){
-						$b_post = $res_cons[0];
-						$b_link = ROOTHOST.$b_post['alias'].'-'.$b_post['id'].'.html';
-						$b_title = $b_post['title'];
-						$b_thumb = getThumb('', 'img-fluid', $b_title);
-						$b_sapo = Substring($b_post['sapo'], 0, 40);
-						?>
-						<article class="big-post">
-							<div class="post-content">
-								<div class="post-thumb big-post-thumb" data-src="<?php echo $b_post['images'];?>"><a href="<?php echo $b_link;?>" title="<?php echo $b_title;?>"><?php echo $b_thumb;?></a></div>
-								<div class="post-meta">
-									<h2 class="title"><a href="<?php echo $b_link;?>" title="<?php echo $b_title;?>"><?php echo $b_title;?></a></h2>
-									<div class="desc"><?php echo $b_sapo;?></div>
-								</div>
-							</div>
-						</article>
-						<hr/>
-					<?php } ?>
-					<div class="list-posts">
+	<section class="bread-crumb"> 
+		<div class="container"> 
+			<ul class="breadcrumb"> 
+				<li class="home"><a href="<?php echo ROOTHOST;?>" title="Trang chủ"> <span>Trang chủ</span></a></li> 
+				<li><strong><?php echo $res_cate['title'];?></strong></li> 
+			</ul> 
+		</div> 
+	</section>
+	<div class="page page-block-content container">
+		<div class="page-header">
+			<h1><?php echo $res_cate['title'];?></h1>
+		</div>
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-8 col-lg-9 col-sm-12 evo-list-blog-page">
+					<div class="row">
 						<?php
-						foreach ($res_cons as $key => $value) {
-							if($key > 0){
-								$link = ROOTHOST.$value['alias'].'-'.$value['id'].'.html';
-								$title = $value['title'];
-								$thumb = getThumb('', 'img-fluid', $title);
-								$sapo = Substring($value['sapo'], 0, 60);
-								echo '<article class="post">
-								<div class="post-content">
-								<div class="post-thumb post-thumb-120" data-src="'.$value['images'].'"><a href="'.$link.'" title="'.$title.'">'.$thumb.'</a></div>
-								<div class="post-meta">
-								<h3 class="title"><a href="'.$link.'" title="">'.$title.'</a></h3>
-								<div class="desc">'.$sapo.'</div>
+						if(count($res_cons)>0){
+							foreach ($res_cons as $key => $value) {
+								$title = stripcslashes($value['title']);
+								$sapo = subString(stripcslashes($value['sapo']), 0, 60);
+								$thumb = getThumb('', '','');
+								$img_src = $value['images']!='' ? $value['images'] : IMAGE_DEFAULT;
+								$link = ROOTHOST.'tin-tuc/'.$value['alias'].'-'.$value['id'].'.html';
+
+								echo '<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
+								<div class="blog-item-image">
+								<div class="wrap-thumb" data-src="'.$img_src.'">
+								<a href="'.$link.'">'.$thumb.'</a>
 								</div>
 								</div>
-								</article>';
+								<div class="blog-item-author">
+								<h3> <a href="'.$link.'" title="'.$title.'">'.$title.'</a> </h3>
+								<p>'.$sapo.'</span>
+								</div>
+								</div>';
 							}
 						}
 						?>
 					</div>
-					<div class="pagging">
-						<?php paging($total_rows,$max_rows,$cur_page); ?>
+					<?php paging($total_rows,$max_rows,$cur_page); ?>
+				</div>
+				<div class="col-md-4 col-lg-3 col-sm-12 blog-sidebar">
+					<div class="aside-title">Danh mục</div>
+					<ul class="navbar-pills nav-category">
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+						<li class="nav-item "> 
+							<a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> 
+							<span class="Collapsible__Plus"></span>
+							<ul class="dropdown-menu"> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> 
+								</li> 
+								<li class="nav-item "> 
+									<a class="nav-link" href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> 
+								</li> 
+							</ul>
+						</li>
+					</ul>
+
+					<div class="aside-title margin-top-20"><a href="tin-tuc" title="Tin khuyến mãi">Tin khuyến mãi</a></div>
+					<div class="evo-list-blogs clearfix">
+						<article class="has-post-thumbnail clearfix"> 
+							<div class="qodef-e-media-image"> 
+								<a class="thumb" href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
+									<img src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive mx-auto d-block loaded" data-was-processed="true">
+								</a> 
+							</div> 
+							<div class="qodef-e-content"> 
+								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> 
+							</div> 
+						</article>
+						<article class="has-post-thumbnail clearfix"> 
+							<div class="qodef-e-media-image"> 
+								<a class="thumb" href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
+									<img src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive mx-auto d-block loaded" data-was-processed="true">
+								</a> 
+							</div> 
+							<div class="qodef-e-content"> 
+								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> 
+							</div> 
+						</article>
+						<article class="has-post-thumbnail clearfix"> 
+							<div class="qodef-e-media-image"> 
+								<a class="thumb" href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
+									<img src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive mx-auto d-block loaded" data-was-processed="true">
+								</a> 
+							</div> 
+							<div class="qodef-e-content"> 
+								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> 
+							</div> 
+						</article>
+						<article class="has-post-thumbnail clearfix"> 
+							<div class="qodef-e-media-image"> 
+								<a class="thumb" href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
+									<img src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive mx-auto d-block loaded" data-was-processed="true">
+								</a> 
+							</div> 
+							<div class="qodef-e-content"> 
+								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> 
+							</div> 
+						</article>
+						<article class="has-post-thumbnail clearfix"> 
+							<div class="qodef-e-media-image"> 
+								<a class="thumb" href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> 
+									<img src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/thumb/medium/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive mx-auto d-block loaded" data-was-processed="true">
+								</a> 
+							</div> 
+							<div class="qodef-e-content"> 
+								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> 
+							</div> 
+						</article>
 					</div>
 				</div>
 			</div>

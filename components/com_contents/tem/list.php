@@ -16,7 +16,7 @@ $res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$lim
 	<section class="bread-crumb"> 
 		<div class="container"> 
 			<ul class="breadcrumb"> 
-				<li class="home"><a href="/" title="Trang chủ"> <span>Trang chủ</span></a></li> 
+				<li class="home"><a href="<?php echo ROOTHOST;?>" title="Trang chủ"> <span>Trang chủ</span></a></li> 
 				<li><strong>Tất cả tin tức</strong></li> 
 			</ul> 
 		</div> 
@@ -29,87 +29,31 @@ $res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$lim
 			<div class="row">
 				<div class="col-md-8 col-lg-9 col-sm-12 evo-list-blog-page">
 					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
-							<div class="blog-item-image">
-								<a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?"> <img src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" data-src="//bizweb.dktcdn.net/100/418/839/articles/may-khoan-bosch-gsb550-1.jpg?v=1613483734173" alt="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?" class="lazy img-responsive center-block loaded" data-was-processed="true"> </a>
-							</div>
-							<div class="blog-item-author">
-								<h3> <a href="/cai-tien-gi-tren-may-khoan-pin-bosch-gsb-120-li-duoc-men-mo" title="Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?">Cải tiến gì trên máy khoan pin Bosch GSB 120-LI được mến mộ?</a> </h3>
-								<p> Máy khoan pin Bosch GSB 120-LI đời mới nhỏ gọn hơn, mạnh mẽ hơn tối ưu hóa tốc độ và lực xoắn g... </p>
-								<span>Thứ Ba, Tháng 2, 2021</span>
-							</div>
-						</div>
+						<?php
+						if(count($res_cons)>0){
+							foreach ($res_cons as $key => $value) {
+								$title = stripcslashes($value['title']);
+								$sapo = subString(stripcslashes($value['sapo']), 0, 60);
+								$thumb = getThumb('', '','');
+								$img_src = $value['images']!='' ? $value['images'] : IMAGE_DEFAULT;
+								$link = ROOTHOST.'tin-tuc/'.$value['alias'].'-'.$value['id'].'.html';
+
+								echo '<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
+								<div class="blog-item-image">
+								<div class="wrap-thumb" data-src="'.$img_src.'">
+								<a href="'.$link.'">'.$thumb.'</a>
+								</div>
+								</div>
+								<div class="blog-item-author">
+								<h3> <a href="'.$link.'" title="'.$title.'">'.$title.'</a> </h3>
+								<p>'.$sapo.'</span>
+								</div>
+								</div>';
+							}
+						}
+						?>
 					</div>
+					<?php paging($total_rows,$max_rows,$cur_page); ?>
 				</div>
 				<div class="col-md-4 col-lg-3 col-sm-12 blog-sidebar">
 					<div class="aside-title">Danh mục</div>

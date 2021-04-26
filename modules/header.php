@@ -56,70 +56,59 @@ $conf = $res_config;
                             </a>
                             <div class="sub-menu megamenu">
                                 <div class="container">
-                                    <ul class="level0">
-                                        <li class="level1 parent item">
-                                            <a class="hmega" href="/may-cam-tay-dien" title="Máy cầm tay điện">Máy cầm tay điện</a>
-                                            <ul class="level1"> 
-                                                <li class="level2"> <a href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> </li> 
-                                                <li class="level2"> <a href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> </li> 
-                                                <li class="level2"> <a href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> </li> 
-                                                <li class="level2"> <a href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> </li> 
-                                                <li class="level2"> <a href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> </li> 
-                                            </ul>
-                                        </li>
-                                        <li class="level1 parent item">
-                                            <a class="hmega" href="/may-cam-tay-dien" title="Máy cầm tay điện">Máy cầm tay điện</a>
-                                            <ul class="level1"> 
-                                                <li class="level2"> <a href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> </li> 
-                                                <li class="level2"> <a href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> </li> 
-                                                <li class="level2"> <a href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> </li> 
-                                                <li class="level2"> <a href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> </li> 
-                                                <li class="level2"> <a href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> </li> 
-                                            </ul>
-                                        </li>
-                                        <li class="level1 parent item">
-                                            <a class="hmega" href="/may-cam-tay-dien" title="Máy cầm tay điện">Máy cầm tay điện</a>
-                                            <ul class="level1"> 
-                                                <li class="level2"> <a href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> </li> 
-                                                <li class="level2"> <a href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> </li> 
-                                                <li class="level2"> <a href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> </li> 
-                                                <li class="level2"> <a href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> </li> 
-                                                <li class="level2"> <a href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> </li> 
-                                            </ul>
-                                        </li>
-                                        <li class="level1 parent item">
-                                            <a class="hmega" href="/may-cam-tay-dien" title="Máy cầm tay điện">Máy cầm tay điện</a>
-                                            <ul class="level1"> 
-                                                <li class="level2"> <a href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> </li> 
-                                                <li class="level2"> <a href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> </li> 
-                                                <li class="level2"> <a href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> </li> 
-                                                <li class="level2"> <a href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> </li> 
-                                                <li class="level2"> <a href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> </li> 
-                                            </ul>
-                                        </li>
-                                        <li class="level1 parent item">
-                                            <a class="hmega" href="/may-cam-tay-dien" title="Máy cầm tay điện">Máy cầm tay điện</a>
-                                            <ul class="level1"> 
-                                                <li class="level2"> <a href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a> </li> 
-                                                <li class="level2"> <a href="/may-mai-goc-cat-gach" title="Máy mài góc cắt gạch">Máy mài góc cắt gạch</a> </li> 
-                                                <li class="level2"> <a href="/may-cua-dia-cua-xich" title="Máy cưa đĩa cưa xích">Máy cưa đĩa cưa xích</a> </li> 
-                                                <li class="level2"> <a href="/may-khoan-duc-be-tong" title="Máy khoan đục bê tông">Máy khoan đục bê tông</a> </li> 
-                                                <li class="level2"> <a href="/may-cha-nham-danh-bong" title="Máy chà nhám đánh bóng">Máy chà nhám đánh bóng</a> </li> 
-                                            </ul>
-                                        </li>
+                                    <ul class="level0 list-unstyle">
+                                        <?php
+                                        $res_gpro = SysGetList('tbl_product_group', array(), "AND par_id=0 AND isactive=1 ORDER BY `order` ASC");
+                                        if(count($res_gpro)>0){
+                                            foreach ($res_gpro as $key => $value) {
+                                                $id = $value['id'];
+                                                $title = $value['title'];
+                                                $link = ROOTHOST.'san-pham/'.$value['alias'];
+                                                echo '<li class="level1 parent item">
+                                                <a class="hmega" href="'.$link.'" title="'.$title.'">'.$title.'</a>';
+
+                                                $res_childs = SysGetList('tbl_product_group', array(), 'AND path LIKE "'.$id.'_%" AND isactive=1');
+                                                if(count($res_childs)>0):
+                                                    echo '<ul class="level1">';
+                                                    foreach ($res_childs as $k_child => $v_child) {
+                                                        $title1 = $v_child['title'];
+                                                        $link1 = ROOTHOST.'san-pham/'.$v_child['alias'];
+                                                        echo '<li class="level2"> <a href="'.$link1.'" title="'.$title1.'">'.$title1.'</a> </li>';
+                                                    }
+                                                    echo '</ul>';
+                                                endif;
+                                                echo '</li>';
+                                            }
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item"><a href="<?php echo ROOTHOST;?>khuyen-mai" class="nav-link" title="Danh mục">Khuyến mãi HOT</a></li>
-                        <li class="nav-item"><a href="<?php echo ROOTHOST;?>san-pham-moi" class="nav-link" title="Danh mục">Hàng mới về</a></li>
+                        <li class="nav-item"><a href="<?php echo ROOTHOST;?>san-pham-moi?sortby=created_on%3Adesc" class="nav-link" title="Danh mục">Hàng mới về</a></li>
+                        <li class="nav-item default">
+                            <a href="javascript:void(0)" class="nav-link" title="Dịch vụ">Dịch vụ <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                            <ul class="sub-menu nav-dropdown nav-dropdown-default list-unstyle">
+                                <?php
+                                $res_categories = SysGetList('tbl_categories', array(), "AND isactive=1 ORDER BY `order` ASC");
+                                if(count($res_categories)>0){
+                                    foreach ($res_categories as $key => $value) {
+                                        $name_cate = $value['title'];
+                                        $link_cate = ROOTHOST.'tin-tuc/'.$value['alias'];
+                                        echo '<li><a href="'.$link_cate.'" title="'.$name_cate.'" class="nav-link">'.$name_cate.'</a></li>';
+                                    }
+                                }
+                                ?>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="box-search-desktop">
                     <div class="wg-header-search">
-                        <form action="<?php echo ROOTHOST;?>tim-kiem" method="get" class="header-search-form"> 
-                            <input type="text" aria-label="Tìm sản phẩm" name="query" class="search-auto form-control" placeholder="Tìm sản phẩm..." autocomplete="off"> 
+                        <form action="<?php echo ROOTHOST;?>tim-kiem" method="GET" class="header-search-form"> 
+                            <input type="text" aria-label="Tìm sản phẩm" name="q" class="search-auto form-control" placeholder="Tìm sản phẩm..." autocomplete="off"> 
                             <button class="btn btn-default" type="submit" aria-label="Tìm kiếm"> 
                                 <svg class="Icon Icon--search-desktop" viewBox="0 0 21 21"> 
                                     <g transform="translate(1 1)" stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="square"> 

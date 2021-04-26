@@ -1,6 +1,6 @@
 <?php
 defined('ISHOME') or die("Can't access this page!");
-define('COMS','bookcase');
+define('COMS','order');
 $viewtype='list';
 
 if(isset($_GET['viewtype'])){

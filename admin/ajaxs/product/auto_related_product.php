@@ -8,8 +8,9 @@ require_once(incl_path.'gffunc.php');
 require_once(incl_path.'gffunc_user.php');
 require_once(libs_path.'cls.mysql.php');
 $group_id = isset($_POST['group_id']) ? (int)$_POST['group_id'] : 0;
+$product_id = isset($_POST['product_id']) ? (int)$_POST['product_id'] : 0;
 
-$res_contents = SysGetList('tbl_product', [], "AND `group_id`=".$group_id." ORDER BY `name` ASC LIMIT 0,4");
+$res_contents = SysGetList('tbl_product', [], "AND `group_id`=".$group_id." AND id <> $product_id ORDER BY `name` ASC LIMIT 0,4");
 if(count($res_contents)>0){
 	foreach ($res_contents as $key => $value) {
 		$images = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;

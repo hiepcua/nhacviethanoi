@@ -204,43 +204,33 @@ $(document).ready(function(){
 		}
 	}, 300);
 
-	$('.slider-for').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: true,
-		fade: true,
-		asNavFor: '.slider-nav',
-		prevArrow: '<a class="carousel-control-prev" href="javascript:void(0)"></a>',
-		nextArrow: '<a class="carousel-control-next" href="javascript:void(0)"></a>',
+	$('.evo-btn-filter').click(function(){
+		$(".left-content").toggleClass('active');
+		$(".backdrop__body-backdrop___1rvky").addClass('active');
 	});
-	$('.slider-nav').slick({
-		slidesToShow: 6,
-		slidesToScroll: 1,
-		asNavFor: '.slider-for',
-		dots: false,
-		arrows: false,
-		centerMode: true,
-		focusOnSelect: true,
-		centerPadding : '50px',
-		responsive: [
-		{
-			breakpoint: 768,
-			settings: {
-				arrows: false,
-				centerMode: true,
-				centerPadding: '40px',
-				slidesToShow: 3
-			}
-		},
-		{
-			breakpoint: 480,
-			settings: {
-				arrows: false,
-				centerMode: true,
-				centerPadding: '40px',
-				slidesToShow: 1
-			}
-		} ]
+	$('.aside-filter .aside-hidden-mobile .aside-item .aside-title').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$this.parents('.aside-filter .aside-hidden-mobile .aside-item').find('.aside-content').stop().slideToggle();
+		$(this).toggleClass('active')
+		return false;
+	});
+	$('.sort-cate-left h3').on('click', function(e){
+		e.preventDefault();var $this = $(this);
+		$this.parents('.sort-cate-left').find('ul').stop().slideToggle();
+		$(this).toggleClass('active');
+		return false;
+	});
+
+	$('.collection-category .Collapsible__Plus').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$(this).parents().toggleClass('active')
+		return false;
+	});
+
+	$('.add_to_cart').on('click', function(){
+		console.log('add cart');
 	});
 });
 
@@ -255,3 +245,32 @@ jQuery(document).ready(function(){
 		});
 	}
 });
+
+function sortby(sort){
+	var _sortby = document.getElementById('sortby');
+	var _frm_search = document.getElementById('frm_search');
+	switch(sort) {
+		case "price-asc":
+		_sortby.value = "price_min:asc";					   
+		break;
+		case "price-desc":
+		_sortby.value = "price_min:desc";
+		break;
+		case "alpha-asc":
+		_sortby.value = "name:asc";
+		break;
+		case "alpha-desc":
+		_sortby.value = "name:desc";
+		break;
+		case "created-desc":
+		_sortby.value = "created_on:desc";
+		break;
+		case "created-asc":
+		_sortby.value = "created_on:asc";
+		break;
+		default:
+		_sortby.value = "";
+		break;
+	}
+	_frm_search.submit();
+};

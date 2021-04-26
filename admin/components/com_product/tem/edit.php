@@ -35,7 +35,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 	$arr['thumb'] = $file;
 	$arr['images'] = $images;
 	$arr['intro'] = isset($_POST['txt_intro']) ? antiData($_POST['txt_intro']) : '';
-	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? antiData($_POST['txt_fulltext']) : '';
+	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
 	$arr['price'] = isset($_POST['price']) ? floatval($_POST['price']) : '';
 	$arr['price1'] = isset($_POST['price1']) ? floatval($_POST['price1']) : '';
 	$arr['related_product'] = isset($_POST['related_product']) ? json_encode($_POST['related_product']) : null;
@@ -58,8 +58,8 @@ if(count($res_Cons) <= 0){
 	return;
 }
 $row = $res_Cons[0];
-$price = $row['price']!=0 ? number_format($row['price']) : '';
-$price1 = $row['price1']!=0 ? number_format($row['price1']) : '';
+$price = $row['price']!=0 ? $row['price'] : '';
+$price1 = $row['price1']!=0 ? $row['price1'] : '';
 ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -104,13 +104,13 @@ $price1 = $row['price1']!=0 ? number_format($row['price1']) : '';
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Giá</label><small> (vnđ) Nếu bỏ trống thì sẽ hiển thị giá là liên hệ</small>
-										<input type="text" id="price" name="price" class="form-control" value="<?php echo $price;?>" placeholder="Giá sản phẩm">
+										<input type="number" id="price" name="price" class="form-control" value="<?php echo $price;?>" placeholder="Giá sản phẩm">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Giá khuyến mại</label><small> (vnđ)</small>
-										<input type="text" id="price1" name="price1" class="form-control" value="<?php echo $price1;?>" placeholder="Giá khuyến mại">
+										<input type="number" id="price1" name="price1" class="form-control" value="<?php echo $price1;?>" placeholder="Giá khuyến mại">
 									</div>
 								</div>
 							</div>
@@ -424,10 +424,11 @@ $price1 = $row['price1']!=0 ? number_format($row['price1']) : '';
 	/* -------------------- Sản phẩm liên quan -------------------- */
 	function btn_auto_related_product(){
 		var group_id = $('#cbo_gproduct').val();
+		var product_id = '<?php echo $GetID;?>';
 		if(parseInt(group_id)!= '0'){
 			var _url="<?php echo ROOTHOST;?>ajaxs/product/auto_related_product.php";
 
-			$.post(_url, {'group_id': group_id}, function(res){
+			$.post(_url, {'group_id': group_id, 'product_id': product_id}, function(res){
 				$('#list_related_product').html(res);
 			});
 		}else{

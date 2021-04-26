@@ -224,23 +224,6 @@ $row = $res_Cons[0];
 		});
 
 		tinymce.init({
-			selector: '#txt_sapo',
-			height: 150,
-			plugins: [
-			'link lists autolink hr code textcolor'
-			],
-			toolbar: 'bold italic underline | fontselect fontsizeselect formatselect forecolor backcolor | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent fullscreen',
-			contextmenu: 'link image imagetools table spellchecker lists',
-			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-			image_caption: true,
-			images_reuse_filename: true,
-			images_upload_credentials: true,
-			relative_urls : false,
-			remove_script_host : false,
-			convert_urls : true,
-		});
-
-		tinymce.init({
 			selector: '#txt_fulltext',
 			height: 350,
 			plugins: [

@@ -30,7 +30,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 	$arr['thumb'] = $file;
 	$arr['images'] = $images;
 	$arr['intro'] = isset($_POST['txt_intro']) ? antiData($_POST['txt_intro']) : '';
-	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? antiData($_POST['txt_fulltext']) : '';
+	$arr['fulltext'] = isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
 	$arr['price'] = isset($_POST['price']) ? floatval($_POST['price']) : '';
 	$arr['price1'] = isset($_POST['price1']) ? floatval($_POST['price1']) : '';
 	$arr['related_product'] = isset($_POST['related_product']) ? json_encode($_POST['related_product']) : null;
@@ -93,13 +93,13 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Giá</label><small> (vnđ)</small>
-										<input type="text" id="price" name="price" class="form-control" value="" placeholder="Giá sản phẩm">
+										<input type="number" id="price" name="price" class="form-control" value="" placeholder="Giá sản phẩm">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Giá khuyến mại</label><small> (vnđ)</small>
-										<input type="text" id="price1" name="price1" class="form-control" value="" placeholder="Giá khuyến mại">
+										<input type="number" id="price1" name="price1" class="form-control" value="" placeholder="Giá khuyến mại">
 									</div>
 								</div>
 							</div>

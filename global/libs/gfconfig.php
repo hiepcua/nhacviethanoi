@@ -14,7 +14,7 @@ define('ROOT_IMAGE',ROOTHOST.'images/');
 define('ROOT_MEDIA',ROOTHOST.'medias/');
 define('BASEVIRTUAL0',ROOTHOST.'uploads/');
 define('AVATAR_DEFAULT',ROOTHOST.'global/img/avatars/male.png');
-define('IMAGE_DEFAULT',ROOTHOST.'global/img/no-photo.jpg');
+define('IMAGE_DEFAULT',ROOTHOST.'global/img/noimage.gif');
 
 define('PIT_API_KEY','6b73412dd2037b6d2ae3b2881b5073bc');
 define('APP_ID','1663061363962371');
