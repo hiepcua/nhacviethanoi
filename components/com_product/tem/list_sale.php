@@ -23,14 +23,14 @@ foreach ($res_group as $key => $value) {
 		<div class="container"> 
 			<ul class="breadcrumb"> 
 				<li class="home"><a href="<?php echo ROOTHOST;?>" title="Trang chủ"> <span>Trang chủ</span></a></li>
-				<li><strong>Tất cả sản phẩm</strong></li> 
+				<li><strong>Sản phẩm khuyến mại</strong></li> 
 			</ul> 
 		</div> 
 	</section>
 	<div class="page page-list-product container">
 		<div class="main_container collection margin-bottom-5">
 			<div class="page-header">
-				<h1 class="col-title">Tất cả sản phẩm</h1>
+				<h1 class="col-title">Sản phẩm khuyến mại</h1>
 			</div>
 			<div class="page-content">
 				<div class="row">
