@@ -49,7 +49,6 @@ global $tmp;
 
 	<!-- CSS only -->
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/Event-Calendar-Date-Picker/css/monthly.css">
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="<?php echo ROOTHOST;?>global/plugins/icheck-bootstrap/icheck-bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo ROOTHOST;?>global/plugins/slick/slick.css"/>
@@ -98,25 +97,6 @@ global $tmp;
 	<script src="<?php echo ROOTHOST;?>global/plugins/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<!-- Custom js -->
 	<script src="<?php echo ROOTHOST;?>global/js/custom.js"></script>
-	
-	<script type="text/javascript" src="<?php echo ROOTHOST;?>global/plugins/Event-Calendar-Date-Picker/js/jquery.js"></script>
-	<script type="text/javascript" src="<?php echo ROOTHOST;?>global/plugins/Event-Calendar-Date-Picker/js/monthly.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-	<script type="text/javascript">
-		$(window).load(function() {
-			$('#mycalendar').monthly({
-				mode: 'event',
-				weekStart:'Mon',
-				eventList:true,
-				startHidden: false,
-				stylePast: true,
-				dayNames: false,
-				// jsonUrl: '<?php echo ROOTHOST;?>global/plugins/Event-Calendar-Date-Picker/events.json',
-				jsonUrl: '<?php echo ROOTHOST;?>ajaxs/events.php',
-				dataType: 'json',
-				// xmlUrl: '<?php echo ROOTHOST;?>global/plugins/Event-Calendar-Date-Picker/events.xml'
-			});
-		});
-	</script>
 </body>
 </html>

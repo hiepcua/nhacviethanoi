@@ -1,3 +1,14 @@
+<?php
+/* --------------------------------------------- */
+$res_all_groups = SysGetList('tbl_product_group', [], " AND isactive=1");
+$__ALL_PRODUCT_GOURP = array();
+foreach ($res_all_groups as $key => $value) {
+	$__ALL_PRODUCT_GOURP[$value['id']] = $value;
+}
+/* --------------------------------------------- */
+$__ALL_PRODUCT = SysGetList('tbl_product', array(), 'AND isactive=1');
+/* --------------------------------------------- */
+?>
 <!-- Banner -->
 <?php include 'modules/home-banner.php';?>
 <!-- /.Banner -->
@@ -50,156 +61,35 @@
 		<div class="hotdeal-content">
 			<div class="container">
 				<div class="products-view-grid">
-					<div class="evo-product-item"> 
+					<?php
+					for ($i=0; $i < 7; $i++) { 
+						echo '<div class="evo-product-item"> 
 						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
+						<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
+						<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
+						</a> 
 						</div> 
 						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
+						<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
 						</div> 
 						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
 						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong>
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
+						<div class="block-prices"> 
+						<strong class="product-price">3.580.000₫</strong> 
+						<strong class="product-old-price">6.450.000₫</strong>
 						</div> 
-					</div>
-					<div class="evo-product-item"> 
-						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
+						<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
+						<input type="hidden" name="variantId" value="42790158"> 
+						<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
+						<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+						<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
+						</svg>
+						</button> 
+						</form> 
 						</div> 
-						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-						</div> 
-						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong>
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
-						</div> 
-					</div>
-					<div class="evo-product-item"> 
-						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
-						</div> 
-						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-						</div> 
-						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong>
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
-						</div> 
-					</div>
-					<div class="evo-product-item"> 
-						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
-						</div> 
-						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-						</div> 
-						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong>
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
-						</div> 
-					</div>
-					<div class="evo-product-item"> 
-						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
-						</div> 
-						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-						</div> 
-						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong>
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
-						</div> 
-					</div>
-					<div class="evo-product-item"> 
-						<div class="thumb-evo"> 
-							<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> 
-								<img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" data-src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> 
-							</a> 
-						</div> 
-						<div class="pro-brand"> 
-							<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-						</div> 
-						<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-						<div class="flex-prices"> 
-							<div class="block-prices"> 
-								<strong class="product-price">3.580.000₫</strong> 
-								<strong class="product-old-price">6.450.000₫</strong> 
-							</div> 
-							<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-								<input type="hidden" name="variantId" value="42790158"> 
-								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-									<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-										<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-									</svg>
-								</button> 
-							</form> 
-						</div> 
-					</div>
+						</div>';
+					}
+					?>
 				</div>
 			</div>
 		</div>
@@ -237,182 +127,54 @@
 				</div>
 				<div class="tab-1 tab-content current">
 					<div class="evo-owl-product2">
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
+						<?php
+						$new_products = $__ALL_PRODUCT;
+						$cdate = array_column($new_products, 'cdate');
+						array_multisort($cdate, SORT_DESC, $new_products);
+
+						foreach ($new_products as $key => $value) {
+							if($key<10){
+								$name = stripcslashes($value['name']);
+								$price = $value['price']!='' && $value['price']!=0 ? number_format($value['price']).'₫' : 'Liên hệ';
+								$price1 = $value['price1']!='' && $value['price1']!=0 ? number_format($value['price1']).'₫' : 'no';
+								$thumb = getThumb('', '','');
+								$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+								$group_name = $__ALL_PRODUCT_GOURP[$value['group_id']]['title'];
+								$group_alias = $__ALL_PRODUCT_GOURP[$value['group_id']]['alias'];
+								$link = ROOTHOST.'san-pham/'.$group_alias.'/'.$value['alias'].'-'.$value['id'];
+
+								echo '
+								<div class="col-lg-3 col-md-3 col-sm-4 col-6">
+								<div class="evo-product-item">
+								<div class="thumb-evo">
+								<a class="thumb-img" href="'.$link.'" title="'.$name.'"> 
+								<img class="lazy loaded" src="'.$img_src.'" alt="'.$name.'"> 
+								</a>
+								</div>
+								<div class="pro-brand"> <a href="/search?query=" title=""></a> </div>
+								<a href="'.$link.'" title="'.$name.'" class="title">'.$name.'</a>
+								<div class="flex-prices"> 
+								<div class="block-prices">';
+								if($price1=='no'){
+									echo '<strong class="product-price">'.$price.'</strong>';
+								}else{
+									echo '<strong class="product-price">'.$price.'</strong> 
+									<span class="product-old-price">'.$price1.'</span>';
+								}
+
+								echo '</div> 
+								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884651"> 
+								<input type="hidden" name="variantId" value="42790185"> 
+								<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
+								<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path></svg>
+								</button> 
 								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
-						<div class="evo-product-item"> 
-							<div class="thumb-evo"> 
-								<a class="thumb-img" href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470"> <img class="lazy loaded" src="//bizweb.dktcdn.net/thumb/large/100/418/839/products/2a3c3d5b1e80166ae6d1b1ec2744bf36.jpg?v=1615383533630" alt="Máy khoan DEW37300001470" data-was-processed="true"> </a> 
-							</div> 
-							<div class="pro-brand"> 
-								<a href="/search?query=vendor:Dewalt" title="Dewalt">Dewalt</a> 
-							</div> 
-							<a href="/may-khoan-dew37300001470" title="Máy khoan DEW37300001470" class="title">Máy khoan DEW37300001470</a> 
-							<div class="flex-prices"> 
-								<div class="block-prices"> 
-									<strong class="product-price">3.580.000₫</strong> 
-								</div> 
-								<form action="/cart/add" method="post" enctype="multipart/form-data" class="button-add hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart has-validation-callback" data-id="product-actions-20884647"> 
-									<input type="hidden" name="variantId" value="42790158"> 
-									<button type="button" title="Thêm vào giỏ" class="action add_to_cart">
-										<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-											<path d="m472 452c0 11.046-8.954 20-20 20h-20v20c0 11.046-8.954 20-20 20s-20-8.954-20-20v-20h-20c-11.046 0-20-8.954-20-20s8.954-20 20-20h20v-20c0-11.046 8.954-20 20-20s20 8.954 20 20v20h20c11.046 0 20 8.954 20 20zm0-312v192c0 11.046-8.954 20-20 20s-20-8.954-20-20v-172h-40v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-192v60c0 11.046-8.954 20-20 20s-20-8.954-20-20v-60h-40v312h212c11.046 0 20 8.954 20 20s-8.954 20-20 20h-232c-11.046 0-20-8.954-20-20v-352c0-11.046 8.954-20 20-20h60.946c7.945-67.477 65.477-120 135.054-120s127.109 52.523 135.054 120h60.946c11.046 0 20 8.954 20 20zm-121.341-20c-7.64-45.345-47.176-80-94.659-80s-87.019 34.655-94.659 80z" fill="#6c757d" data-original="#000000" style="" class=""></path>
-										</svg>
-									</button> 
-								</form> 
-							</div> 
-						</div>
+								</div>
+								</div>
+								</div>';
+							}
+						}
+						?>
 					</div>
 				</div>
 

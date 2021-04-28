@@ -83,22 +83,6 @@ function toggle_fix_main_header(e){
 		element.className = classes.join(" ");
 	}
 }
-$("#back-top").hide();
-$(function () {
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 400) {
-			$('#back-top').fadeIn();
-		} else {
-			$('#back-top').fadeOut();
-		}
-	});
-	$('#back-top a').click(function () {
-		$('body,html').animate({
-			scrollTop: 0
-		}, 800);
-		return false;
-	});
-});
 
 $(document).ready(function(){
 	$('.header-cart').on('click', function(){
@@ -109,6 +93,11 @@ $(document).ready(function(){
 	});
 
 	$('.awe-section-3 .products-view-grid, .evo-owl-product2').slick({
+		autoplay: true,
+		autoplaySpeed: 3000,
+		dots: false,
+		infinite: false,
+		speed: 1000,
 		slidesToShow: 5,
 		slidesToScroll: 1,
 		arrows: true,
@@ -117,6 +106,11 @@ $(document).ready(function(){
 	});
 
 	$('.evo-owl-product3').slick({
+		autoplay: true,
+		autoplaySpeed: 3000,
+		dots: false,
+		infinite: false,
+		speed: 1000,
 		slidesToShow: 4,
 		slidesToScroll: 1,
 		arrows: true,
@@ -243,7 +237,21 @@ jQuery(document).ready(function(){
 				jQuery('.addThis_listSharing').removeClass('is-show');
 			}
 		});
-	}
+	};
+
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 400) {
+				$('#back-top').addClass('fade-in');
+			} else {
+				$('#back-top').removeClass('fade-in');
+			}
+		});
+		$('#back-top a').click(function () {
+			var el = document.querySelector("#body");
+			el.scrollIntoView({ behavior: 'smooth', block: 'start'});
+		});
+	});
 });
 
 function sortby(sort){

@@ -68,7 +68,7 @@
 		" title="Sapo" target="_blank" rel="nofollow">Thien Thanh</a> 
 	</div>
 </footer>
-<div id="back-top" style="display: block;">
+<div id="back-top">
 	<a href="javascript:void(0)"></a>
 </div>
 <div class="addThis_listSharing addThis_listing">
