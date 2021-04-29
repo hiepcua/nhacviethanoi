@@ -58,8 +58,8 @@ $isAdmin=getInfo('isadmin');
 				</ul>
 			</li>
 		<?php } ?>
-		<li class="nav-item <?php menuOpen(array('categories', 'product_group'), 'com'); ?>">
-			<a href="#" class="nav-link <?php activeMenus(array('categories', 'product_group'), 'com');?> ">
+		<li class="nav-item <?php menuOpen(array('categories', 'product_group', 'product_type'), 'com'); ?>">
+			<a href="#" class="nav-link <?php activeMenus(array('categories', 'product_group', 'product_type'), 'com');?> ">
 				<i class="nav-icon fa fa-server" aria-hidden="true"></i>
 				<p>Chuyên mục/ Nhóm <i class="right fas fa-angle-left"></i></p>
 			</a>
@@ -70,6 +70,13 @@ $isAdmin=getInfo('isadmin');
 						<a href="<?php echo ROOTHOST;?>product_group" class="nav-link <?php activeMenu('product_group', '', 'com');?> ">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Nhóm sản phẩm</p>
+						</a>
+					</li>
+				<?php } if(Permission('product_type')==true || $isAdmin==1) { ?>
+					<li class="nav-item">
+						<a href="<?php echo ROOTHOST;?>product_type" class="nav-link <?php activeMenu('product_type', '', 'com');?> ">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Loại sản phẩm</p>
 						</a>
 					</li>
 				<?php } if(Permission('categories')==true || $isAdmin==1) { ?>

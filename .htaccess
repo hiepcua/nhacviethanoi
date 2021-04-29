@@ -12,8 +12,9 @@ RewriteRule ^gioi-thieu-ve-chung-toi/?$ 	index.php?com=html&viewtype=gioi-thieu&
 RewriteRule ^khuyen-mai/?$ 							index.php?com=product&viewtype=list_sale [QSA]
 RewriteRule ^san-pham-moi/?$ 						index.php?com=product&viewtype=list [QSA]
 RewriteRule ^san-pham/?$      						index.php?com=product&viewtype=list [QSA]
-RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/?$   		index.php?com=product&viewtype=block&alias=$1 [QSA]
-RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)-([0-9]+)/?$  index.php?com=product&viewtype=detail&group=$1&alias=$2&id=$3 [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/?$   							index.php?com=product&viewtype=block&pgroup=$1 [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)/?$   			index.php?com=product&viewtype=block&pgroup=$1&type=$2 [QSA]
+RewriteRule ^san-pham/([0-9a-zA-Z\-]+)/([0-9a-zA-Z\-]+)-([0-9]+)/?$  	index.php?com=product&viewtype=detail&group=$1&alias=$2&id=$3 [QSA]
 
 # Product
 RewriteRule ^checkout/?$ 							index.php?com=order&viewtype=detail [QSA]

@@ -63,16 +63,17 @@ $conf = $res_config;
                                             foreach ($res_gpro as $key => $value) {
                                                 $id = $value['id'];
                                                 $title = $value['title'];
-                                                $link = ROOTHOST.'san-pham/'.$value['alias'];
+                                                $alias = $value['alias'];
+                                                $link = ROOTHOST.'san-pham/'.$alias;
                                                 echo '<li class="level1 parent item">
                                                 <a class="hmega" href="'.$link.'" title="'.$title.'">'.$title.'</a>';
 
-                                                $res_childs = SysGetList('tbl_product_group', array(), 'AND path LIKE "'.$id.'_%" AND isactive=1');
-                                                if(count($res_childs)>0):
+                                                $res_ptype = SysGetList('tbl_product_type', array(), 'AND id_pgroup="'.$id.'" AND isactive=1');
+                                                if(count($res_ptype)>0):
                                                     echo '<ul class="level1">';
-                                                    foreach ($res_childs as $k_child => $v_child) {
+                                                    foreach ($res_ptype as $k_child => $v_child) {
                                                         $title1 = $v_child['title'];
-                                                        $link1 = ROOTHOST.'san-pham/'.$v_child['alias'];
+                                                        $link1 = ROOTHOST.'san-pham/'.$alias.'/'.$v_child['alias'];
                                                         echo '<li class="level2"> <a href="'.$link1.'" title="'.$title1.'">'.$title1.'</a> </li>';
                                                     }
                                                     echo '</ul>';

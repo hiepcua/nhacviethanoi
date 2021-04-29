@@ -1,11 +1,20 @@
 <?php
-$strWhere = $price_asc = $price_desc = $lasted_new = ""; $arr_childs = array();
-$GetAlias = isset($_GET['alias']) ? antiData($_GET['alias']) : '';
+$strWhere = $strWhere1 = $price_asc = $price_desc = $lasted_new = ""; $arr_childs = array();
+$GetAlias = isset($_GET['pgroup']) ? antiData($_GET['pgroup']) : '';
+$GetType = isset($_GET['type']) ? antiData($_GET['type']) : '';
 $GetSortby = isset($_GET['sortby']) ? antiData($_GET['sortby']) : 'cdate';
 $GetPriceMin = isset($_GET['price_min']) ? antiData($_GET['price_min']) : '';
-$res_group = SysGetList('tbl_product_group', array(), "AND isactive=1 AND alias='".$GetAlias."'");
-if(count($res_group)>0){
-	$row = $res_group[0];
+
+$res_allgroup = SysGetList('tbl_product_group', [], " AND isactive=1");
+$__ALL_PGROUP = $res_allgroup;
+
+$row = array();
+foreach($res_allgroup as $key => $value) {
+	if($value['alias'] == $GetAlias){
+		$row = $value;
+	}
+}
+if(count($row)>0){
 	$res_childs = SysGetList('tbl_product_group', array(), "AND path LIKE '".$row['id']."_'");
 	if(count($res_childs)>0){
 		foreach ($res_childs as $key => $value) {
@@ -100,6 +109,12 @@ if(count($res_group)>0){
 								<div class="products-view products-view-grid row">
 									<?php
 									if(count($res_products)>0){
+										// if($GetType!==''){
+										// 	foreach ($res_products as $key => $value) {
+										// 		# code...
+										// 	}
+										// }
+
 										switch ($GetSortby) {
 											case 'price_min:asc':
 											$arr_tmp = explode(':', $GetSortby);
@@ -141,8 +156,13 @@ if(count($res_group)>0){
 											$name = stripcslashes($value['name']);
 											$price = $value['price']!='' && $value['price']!=0 ? number_format($value['price']).'₫' : 'Liên hệ';
 											$price1 = $value['price1']!='' && $value['price1']!=0 ? number_format($value['price1']).'₫' : 'no';
+											$images = $value['images']!=='' ? json_decode($value['images']) : '';
 											$thumb = getThumb('', '','');
-											$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+											if($images!=='' && $value['thumb']==''){
+												$img_src = $images[0];
+											}else{
+												$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+											}
 											$group_name = $arr_group[$value['group_id']]['title'];
 											$group_alias = $arr_group[$value['group_id']]['alias'];
 											$link = ROOTHOST.'san-pham/'.$group_alias.'/'.$value['alias'].'-'.$value['id'];
@@ -248,28 +268,27 @@ if(count($res_group)>0){
 									<div class="aside-content clearfix">
 										<ul class="navbar-pills nav-category list-unstyle">
 											<?php
-											$res_group2 = SysGetList('tbl_product_group', [], " AND isactive=1 AND par_id=0");
-											if(count($res_group2)>0){
-												foreach ($res_group2 as $key => $value) {
-													$name1 = $value['title'];
-													$link1 = ROOTHOST.'san-pham/'.$value['alias'];
-													echo '<li class="nav-item"> 
-													<a class="nav-link" href="'.$link1.'" title="'.$name1.'">'.$name1.'</a>';
-													$res_childs2 = SysGetList('tbl_product_group', [], " AND isactive=1 AND path LIKE '".$value['id']."_%'");
-													if(count($res_childs2)>0){
-														echo '<span class="Collapsible__Plus"></span>';
-														echo '<ul class="dropdown-menu list-unstyle">';
-														foreach ($res_childs2 as $k2 => $v2) {
-															$name2 = $v2['title'];
-															$link2 = ROOTHOST.'san-pham/'.$v2['alias'];
-															echo '<li class="nav-item ">
-															<a class="nav-link" href="'.$link2.'" title="'.$name2.'">'.$name2.'</a>
-															</li>';
-														}
-														echo '</ul>';
+											foreach ($__ALL_PGROUP as $key => $value) {
+												$id_pgroup = $value['id'];
+												$title = $value['title'];
+												$alias = $value['alias'];
+												$link = ROOTHOST.'san-pham/'.$alias;
+												echo '<li class="nav-item "><a class="nav-link" href="'.$link.'" title="'.$title.'">'.$title.'</a>';
+												$res_ptype = SysGetList('tbl_product_type', array(), "AND isactive=1 AND id_pgroup=".$id_pgroup);
+												if(count($res_ptype)>0){
+													echo '<span class="Collapsible__Plus"></span>
+													<ul class="dropdown-menu">';
+													foreach ($res_ptype as $k_type => $v_type) {
+														$title2 = $v_type['title'];
+														$alias2 = $v_type['alias'];
+														$link2 = ROOTHOST.'san-pham/'.$alias.'/'.$alias2;
+														echo '<li class="nav-item ">
+														<a class="nav-link" href="'.$link2.'" title="'.$title2.'">'.$title2.'</a>
+														</li>';
 													}
-													echo '</li>';
+													echo '</ul>';
 												}
+												echo '</li>';
 											}
 											?>
 										</ul>

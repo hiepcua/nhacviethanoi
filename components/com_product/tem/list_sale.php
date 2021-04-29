@@ -114,8 +114,13 @@ foreach ($res_group as $key => $value) {
 										$name = stripcslashes($value['name']);
 										$price = $value['price']!='' && $value['price']!=0 ? number_format($value['price']).'₫' : 'Liên hệ';
 										$price1 = $value['price1']!='' && $value['price1']!=0 ? number_format($value['price1']).'₫' : 'no';
+										$images = $value['images']!=='' ? json_decode($value['images']) : '';
 										$thumb = getThumb('', '','');
-										$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+										if($images!=='' && $value['thumb']==''){
+											$img_src = $images[0];
+										}else{
+											$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+										}
 										$group_name = $arr_group[$value['group_id']]['title'];
 										$group_alias = $arr_group[$value['group_id']]['alias'];
 										$link = ROOTHOST.'san-pham/'.$group_alias.'/'.$value['alias'].'-'.$value['id'];

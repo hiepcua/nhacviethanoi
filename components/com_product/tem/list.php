@@ -11,6 +11,7 @@ $limit = 'LIMIT '.$start.','. $max_rows;
 /*End pagging*/
 $res_products = SysGetList('tbl_product', [], $strWhere." ORDER BY cdate DESC ".$limit);
 $res_group = SysGetList('tbl_product_group', [], " AND isactive=1");
+$__ALL_PGROUP = $res_group;
 $arr_group = array();
 foreach ($res_group as $key => $value) {
 	$arr_group[$value['id']] = $value;
@@ -113,8 +114,13 @@ foreach ($res_group as $key => $value) {
 										$name = stripcslashes($value['name']);
 										$price = $value['price']!='' && $value['price']!=0 ? number_format($value['price']).'₫' : 'Liên hệ';
 										$price1 = $value['price1']!='' && $value['price1']!=0 ? number_format($value['price1']).'₫' : 'no';
+										$images = $value['images']!=='' ? json_decode($value['images']) : '';
 										$thumb = getThumb('', '','');
-										$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+										if($images!=='' && $value['thumb']==''){
+											$img_src = $images[0];
+										}else{
+											$img_src = $value['thumb']!='' ? $value['thumb'] : IMAGE_DEFAULT;
+										}
 										$group_name = $arr_group[$value['group_id']]['title'];
 										$group_alias = $arr_group[$value['group_id']]['alias'];
 										$link = ROOTHOST.'san-pham/'.$group_alias.'/'.$value['alias'].'-'.$value['id'];
@@ -158,7 +164,7 @@ foreach ($res_group as $key => $value) {
 					</div>
 					<div class="col-lg-3 col-md-12 left-content">
 						<div class="evo-sidebar-pro">
-							<div class="aside-filter clearfix">
+							<div class="aside-filter clearfix d-none">
 								<div class="heading">Lọc</div>
 								<div class="aside-hidden-mobile">
 									<div class="filter-container">
@@ -206,31 +212,31 @@ foreach ($res_group as $key => $value) {
 								<div class="aside-title">Danh mục sản phẩm </div>
 								<div class="aside-content clearfix">
 									<ul class="navbar-pills nav-category">
-										<li class="nav-item "> <a class="nav-link" href="/san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> </li>
-										<li class="nav-item ">
-											<a href="/may-cam-tay-dien" class="nav-link" title="Máy cầm tay điện">Máy cầm tay điện</a>
-											<span class="Collapsible__Plus"></span>
-											<ul class="dropdown-menu">
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-												<li class="nav-item ">
-													<a class="nav-link" href="/may-khoan-van-vit" title="Máy khoan vặn vít">Máy khoan vặn vít</a>
-												</li>
-											</ul>
-										</li>
+										<li class="nav-item "> <a class="nav-link" href="<?php echo ROOTHOST;?>san-pham-moi" title="Sản phẩm mới">Sản phẩm mới</a> </li>
+										<?php
+										foreach ($__ALL_PGROUP as $key => $value) {
+											$id_pgroup = $value['id'];
+											$title = $value['title'];
+											$alias = $value['alias'];
+											$link = ROOTHOST.'san-pham/'.$alias;
+											echo '<li class="nav-item "><a class="nav-link" href="'.$link.'" title="'.$title.'">'.$title.'</a>';
+											$res_ptype = SysGetList('tbl_product_type', array(), "AND isactive=1 AND id_pgroup=".$id_pgroup);
+											if(count($res_ptype)>0){
+												echo '<span class="Collapsible__Plus"></span>
+												<ul class="dropdown-menu">';
+												foreach ($res_ptype as $k_type => $v_type) {
+													$title2 = $value['title'];
+													$alias2 = $value['alias'];
+													$link2 = ROOTHOST.'san-pham/'.$alias.'/'.$alias2;
+													echo '<li class="nav-item ">
+													<a class="nav-link" href="'.$link2.'" title="'.$title2.'">'.$title2.'</a>
+													</li>';
+												}
+												echo '</ul>';
+											}
+											echo '</li>';
+										}
+										?>
 									</ul>
 								</div>
 							</aside>

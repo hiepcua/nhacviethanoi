@@ -40,9 +40,9 @@ $res_cons = SysGetList('tbl_content', [], $strWhere." ORDER BY cdate DESC ".$lim
 
 								echo '<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item">
 								<div class="blog-item-image">
-								<div class="wrap-thumb" data-src="'.$img_src.'">
-								<a href="'.$link.'">'.$thumb.'</a>
-								</div>
+								<a href="'.$link.'"><div class="wrap-thumb" data-src="'.$img_src.'">
+								'.$thumb.'
+								</div></a>
 								</div>
 								<div class="blog-item-author">
 								<h3> <a href="'.$link.'" title="'.$title.'">'.$title.'</a> </h3>

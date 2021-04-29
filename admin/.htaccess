@@ -64,6 +64,13 @@ RewriteRule ^categories/active/([0-9]+)?$ 	index.php?com=categories&viewtype=act
 RewriteRule ^categories/delete/([0-9]+)?$ 	index.php?com=categories&viewtype=delete&id=$1 [QSA]
 
 
+RewriteRule ^product_type/?$ 					index.php?com=product_type [QSA]
+RewriteRule ^product_type/add/?$ 				index.php?com=product_type&viewtype=add 
+RewriteRule ^product_type/edit/([0-9]+)?$ 		index.php?com=product_type&viewtype=edit&id=$1 [QSA]
+RewriteRule ^product_type/active/([0-9]+)?$ 	index.php?com=product_type&viewtype=active&id=$1 [QSA]
+RewriteRule ^product_type/delete/([0-9]+)?$ 	index.php?com=product_type&viewtype=delete&id=$1 [QSA]
+
+
 RewriteRule ^product_group/?$ 					index.php?com=product_group [QSA]
 RewriteRule ^product_group/add/?$ 				index.php?com=product_group&viewtype=add 
 RewriteRule ^product_group/edit/([0-9]+)?$ 		index.php?com=product_group&viewtype=edit&id=$1 [QSA]

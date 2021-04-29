@@ -170,6 +170,7 @@ $GLOBALS['ARR_COM'] = array(
 	'tag'		=>2048,
 	'menu'		=>4096,
 	'mnuitem'	=>8192,
+	'product_type'	=>16384,
 	);
 $GLOBALS['ARR_COM_ACT'] = array(
 	'setting'	=>4, // edit
@@ -186,6 +187,7 @@ $GLOBALS['ARR_COM_ACT'] = array(
 	'tag'		=>15,
 	'menu'		=>15,
 	'mnuitem'	=>15,
+	'product_type'	=>15,
 	);
 $GLOBALS['ARR_COM_NAME'] = array(
 	'setting'	=>'Cấu hình chung',
@@ -202,6 +204,7 @@ $GLOBALS['ARR_COM_NAME'] = array(
 	'tag'		=>'Quản lý Tags',
 	'menu'		=>'Quản lý menu',
 	'mnuitem'	=>'Quản lý menuitem',
+	'product_type'	=>'Quản lý loại sản phẩm',
 	);
 $GLOBALS['MSG_PERMIS']='<div id="action" style="background-color:#fff; margin:10px 15px;padding:10px 0"><h3 align="center">Bạn không có quyền truy cập.</h3></div>';
 ?>

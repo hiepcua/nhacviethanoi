@@ -398,7 +398,7 @@ img {
 	.wrap-thumb{height: 150px;}
 }
 @media screen and (min-width: 1200px) {
-	.wrap-thumb{height: 180px;}
+	.wrap-thumb{height: 220px;}
 }
 .line-50{
 	width: 50px;
@@ -737,6 +737,10 @@ img {
 .evo-product-item .thumb-evo .thumb-img {
 	display: block;
 	position: relative;
+	height: 256px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .evo-product-item .thumb-evo .thumb-img img {
@@ -747,6 +751,7 @@ img {
 }
 
 .evo-product-item .pro-brand {
+	display: none;
 	font-size: 13px;
 	line-height: 19px;
 	color: #808080;
@@ -1435,6 +1440,9 @@ img {
 /* /.Sản phẩm mới */
 
 /* awe-section-5 */
+.section_banner_evo_2 {
+    margin-top: 20px;
+}
 @media (max-width: 767px) {
 	.section_banner_evo .col-md-6+.col-md-6 {
 		margin-top: 15px;

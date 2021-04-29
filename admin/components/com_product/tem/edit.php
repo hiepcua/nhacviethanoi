@@ -28,6 +28,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 
 	$arr = array();
 	$arr['group_id'] = isset($_POST['cbo_gproduct']) ? (int)$_POST['cbo_gproduct'] : 0;
+	$arr['type_id'] = isset($_POST['cbo_type']) ? (int)$_POST['cbo_type'] : 0;
 	$arr['trademark_id'] = isset($_POST['trademark_id']) ? (int)$_POST['trademark_id'] : 0;
 	$arr['pro_code'] = isset($_POST['pro_code']) ? antiData($_POST['pro_code']) : '';
 	$arr['name'] = isset($_POST['txt_name']) ? antiData($_POST['txt_name']) : '';
@@ -60,6 +61,7 @@ if(count($res_Cons) <= 0){
 $row = $res_Cons[0];
 $price = $row['price']!=0 ? $row['price'] : '';
 $price1 = $row['price1']!=0 ? $row['price1'] : '';
+$type_id = $row['type_id'];
 ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -249,6 +251,22 @@ $price1 = $row['price1']!=0 ? $row['price1'] : '';
 								</script>
 							</div>
 
+							<div class="form-group">
+								<label>Loại sản phẩm</label>
+								<select class="form-control" name="cbo_type" id="cbo_type">
+									<option value="0">-- Chọn một --</option>
+									<?php
+									$res_type = SysGetList('tbl_product_type', array(), "AND isactive=1 AND id_pgroup=".$row['group_id']);
+									if(count($res_type)>0){
+										foreach ($res_type as $key => $value) {
+											$selected = $row['type_id'] == $value['id'] ? 'selected' : '';
+											echo '<option value="'.$value['id'].'" '.$selected.'>'.$value['title'].'</option>';
+										}
+									}
+									?>
+								</select>
+							</div>
+
 							<div class='form-group'>
 								<div class="widget-fileupload fileupload fileupload-new" data-provides="fileupload">
 									<label>Ảnh đại diện</label><small> (Dung lượng < 10MB)</small>
@@ -272,11 +290,10 @@ $price1 = $row['price1']!=0 ? $row['price1'] : '';
 											<input type="file" id="file_image" name="txt_thumb" accept="image/jpg, image/jpeg/png">
 										</span>
 										<a href="javascript:void(0)" class="btn fileupload-exists" data-dismiss="fileupload" onclick="cancel_fileupload()">Hủy</a>
+										<span class="btn btn-default" onclick="OpenPopup('<?php echo ROOTHOST;?>extensions/upload_images.php');">Media</span>
 									</div>
 								</div>
 							</div>
-
-							<a href="<?php echo ROOTHOST.'?com='.COMS.'&viewtype=history&id='.$row['id'];?>" class="a-history">Lịch sử</a>
 						</div>
 					</div>
 				</div>
@@ -310,6 +327,15 @@ $price1 = $row['price1']!=0 ? $row['price1'] : '';
 		});
 
 		$('#cbo_gproduct').select2();
+
+		$('#cbo_gproduct').on('change', function(){
+			var id_pgroup = $(this).val();
+			var _url = '<?php echo ROOTHOST;?>ajaxs/product_type/get_type_by_pgroup.php';
+			$.post(_url, {'id_pgroup': id_pgroup}, function(res){
+				$('#cbo_type').empty();
+				$('#cbo_type').html(res);
+			});
+		});
 
 		tinymce.init({
 			selector: '#txt_fulltext',
