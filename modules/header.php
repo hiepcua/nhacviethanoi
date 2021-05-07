@@ -42,11 +42,6 @@ $conf = $res_config;
                     <a class="logo-wrapper" href="<?php echo ROOTHOST;?>"><img src="<?php echo ROOTHOST;?>images/logo2.png" class="logo-brand"></a>
                 </div>
 
-                <!-- Toggler/collapsibe Button -->
-                <button class="navbar-toggler" onclick="toggle_fix_main_header(this)" type="button" data-toggle="collapse" data-target="#main-menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <!-- Navbar links -->
                 <div id="mainmenu" class="box-mainmenu d-lg-inline-block">
                     <ul class="list-unstyle">
@@ -121,12 +116,17 @@ $conf = $res_config;
                         </form>
                     </div>
                 </div>
-                <div class="box-cart">
+                <div class="box-cart header-fill">
                     <a href="javascript:void(0)" class="header-cart" aria-label="Xem giỏ hàng" title="Giỏ hàng"> 
                         <svg viewBox="0 0 19 23"> 
                             <path d="M0 22.985V5.995L2 6v.03l17-.014v16.968H0zm17-15H2v13h15v-13zm-5-2.882c0-2.04-.493-3.203-2.5-3.203-2 0-2.5 1.164-2.5 3.203v.912H5V4.647C5 1.19 7.274 0 9.5 0 11.517 0 14 1.354 14 4.647v1.368h-2v-.912z" fill="#222"></path> 
                         </svg> 
-                        <span id="count_item_pr" class="count_item_pr">0</span> 
+                        <span id="count_item_pr" class="count_item_pr"><?php echo $__COUNT_CART;?></span> 
+                    </a>
+
+                    <!-- Toggler/collapsibe Button -->
+                    <a class="d-sm-inline-block d-lg-none menu-icon" href="javascript:void(0)" title="Menu" aria-label="Menu" id="trigger-mobile">
+                        <svg height="384pt" viewBox="0 -53 384 384" width="384pt" xmlns="http://www.w3.org/2000/svg"><path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path><path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path><path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>
                     </a>
                 </div>
             </div>

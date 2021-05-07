@@ -22,7 +22,7 @@ $isAdmin=getInfo('isadmin');
 		<?php 
 		$numberProduct=SysCount('tbl_product',"AND isactive=1");
 		$numberContent=SysCount('tbl_content',"");
-		$numberOrder=SysCount('tbl_order',"AND isactive=1");
+		$numberOrder=SysCount('tbl_order',"");
 		?>
 		<!-- Small boxes (Stat box) -->
 		<div class="row">

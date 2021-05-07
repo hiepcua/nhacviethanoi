@@ -1,6 +1,3 @@
-<?php
-// 
-?>
 <section class="component">
 	<section class="bread-crumb"> 
 		<div class="container"> 
@@ -20,27 +17,23 @@
 					<div id="message"></div>
 					<div class="row">
 						<div class="col-md-7 col-sm-7">
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-12 m-mar15">
-										<input type="text" placeholder="Họ và tên*" required="" class="form-control" name="contact_sur_name">
-									</div>
-
+							<div class="row">
+								<div class="col-md-12 m-mar15 form-group">
+									<input type="text" placeholder="Họ và tên*" id="contact_full_name" required class="form-control required" name="contact_full_name">
 								</div>
+
 							</div>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-6 in-email" style="margin-bottom:15px;">
-										<input type="text" placeholder="Số điện thoại" required="" class="form-control" name="contact_phone" id="contact_phone">
-									</div>
-									<div class="col-md-6 in-email">
-										<input type="email" placeholder="E-mail" required="" class="form-control" name="contact_email" id="contact_email">
-									</div>
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<input type="text" placeholder="Số điện thoại*" required="" class="form-control required" name="contact_phone" id="contact_phone">
+								</div>
+								<div class="col-md-6 in-email form-group">
+									<input type="email" placeholder="E-mail*" class="form-control required" name="contact_email" id="contact_email">
 								</div>
 							</div>
 
 							<div class="form-group box-area">
-								<textarea placeholder="Ghi chú" required="" class="form-control" style="min-height: 120px" name="contact_content"></textarea>
+								<textarea placeholder="Địa chỉ giao hàng" class="form-control" style="min-height: 120px" name="contact_address"></textarea>
 							</div>
 							<div class="form-group">
 								<div class="row">
@@ -54,7 +47,7 @@
 							</div>
 							<div class="clearfix"></div>
 							<div class="box-btn text-center">
-								<input type="submit" value="Đặt hàng" id="btn_order" class="btn btn-order">
+								<input type="button" value="Đặt hàng" id="btn_order" class="btn btn-order">
 							</div>
 						</div>
 						<aside class="col-md-5 col-sm-5">
@@ -89,58 +82,39 @@
 						<th width="120">Giá</th>
 					</thead>
 					<tbody>
-						<tr>
-							<input type="hidden" name="product[]" value="1">
-							<td align="center">1</td>
-							<td align="center"><a href="javascript:void(0)" onclick="removeProduct(this)" data-id="30"><i class="fa fa-trash cred" aria-hidden="true"></i></a></td>
-							<td>
-								<div class="wrap-thumb" data-src="">
-									<img src="<?php echo IMAGE_DEFAULT;?>" alt="">
-								</div>
-							</td>
-							<td><strong>Presonus Itwo</strong></td>
-							<td><strong>Presonus-Itwo</strong></td>
-							<td><strong class="cred">3,600,000₫</strong></td>
-						</tr>
-						<tr>
-							<input type="hidden" name="product[]" value="1">
-							<td align="center">1</td>
-							<td align="center"><a href="javascript:void(0)" onclick="removeProduct(this)" data-id="30"><i class="fa fa-trash cred" aria-hidden="true"></i></a></td>
-							<td>
-								<div class="wrap-thumb" data-src="">
-									<img src="<?php echo IMAGE_DEFAULT;?>" alt="">
-								</div>
-							</td>
-							<td><strong>Presonus Itwo</strong></td>
-							<td><strong>Presonus-Itwo</strong></td>
-							<td><strong class="cred">3,600,000₫</strong></td>
-						</tr>
-						<tr>
-							<input type="hidden" name="product[]" value="1">
-							<td align="center">1</td>
-							<td align="center"><a href="javascript:void(0)" onclick="removeProduct(this)" data-id="30"><i class="fa fa-trash cred" aria-hidden="true"></i></a></td>
-							<td>
-								<div class="wrap-thumb" data-src="">
-									<img src="<?php echo IMAGE_DEFAULT;?>" alt="">
-								</div>
-							</td>
-							<td><strong>Presonus Itwo</strong></td>
-							<td><strong>Presonus-Itwo</strong></td>
-							<td><strong class="cred">3,600,000₫</strong></td>
-						</tr>
-						<!-- <tr>
+						<?php
+						if($__COUNT_CART > 0){
+							$i=0;
+							foreach ($__CART as $key => $value) {
+								$i++;
+								$pro_id = $value['product_id'];
+								$pro_name = $value['name'];
+								$pro_code = $value['pro_code'];
+								$thumb = getThumb();
+								$pro_thumb_url = strlen($value['thumb']) > 0 ? $value['thumb'] : IMAGE_DEFAULT;
+								$pro_quan = $value['quan'];
+								$pro_price = (int)$value['price']>0 ? number_format($value['price']).' ₫' : 'Liên hệ';
+								echo '<tr>
+								<input type="hidden" name="product[]" value="'.$pro_id.'">
+								<td align="center">'.$i.'</td>
+								<td align="center"><a href="javascript:void(0)" onclick="removeProduct(this)" data-id="'.$pro_id.'"><i class="fa fa-trash cred" aria-hidden="true"></i></a></td>
+								<td>
+								<div class="wrap-thumb" data-src="'.$pro_thumb_url.'">'.$thumb.'</div>
+								</td>
+								<td><strong>'.$pro_name.'</strong></td>
+								<td><strong>'.$pro_code.'</strong></td>
+								<td><strong class="cred">'.$pro_price.'</strong></td>
+								</tr>';
+							}
+						}else{
+							echo '<tr>
 							<td colspan="6" align="center">Chưa có sản phẩm nào</td>
-						</tr> -->
+							</tr>';
+						}
+						?>
 					</tbody>
 				</table>
 			</div>
 		</section>
 	</div>
 </section>
-
-<script type="text/javascript">
-	function removeProduct(e){
-		var tr_parent = e.parentElement.parentElement;
-		tr_parent.remove();
-	}
-</script>

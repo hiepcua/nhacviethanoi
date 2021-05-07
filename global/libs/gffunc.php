@@ -196,7 +196,7 @@ function randomNumber() {
 	}
 	return implode($pass); //turn the array into a string
 }
-function getThumb($urlThumb, $class='', $alt=''){
+function getThumb($urlThumb='', $class='', $alt=''){
 	$urlThumb = str_replace(' ', '%20', $urlThumb);
     if($urlThumb !=''){
         return "<img src=".$urlThumb." class='".$class."' alt='".$alt."'>";

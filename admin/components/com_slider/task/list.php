@@ -18,7 +18,7 @@ $max_rows = 20;
 $max_pages = ceil($total_rows/$max_rows);
 $cur_page = getCurentPage($max_pages);
 $start = ($cur_page - 1) * $max_rows;
-$strWhere.=" ORDER BY cdate DESC, isactive DESC LIMIT $start,".$max_rows;
+$strWhere.=" ORDER BY `order` ASC LIMIT $start,".$max_rows;
 /*End pagging*/
 
 if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM.'add'] == 1) {
@@ -95,8 +95,6 @@ if (isset($_SESSION['flash'.'com_'.$COM.'add']) && $_SESSION['flash'.'com_'.$COM
             </tr>
             <?php 
             if($total_rows > 0){
-                $star = ($cur_page - 1) * $max_rows;
-                $strWhere.=" ORDER BY `order` ASC LIMIT $star,".$max_rows;
                 $res_sliders = SysGetList('tbl_slider', [], $strWhere);
 
                 foreach ($res_sliders as $key => $rows) {

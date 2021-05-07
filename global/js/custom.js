@@ -22,7 +22,32 @@ function gotopage(page)
 	mainMenu = $('#siteNavigation'),
 	w_mainheader = $('#main-header').width(),
 	w_mainheader_container = $('#main-header-container').width(),
-	ul_mainMenu = $('#ul_mainmenu').width();
+	ul_mainMenu = $('#ul_mainmenu').width(),
+	_base_url = 'http://localhost/nhacviethanoi/';
+
+	$('#trigger-mobile').click(function(){
+		$(".mobile-main-menu").toggleClass('active');
+		$(".backdrop__body-backdrop___1rvky").addClass('active');
+	});
+
+	$('.backdrop__body-backdrop___1rvky, .evo-close-menu, .cart_btn-close, .search_close').click(function(){
+		$("body").removeClass('show-search');
+		$(".mobile-main-menu, .cart_sidebar, .evo_sidebar_search, .left-content").removeClass('active');
+		$(".backdrop__body-backdrop___1rvky").removeClass('active');
+	});
+
+	$('.ng-has-child1 a .svg1').on('click', function(e){
+		e.preventDefault();var $this = $(this);
+		$this.parents('.ng-has-child1').find('.ul-has-child1').stop().slideToggle();
+		$(this).toggleClass('active');
+		return false;
+	});
+	$('.ng-has-child1 .ul-has-child1 .ng-has-child2 a .svg2').on('click', function(e){
+		e.preventDefault();var $this = $(this);
+		$this.parents('.ng-has-child1 .ul-has-child1 .ng-has-child2').find('.ul-has-child2').stop().slideToggle();
+		$(this).toggleClass('active');
+		return false;
+	});
 
 	$('.btn-mobile-site-search').on('click', function () {
 		$('#ip-search-home').focus();
@@ -34,10 +59,6 @@ function gotopage(page)
 			$(this).css('background-image', 'url('+url+')');
 			$(this).find('img').css('display', 'none');
 		}
-	});
-
-	$('#banner-slider').carousel({
-		// interval: 4000
 	});
 
 	$('#tab-history li, #tab-cctc li, #tab-bgd li').on('click', function(){
@@ -67,23 +88,6 @@ function gotopage(page)
 	});
 })(document, window, jQuery);
 
-function toggle_fix_main_header(e){
-	var element = document.getElementById('main-header');
-	if (element.classList) {
-		element.classList.toggle("fixed");
-	} else {
-		// For IE9
-		var classes = element.className.split(" ");
-		var i = classes.indexOf("fixed");
-
-		if (i >= 0)
-			classes.splice(i, 1);
-		else
-			classes.push("fixed");
-		element.className = classes.join(" ");
-	}
-}
-
 $(document).ready(function(){
 	$('.header-cart').on('click', function(){
 		$('.backdrop__body-backdrop___1rvky, #cart-sidebars').addClass('active');
@@ -99,10 +103,35 @@ $(document).ready(function(){
 		infinite: false,
 		speed: 1000,
 		slidesToShow: 5,
-		slidesToScroll: 1,
+		slidesToScroll: 5,
 		arrows: true,
 		prevArrow: '<a class="carousel-control-prev" href="javascript:void(0)"></a>',
 		nextArrow: '<a class="carousel-control-next" href="javascript:void(0)"></a>',
+		responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 5,
+				slidesToScroll: 5,
+				infinite: true,
+				dots: true
+			}
+		},
+		{
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		}
+		]
 	});
 
 	$('.evo-owl-product3').slick({
@@ -116,6 +145,31 @@ $(document).ready(function(){
 		arrows: true,
 		prevArrow: '<a class="carousel-control-prev" href="javascript:void(0)"></a>',
 		nextArrow: '<a class="carousel-control-next" href="javascript:void(0)"></a>',
+		responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 5,
+				slidesToScroll: 5,
+				infinite: true,
+				dots: true
+			}
+		},
+		{
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		}
+		]
 	});
 
 	$(".not-dqtab").each( function(e){
@@ -154,6 +208,7 @@ $(document).ready(function(){
 			}
 		});
 	});
+
 	$('.not-dqtab .next').click(function(e){
 		var count = 0
 		$(this).parents('.content').find('.tab-content').each(function(e){
@@ -169,7 +224,8 @@ $(document).ready(function(){
 			var current = 1;
 		}
 		action(current,datasection);
-	})
+	});
+
 	$('.not-dqtab .prev').click(function(e){
 		var count = 0
 		$(this).parents('.content').find('.tab-content').each(function(e){
@@ -185,7 +241,7 @@ $(document).ready(function(){
 			var current = count;
 		}
 		action(current,datasection);
-	})
+	});
 
 	setTimeout(function(){
 		var w_mainheader = $('#main-header').width(),
@@ -202,6 +258,7 @@ $(document).ready(function(){
 		$(".left-content").toggleClass('active');
 		$(".backdrop__body-backdrop___1rvky").addClass('active');
 	});
+
 	$('.aside-filter .aside-hidden-mobile .aside-item .aside-title').on('click', function(e){
 		e.preventDefault();
 		var $this = $(this);
@@ -209,6 +266,7 @@ $(document).ready(function(){
 		$(this).toggleClass('active')
 		return false;
 	});
+
 	$('.sort-cate-left h3').on('click', function(e){
 		e.preventDefault();var $this = $(this);
 		$this.parents('.sort-cate-left').find('ul').stop().slideToggle();
@@ -219,12 +277,9 @@ $(document).ready(function(){
 	$('.collection-category .Collapsible__Plus').on('click', function(e){
 		e.preventDefault();
 		var $this = $(this);
-		$(this).parents().toggleClass('active')
+		$(this).parent().find('.dropdown-menu').stop().slideToggle();
+		$(this).parent().toggleClass('active');
 		return false;
-	});
-
-	$('.add_to_cart').on('click', function(){
-		console.log('add cart');
 	});
 });
 
